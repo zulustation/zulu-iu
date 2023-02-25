@@ -11,9 +11,9 @@ interface CountdownProps {
 
 const TimerContent = ({ title, time }: { title: string; time: string }) => {
   return (
-    <div className="flex flex-col justify-center bg-sky-200 dark:bg-sky-700 py-ztg-12 px-ztg-15 mt-ztg-4 rounded-ztg-5">
-      <div className="text-sky-600 font-bold text-ztg-12-120">{title}</div>
-      <div className="text-black dark:text-white font-bold text-ztg-16-120 whitespace-nowrap">
+    <div className="flex flex-col justify-center bg-sky-200 dark:bg-sky-700 py-zul-12 px-zul-15 mt-zul-4 rounded-zul-5">
+      <div className="text-sky-600 font-bold text-zul-12-120">{title}</div>
+      <div className="text-black dark:text-white font-bold text-zul-16-120 whitespace-nowrap">
         {time}
       </div>
     </div>

@@ -73,12 +73,12 @@ const PortfolioCard = observer(({ position }) => {
   };
 
   return (
-    <div className="rounded-ztg-10 bg-sky-100 dark:bg-black">
-      <div className="flex mt-ztg-20 items-center px-ztg-15 py-ztg-5 bg-sky-300 dark:bg-sky-700 rounded-t-ztg-10">
-        <span className="font-bold text-ztg-10-150 uppercase ">
+    <div className="rounded-zul-10 bg-sky-100 dark:bg-black">
+      <div className="flex mt-zul-20 items-center px-zul-15 py-zul-5 bg-sky-300 dark:bg-sky-700 rounded-t-zul-10">
+        <span className="font-bold text-zul-10-150 uppercase ">
           {position.marketTitle}
         </span>
-        <span className="ml-auto font-bold text-ztg-10-150 mr-ztg-16">
+        <span className="ml-auto font-bold text-zul-10-150 mr-zul-16">
           {new Date().getTime() < position.marketEndTimeStamp
             ? "Ends: "
             : "Ended: "}
@@ -88,11 +88,11 @@ const PortfolioCard = observer(({ position }) => {
           }).format(new Date(position.marketEndTimeStamp))}
         </span>
         {new Date().getTime() < position.marketEndTimeStamp ? (
-          <span className="bg-black text-white rounded-ztg-100 text-ztg-10-150 font-medium h-ztg-20 w-ztg-69 text-center pt-ztg-2 mr-ztg-16">
+          <span className="bg-black text-white rounded-zul-100 text-zul-10-150 font-medium h-zul-20 w-zul-69 text-center pt-zul-2 mr-zul-16">
             Active
           </span>
         ) : (
-          <span className="bg-black text-white rounded-ztg-100 text-ztg-10-150 font-medium h-ztg-20 w-ztg-69 text-center pt-ztg-2 mr-ztg-16">
+          <span className="bg-black text-white rounded-zul-100 text-zul-10-150 font-medium h-zul-20 w-zul-69 text-center pt-zul-2 mr-zul-16">
             Inactive
           </span>
         )}

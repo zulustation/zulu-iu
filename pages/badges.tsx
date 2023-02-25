@@ -1,6 +1,6 @@
-import { useAvatarContext } from "@zeitgeistpm/avatara-react";
-import { Badge } from "@zeitgeistpm/avatara-nft-sdk";
-import { cidToUrl, sanitizeIpfsUrl } from "@zeitgeistpm/avatara-util";
+import { useAvatarContext } from "@zulustation/avatara-react";
+import { Badge } from "@zulustation/avatara-nft-sdk";
+import { cidToUrl, sanitizeIpfsUrl } from "@zulustation/avatara-util";
 import { partial } from "lodash";
 
 import { useUserStore } from "lib/stores/UserStore";
@@ -63,9 +63,9 @@ const BadgesPage = observer(() => {
   const { theme } = useUserStore();
 
   return (
-    <div className={"pt-ztg-46 "}>
-      <h2 className="header mb-ztg-23">Badges</h2>
-      <div className="flex content-center items-center mb-ztg-38">
+    <div className={"pt-zul-46 "}>
+      <h2 className="header mb-zul-23">Badges</h2>
+      <div className="flex content-center items-center mb-zul-38">
         <p className="text-gray-600 flex-3 mr-8">
           All available badges. Grouped by rarity. Select rarity to view how the
           badge looks at that level
@@ -105,7 +105,7 @@ const BadgesPage = observer(() => {
           }}
         />
       </div>
-      <div className="mb-ztg-38 grid gap-4 grid-cols-4 grid-rows-4">
+      <div className="mb-zul-38 grid gap-4 grid-cols-4 grid-rows-4">
         {badges.map((item) => (
           <BadgeItem item={item} />
         ))}
@@ -143,9 +143,9 @@ const BadgeItem = (props: { item: Badge.DiscreteBadge<any> }) => {
             animate={{ opacity: 1, transform: "translateY(-105%)" }}
             exit={{ opacity: 0, transform: "translateY(-115%)" }}
             style={{ left: "2px" }}
-            className="border-2 border-gray-500/10  absolute text-sm z-ztg-10 bg-gray-100 dark:bg-black rounded-ztg-10 text-black dark:text-white px-ztg-12 py-ztg-14  w-ztg-240"
+            className="border-2 border-gray-500/10  absolute text-sm z-zul-10 bg-gray-100 dark:bg-black rounded-zul-10 text-black dark:text-white px-zul-12 py-zul-14  w-zul-240"
           >
-            <div className="flex mb-ztg-2">
+            <div className="flex mb-zul-2">
               <div className="flex-1">
                 <h4 className="font-bold text-lg mb-3">
                   {capitalize(item.rarity)} Badge
@@ -181,13 +181,13 @@ const BadgeItem = (props: { item: Badge.DiscreteBadge<any> }) => {
         <img src={sanitizeIpfsUrl(item.preview)} />
         <div className="absolute bottom-2 right-2 rounded-md w-1/3 h-1/3 border-2 border-solid border-gray-900/30">
           <img
-            className="z-ztg-2"
+            className="z-zul-2"
             src={sanitizeIpfsUrl(
               cidToUrl("QmZHdCSRpCEfVDcqwkmo5ELrkuKXPBCtfs4fQ3RXibn1am"),
             )}
           />
           <img
-            className="absolute top-0 left-0 w-full h-full z-ztg-3"
+            className="absolute top-0 left-0 w-full h-full z-zul-3"
             src={sanitizeIpfsUrl(item.src)}
           />
         </div>

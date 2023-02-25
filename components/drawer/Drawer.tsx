@@ -53,14 +53,14 @@ const Drawer: FC<DrawerProps> = observer(
         animate={{ width: getWidth() }}
         transition={{ type: "tween" }}
         className={`
-        !hidden drawer relative h-ztg-full-vh flex-shrink-0 ${side} ${
+        !hidden drawer relative h-zul-full-vh flex-shrink-0 ${side} ${
           isClosed ? "closed" : ""
         } ${className}`}
       >
         <div
           className="arrow-container border-2 border-sky-300 bg-white text-sky-600 dark:bg-black 
-          dark:border-border-dark absolute top-ztg-90 right-0 w-ztg-24 h-ztg-24 rounded-ztg-5 flex 
-          items-center justify-center cursor-pointer z-ztg-3"
+          dark:border-border-dark absolute top-zul-90 right-0 w-zul-24 h-zul-24 rounded-zul-5 flex 
+          items-center justify-center cursor-pointer z-zul-3"
           onClick={() => toggle()}
         >
           <Arrow size={16} />

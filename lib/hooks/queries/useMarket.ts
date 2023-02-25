@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { IndexerContext, isIndexedSdk, Sdk } from "@zeitgeistpm/sdk-next";
-import { FullMarketFragment } from "@zeitgeistpm/indexer";
+import { IndexerContext, isIndexedSdk, Sdk } from "@zulustation/sdk-next";
+import { FullMarketFragment } from "@zulustation/indexer";
 import { memoize } from "lodash-es";
 import * as batshit from "@yornaath/batshit";
 import { useSdkv2 } from "../useSdkv2";

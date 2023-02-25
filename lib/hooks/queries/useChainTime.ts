@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { isRpcSdk } from "@zeitgeistpm/sdk-next";
-import { ChainTime } from "@zeitgeistpm/utility/dist/time";
+import { isRpcSdk } from "@zulustation/sdk-next";
+import { ChainTime } from "@zulustation/utility/dist/time";
 import { useSdkv2 } from "../useSdkv2";
 
 export const rootKey = "chain-time";

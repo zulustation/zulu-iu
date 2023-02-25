@@ -23,18 +23,18 @@ const Carousel: FC<CarouselProps> = () => {
       totalSlides={2}
       currentSlide={currentSlide}
     >
-      <Slider className="rounded-ztg-10">
-        <Slide index={0} className="bg-black rounded-ztg-10">
+      <Slider className="rounded-zul-10">
+        <Slide index={0} className="bg-black rounded-zul-10">
           <GlitchImage
             src="/carousel/beta-welcome-2.png"
-            className="h-full rounded-ztg-10"
+            className="h-full rounded-zul-10"
           />
         </Slide>
-        <Slide index={1} className="bg-black rounded-ztg-10">
+        <Slide index={1} className="bg-black rounded-zul-10">
           <a href={`https://shapethefuture.zeitgeist.pm`} target="_blank">
             <GlitchImage
               src="/carousel/shape-the-future.png"
-              className="h-full rounded-ztg-10"
+              className="h-full rounded-zul-10"
             />
           </a>
         </Slide>

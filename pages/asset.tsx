@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { AssetId } from "@zeitgeistpm/sdk/dist/types";
+import { AssetId } from "@zulustation/sdk/dist/types";
 import { observer } from "mobx-react";
 import InfoBoxes from "components/ui/InfoBoxes";
 import TimeSeriesChart, { ChartData } from "components/ui/TimeSeriesChart";
@@ -20,10 +20,10 @@ interface AssetDetailProps {
 
 const AssetDetail = ({ header, middle, bottom }: AssetDetailProps) => {
   return (
-    <div className="flex flex-col h-ztg-89 w-full rounded-ztg-10 bg-sky-100 dark:bg-black p-ztg-15 mx-ztg-10">
-      <div className=" text-sky-600 text-ztg-12-150 font-bold">{header}</div>
-      <div className="font-bold font-mono text-ztg-14-150">{middle}</div>
-      <div className="font-mono text-ztg-12-150 text-sky-600">{bottom}</div>
+    <div className="flex flex-col h-zul-89 w-full rounded-zul-10 bg-sky-100 dark:bg-black p-zul-15 mx-zul-10">
+      <div className=" text-sky-600 text-zul-12-150 font-bold">{header}</div>
+      <div className="font-bold font-mono text-zul-14-150">{middle}</div>
+      <div className="font-mono text-zul-12-150 text-sky-600">{bottom}</div>
     </div>
   );
 };
@@ -153,43 +153,43 @@ const AssetPage: NextPage = observer(() => {
   return (
     <>
       <InfoBoxes />
-      <div className="flex my-ztg-28 items-center">
+      <div className="flex my-zul-28 items-center">
         <ArrowLeft
           className="cursor-pointer text-sky-600"
           onClick={navigateBack}
         />
-        <h2 className="header ml-ztg-16">Portfolio</h2>
+        <h2 className="header ml-zul-16">Portfolio</h2>
       </div>
       <div className="flex">
         <div className="flex flex-col">
-          <div className="text-ztg-10-150  uppercase font-bold text-sky-600 mb-ztg-4">
+          <div className="text-zul-10-150  uppercase font-bold text-sky-600 mb-zul-4">
             Asset
           </div>
-          <div className="flex items-center justify-center h-ztg-38 bg-sky-300 text-black dark:bg-sky-700 dark:text-white  px-ztg-10  text-ztg-22-120 font-bold rounded-ztg-5">
+          <div className="flex items-center justify-center h-zul-38 bg-sky-300 text-black dark:bg-sky-700 dark:text-white  px-zul-10  text-zul-22-120 font-bold rounded-zul-5">
             <div
-              className="rounded-full w-ztg-20 h-ztg-20 mr-ztg-10 border-sky-600 border-2"
+              className="rounded-full w-zul-20 h-zul-20 mr-zul-10 border-sky-600 border-2"
               style={{ background: assetColor }}
             ></div>
             <div>{assetTicker}</div>
           </div>
         </div>
-        <div className="flex flex-col ml-ztg-19">
-          <div className="text-ztg-10-150  uppercase font-bold text-sky-600 mb-ztg-4">
+        <div className="flex flex-col ml-zul-19">
+          <div className="text-zul-10-150  uppercase font-bold text-sky-600 mb-zul-4">
             Amount
           </div>
-          <div className="flex items-center font-mono text-ztg-18-150 font-bold h-ztg-38 dark:bg-black px-ztg-15 rounded-ztg-5">
+          <div className="flex items-center font-mono text-zul-18-150 font-bold h-zul-38 dark:bg-black px-zul-15 rounded-zul-5">
             <span className="">{assetAmount}</span>
           </div>
         </div>
       </div>
-      <div className="-ml-ztg-10 mt-ztg-20">
+      <div className="-ml-zul-10 mt-zul-20">
         <TimeSeriesChart
           data={chartData}
           series={[{ accessor: "v", label: "Price" }]}
           yUnits={store.config.tokenSymbol}
         />
       </div>
-      <div className="flex flex-row mt-ztg-39 mb-ztg-69">
+      <div className="flex flex-row mt-zul-39 mb-zul-69">
         <AssetDetail
           header="Price per Share"
           middle={`${pricePerShare} ${store.config.tokenSymbol}`}

@@ -9,13 +9,13 @@ import { AlertTriangle } from "react-feather";
 import {
   CreateMarketParams,
   CreateCpmmMarketAndDeployAssetsParams,
-} from "@zeitgeistpm/sdk/dist/types/market";
+} from "@zulustation/sdk/dist/types/market";
 import { ISubmittableResult } from "@polkadot/types/types";
 import {
   DecodedMarketMetadata,
   MarketPeriod,
   MarketTypeOf,
-} from "@zeitgeistpm/sdk/dist/types";
+} from "@zulustation/sdk/dist/types";
 import Moment from "moment";
 
 import { defaultOptions, defaultPlugins } from "lib/form";
@@ -35,7 +35,7 @@ import { JSONObject } from "lib/types";
 import { toBase64 } from "lib/util";
 import { extrinsicCallback } from "lib/util/tx";
 import { calculateMarketCost } from "lib/util/market";
-import { NUM_BLOCKS_IN_DAY, ZTG } from "lib/constants";
+import { NUM_BLOCKS_IN_DAY, ZUL } from "lib/constants";
 import { Input } from "components/ui/inputs";
 import OutcomesField from "components/create/OutcomesField";
 import MarketSlugField from "components/create/MarketSlugField";
@@ -60,7 +60,7 @@ import {
   MarketDeadlinesValue,
 } from "components/create/MarketDeadlinesInput";
 import { useMarketDeadlineConstants } from "lib/hooks/queries/useMarketDeadlineConstants";
-import { dateBlock } from "@zeitgeistpm/utility/dist/time";
+import { dateBlock } from "@zulustation/utility/dist/time";
 import { useChainTimeNow } from "lib/hooks/queries/useChainTime";
 
 const QuillEditor = dynamic(() => import("../components/ui/QuillEditor"), {
@@ -454,7 +454,7 @@ const CreatePage: NextPage = observer(() => {
     return {
       marketType,
       signer,
-      baseAsset: "Ztg",
+      baseAsset: "Zul",
       oracle,
       period,
       deadlines,
@@ -474,11 +474,11 @@ const CreatePage: NextPage = observer(() => {
       : {
           scalar: [
             new Decimal(outcomes.minimum)
-              .mul(ZTG)
+              .mul(ZUL)
               .toDecimalPlaces(0)
               .toFixed(0),
             new Decimal(outcomes.maximum)
-              .mul(ZTG)
+              .mul(ZUL)
               .toDecimalPlaces(0)
               .toFixed(0),
           ],
@@ -496,11 +496,11 @@ const CreatePage: NextPage = observer(() => {
     const metadata = getMarketMetadata();
 
     const weights = poolRows.slice(0, -1).map((row) => {
-      return new Decimal(row.weight).mul(ZTG).toFixed(0, Decimal.ROUND_DOWN);
+      return new Decimal(row.weight).mul(ZUL).toFixed(0, Decimal.ROUND_DOWN);
     });
 
     const baseAssetAmount = (
-      Number([...poolRows].pop().amount) * ZTG
+      Number([...poolRows].pop().amount) * ZUL
     ).toString();
 
     const marketType = getMarketType(formData.outcomes.value);
@@ -517,7 +517,7 @@ const CreatePage: NextPage = observer(() => {
       amount: baseAssetAmount,
       weights,
       disputeMechanism: "Authorized",
-      baseAsset: "Ztg",
+      baseAsset: "Zul",
       metadata,
       callbackOrPaymentInfo,
     };
@@ -627,7 +627,7 @@ const CreatePage: NextPage = observer(() => {
     if (!deployPool) {
       const params = await getCreateMarketParameters(true);
       return new Decimal(await store.sdk.models.createMarket(params))
-        .div(ZTG)
+        .div(ZUL)
         .toFixed(4);
     } else if (poolRows) {
       const params = await getCreateCpmmMarketAndAddPoolParameters(true);
@@ -635,7 +635,7 @@ const CreatePage: NextPage = observer(() => {
         params,
       );
       return new Decimal(typeof fee == "string" ? fee : "0")
-        .div(ZTG)
+        .div(ZUL)
         .toFixed(4);
     }
   };
@@ -674,7 +674,7 @@ const CreatePage: NextPage = observer(() => {
   return (
     <form data-test="createMarketForm">
       <InfoBoxes />
-      <h2 className="header mb-ztg-23" data-test="createMarketHeader">
+      <h2 className="header mb-zul-23" data-test="createMarketHeader">
         Create Market
       </h2>
       <MarketFormCard header="1. Market name*">
@@ -696,7 +696,7 @@ const CreatePage: NextPage = observer(() => {
           form={form}
           maxLength={164}
           placeholder="The title of the Prediction Market. This should clearly describe the question to be asked."
-          className="mb-ztg-20"
+          className="mb-zul-20"
           onChange={(e) => changeQuestion(e.target.value)}
           autoComplete="off"
           data-test="marketQuestionInput"
@@ -731,22 +731,22 @@ const CreatePage: NextPage = observer(() => {
           onChange={(e) => changeOracle(e.target.value)}
           value={formData.oracle}
           ref={oracleInputRef}
-          className="mb-ztg-20"
+          className="mb-zul-20"
           name="oracle"
           data-test="oracleInput"
         />
-        <div className="mb-ztg-20">
+        <div className="mb-zul-20">
           <MarketDeadlinesInput
             value={formData.deadlines}
             marketEnd={formData.end}
             onChange={(deadlines) => onChangeDeadlines(deadlines)}
           />
         </div>
-        <div className="flex h-ztg-22 items-center text-sky-600 ">
-          <div className="w-ztg-20 h-ztg-20">
+        <div className="flex h-zul-22 items-center text-sky-600 ">
+          <div className="w-zul-20 h-zul-20">
             <AlertTriangle size={20} />
           </div>
-          <div className="text-ztg-12-120 ml-ztg-10">
+          <div className="text-zul-12-120 ml-zul-10">
             This is the account that will be responsible for submitting the
             outcome when the market ends. If the Oracle fails to submit, you
             will lose some of your deposit.
@@ -770,25 +770,25 @@ const CreatePage: NextPage = observer(() => {
               changeAdvised(!formData.advised);
             }}
           />
-          <div className="ml-ztg-15  text-ztg-10-150 text-sky-600">
+          <div className="ml-zul-15  text-zul-10-150 text-sky-600">
             An advised market means a smaller deposit, but requires approval
             from the advisory committee before becoming active.
           </div>
         </div>
       </MarketFormCard>
-      <div className="flex flex-col mb-ztg-107">
+      <div className="flex flex-col mb-zul-107">
         {!formData.advised && (
           <>
-            <div className="flex items-center h-ztg-40 w-full mb-ztg-23 ">
+            <div className="flex items-center h-zul-40 w-full mb-zul-23 ">
               <Toggle
                 active={deployPool}
                 onChange={(active) => setDeployPool(active)}
                 disabled={!form?.isValid}
-                className="mr-ztg-20 mt-ztg-35"
+                className="mr-zul-20 mt-zul-35"
               />
               <label
                 htmlFor="deployPool"
-                className="text-ztg-20-150 font-bold "
+                className="text-zul-20-150 font-bold "
               >
                 Deploy Liquidity Pool
               </label>
@@ -798,12 +798,12 @@ const CreatePage: NextPage = observer(() => {
         {deployPool && poolRows != null && (
           <>
             {poolPriceNotZero === false && (
-              <div className="text-ztg-12-120 ml-ztg-10">
+              <div className="text-zul-12-120 ml-zul-10">
                 Pool prices must be greater than zero
               </div>
             )}
             {poolPricesEqualOne === false && (
-              <div className="text-ztg-12-120 ml-ztg-10">
+              <div className="text-zul-12-120 ml-zul-10">
                 The sum of pool prices must equal one. Unlock prices to
                 recalculate
               </div>
@@ -820,10 +820,10 @@ const CreatePage: NextPage = observer(() => {
           </>
         )}
 
-        <div className="flex justify-center mb-ztg-10 mt-ztg-12 w-full h-ztg-40">
+        <div className="flex justify-center mb-zul-10 mt-zul-12 w-full h-zul-40">
           <TransactionButton
             preventDefault
-            className="w-ztg-266 ml-ztg-8 center flex-shrink-0"
+            className="w-zul-266 ml-zul-8 center flex-shrink-0"
             dataTest="createMarketSubmitButton"
             onClick={(e) => {
               form.onSubmit(e);
@@ -838,8 +838,8 @@ const CreatePage: NextPage = observer(() => {
           >
             Create Market
           </TransactionButton>
-          <div className="w-full flex items-center text-ztg-12-150 font-bold ml-[27px] text-sky-600">
-            <div className="mr-ztg-15" data-test="totalCost">
+          <div className="w-full flex items-center text-zul-12-150 font-bold ml-[27px] text-sky-600">
+            <div className="mr-zul-15" data-test="totalCost">
               Total Cost:
               <span className="font-mono">
                 {" "}
@@ -847,7 +847,7 @@ const CreatePage: NextPage = observer(() => {
               </span>
             </div>
             <button
-              className="text-ztg-blue underline font-bold"
+              className="text-zul-blue underline font-bold"
               onClick={showCostModal}
             >
               View Cost Breakdown

@@ -33,12 +33,12 @@ const PopoutMenu = observer(({ groupName }: { groupName: string }) => {
   return (
     <div
       ref={menuRef}
-      className="flex flex-col absolute w-ztg-200 left-28 -mt-ztg-56 z-ztg-2 bg-sky-100 shadow-md dark:bg-black rounded-ztg-10"
+      className="flex flex-col absolute w-zul-200 left-28 -mt-zul-56 z-zul-2 bg-sky-100 shadow-md dark:bg-black rounded-zul-10"
     >
-      <div className=" pl-ztg-22 py-ztg-18 text-ztg-16-150 font-bold text-black dark:text-white border-b-1 border-sky-600">
+      <div className=" pl-zul-22 py-zul-18 text-zul-16-150 font-bold text-black dark:text-white border-b-1 border-sky-600">
         {group.label}
       </div>
-      <div className="b0 rounded-b-ztg-10">
+      <div className="b0 rounded-b-zul-10">
         {group.subItems.map((item, idx) => {
           return (
             <SubMenuItem

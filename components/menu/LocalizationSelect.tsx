@@ -35,14 +35,14 @@ const LocalizationSelect: FC<LocalizationSelectProps> = observer(
         setMenuOpen(false);
       }
 
-      const base = "flex flex-col absolute z-ztg-2";
+      const base = "flex flex-col absolute z-zul-2";
       if (store.leftDrawerClosed) {
         setSubContainerClass(
-          `${base} w-ztg-256 left-full bottom-0 w-ztg-200 left-28 bg-white dark:bg-black rounded-ztg-10 mb-ztg-10`,
+          `${base} w-zul-256 left-full bottom-0 w-zul-200 left-28 bg-white dark:bg-black rounded-zul-10 mb-zul-10`,
         );
       } else {
         setSubContainerClass(
-          `${base} w-full bottom-ztg-34 mb-ztg-10 ml-ztg-50`,
+          `${base} w-full bottom-zul-34 mb-zul-10 ml-zul-50`,
         );
       }
     }, [store.leftDrawerClosed]);
@@ -69,18 +69,18 @@ const LocalizationSelect: FC<LocalizationSelectProps> = observer(
         )}
         <div
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`flex items-center cursor-pointer w-ztg-118 relative  ${className}`}
+          className={`flex items-center cursor-pointer w-zul-118 relative  ${className}`}
           {...restProps}
         >
-          <div className="w-ztg-34 h-ztg-34 center text-ztg-12-120 font-bold rounded-full text-white  bg-ztg-blue">
+          <div className="w-zul-34 h-zul-34 center text-zul-12-120 font-bold rounded-full text-white  bg-zul-blue">
             {selectedLanguage.short}
           </div>
           {hideLabel === false && (
             <>
-              <div className="ml-ztg-15 text-ztg-12-120 font-bold text-sky-600 dark:text-sky-300">
+              <div className="ml-zul-15 text-zul-12-120 font-bold text-sky-600 dark:text-sky-300">
                 {selectedLanguage.label}
               </div>
-              <ChevronDown size={18} className="ml-ztg-5" />
+              <ChevronDown size={18} className="ml-zul-5" />
             </>
           )}
         </div>

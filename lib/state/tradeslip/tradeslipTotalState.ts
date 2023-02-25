@@ -1,8 +1,8 @@
 import { SubmittableExtrinsic } from "@polkadot/api/types";
 import { ISubmittableResult } from "@polkadot/types/types";
 import { useQuery } from "@tanstack/react-query";
-import { isRpcSdk } from "@zeitgeistpm/sdk-next";
-import { isNotNull } from "@zeitgeistpm/utility/dist/null";
+import { isRpcSdk } from "@zulustation/sdk-next";
+import { isNotNull } from "@zulustation/utility/dist/null";
 import Decimal from "decimal.js";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
 import { useStore } from "lib/stores/Store";

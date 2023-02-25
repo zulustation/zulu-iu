@@ -1,4 +1,4 @@
-import { AssetId, ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { AssetId, ExtSigner } from "@zulustation/sdk/dist/types";
 import Table, { TableColumn, TableData } from "components/ui/Table";
 import { Case, useCourtStore } from "lib/stores/CourtStore";
 import MarketStore from "lib/stores/MarketStore";
@@ -97,7 +97,7 @@ const OutcomesTable = observer(
     };
 
     const data: TableData[] = marketStore?.marketOutcomes
-      .filter((o) => o.metadata !== "ztg")
+      .filter((o) => o.metadata !== "zul")
       .map((outcome) => ({
         outcome: outcome.metadata["name"],
         token: {
@@ -109,7 +109,7 @@ const OutcomesTable = observer(
           <div className="flex justify-end">
             <button
               onClick={() => handleVoteClick(outcome.asset)}
-              className="bg-ztg-blue text-white rounded-ztg-5 px-ztg-30 py-ztg-8 focus:outline-none text-ztg-14-120 disabled:opacity-20 disabled:cursor-default"
+              className="bg-zul-blue text-white rounded-zul-5 px-zul-30 py-zul-8 focus:outline-none text-zul-14-120 disabled:opacity-20 disabled:cursor-default"
               disabled={canVote() === false}
             >
               Vote

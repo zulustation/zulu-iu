@@ -14,16 +14,16 @@ import {
   NA,
   Pool,
   SaturatedPoolEntryAsset,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import Decimal from "decimal.js";
 import { useAtom } from "jotai";
-import { MAX_IN_OUT_RATIO, ZTG } from "lib/constants";
+import { MAX_IN_OUT_RATIO, ZUL } from "lib/constants";
 import { useAccountAssetBalances } from "lib/hooks/queries/useAccountAssetBalances";
 import { usePoolAccountIds } from "lib/hooks/queries/usePoolAccountIds";
 import { usePoolsByIds } from "lib/hooks/queries/usePoolsByIds";
-import { usePoolZtgBalance } from "lib/hooks/queries/usePoolZtgBalance";
+import { usePoolZulBalance } from "lib/hooks/queries/usePoolZulBalance";
 import { useSaturatedPoolsIndex } from "lib/hooks/queries/useSaturatedPoolsIndex";
-import { useZtgBalance } from "lib/hooks/queries/useZtgBalance";
+import { useZulBalance } from "lib/hooks/queries/useZulBalance";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
 import { calcInGivenOut, calcOutGivenIn, calcSpotPrice } from "lib/math";
 import { useStore } from "lib/stores/Store";
@@ -51,9 +51,9 @@ export type TradeSlipItemState = {
    */
   market: Market<Context>;
   /**
-   * Weight setting of the ztg in the pool.
+   * Weight setting of the zul in the pool.
    */
-  ztgWeight: Decimal;
+  zulWeight: Decimal;
   /**
    * Weight setting of the items asset in the pool.
    */
@@ -63,13 +63,13 @@ export type TradeSlipItemState = {
    */
   swapFee: Decimal;
   /**
-   * Ztg balance of the trader.
+   * Zul balance of the trader.
    */
-  traderZtgBalance: Decimal | NA;
+  traderZulBalance: Decimal | NA;
   /**
-   * Free ztg balance in the assets pool.
+   * Free zul balance in the assets pool.
    */
-  poolZtgBalance: Decimal | NA;
+  poolZulBalance: Decimal | NA;
   /**
    * Free balance the trader has of the items asset.
    */
@@ -149,7 +149,7 @@ export const useTradeslipItemsState = (
 
   const [slippage] = useAtom(slippagePercentageAtom);
 
-  const { data: traderZtgBalance } = useZtgBalance(signer?.address);
+  const { data: traderZulBalance } = useZulBalance(signer?.address);
 
   const { data: pools } = usePoolsByIds(
     items.map((item) => ({ marketId: getMarketIdOf(item.assetId) })),
@@ -157,7 +157,7 @@ export const useTradeslipItemsState = (
 
   const { data: saturatedIndex } = useSaturatedPoolsIndex(pools || []);
 
-  const poolZtgBalances = usePoolZtgBalance(pools ?? []);
+  const poolZulBalances = usePoolZulBalance(pools ?? []);
 
   const traderAssets = useAccountAssetBalances(
     items.map((item) => ({
@@ -179,7 +179,7 @@ export const useTradeslipItemsState = (
   );
 
   const balancesKey = {
-    traderZtgBalance: traderZtgBalance.toString(),
+    traderZulBalance: traderZulBalance.toString(),
     traderAssets: traderAssets?.query.map((a) => a?.toString()),
   };
 
@@ -189,14 +189,14 @@ export const useTradeslipItemsState = (
         (p) => p.marketId == getMarketIdOf(item.assetId),
       );
 
-      const amount = new Decimal(item.amount).mul(ZTG);
+      const amount = new Decimal(item.amount).mul(ZUL);
       const assetIndex = getIndexOf(item.assetId);
       const saturatedData = saturatedIndex?.[pool?.poolId];
       const asset = saturatedData?.assets[assetIndex];
       const market = saturatedData?.market;
 
-      const ztgWeight = pool
-        ? getAssetWeight(pool, { Ztg: null }).unwrap()
+      const zulWeight = pool
+        ? getAssetWeight(pool, { Zul: null }).unwrap()
         : null;
 
       const assetWeight = asset
@@ -207,12 +207,12 @@ export const useTradeslipItemsState = (
         ? new Decimal(pool.swapFee)
         : new Decimal(0);
 
-      const poolZtgBalance =
+      const poolZulBalance =
         !pool ||
-        !poolZtgBalances[pool?.poolId] ||
-        isNA(poolZtgBalances[pool?.poolId])
+        !poolZulBalances[pool?.poolId] ||
+        isNA(poolZulBalances[pool?.poolId])
           ? null
-          : new Decimal(poolZtgBalances[pool.poolId].free.toString());
+          : new Decimal(poolZulBalances[pool.poolId].free.toString());
 
       const traderAssetBalanceLookup = traderAssets.get(
         signer?.address,
@@ -244,10 +244,10 @@ export const useTradeslipItemsState = (
           pool &&
           asset &&
           market &&
-          ztgWeight &&
+          zulWeight &&
           assetWeight &&
           swapFee &&
-          poolZtgBalance &&
+          poolZulBalance &&
           traderAssetBalance &&
           poolAssetBalance &&
           tradeablePoolBalance,
@@ -270,8 +270,8 @@ export const useTradeslipItemsState = (
           }
 
           const price = calcSpotPrice(
-            poolZtgBalance,
-            ztgWeight,
+            poolZulBalance,
+            zulWeight,
             poolAssetBalance,
             assetWeight,
             0,
@@ -279,9 +279,9 @@ export const useTradeslipItemsState = (
 
           const max = (() => {
             if (item.action === "buy") {
-              const maxTokens = isNA(traderZtgBalance)
+              const maxTokens = isNA(traderZulBalance)
                 ? tradeablePoolBalance
-                : traderZtgBalance.div(price.div(ZTG) ?? 0);
+                : traderZulBalance.div(price.div(ZUL) ?? 0);
               if (tradeablePoolBalance?.lte(maxTokens)) {
                 return tradeablePoolBalance;
               } else {
@@ -302,20 +302,20 @@ export const useTradeslipItemsState = (
           const sum =
             item.action === "buy"
               ? calcInGivenOut(
-                  poolZtgBalance,
-                  ztgWeight,
+                  poolZulBalance,
+                  zulWeight,
                   poolAssetBalance,
                   assetWeight,
-                  new Decimal(item.amount).mul(ZTG),
-                  swapFee.div(ZTG),
+                  new Decimal(item.amount).mul(ZUL),
+                  swapFee.div(ZUL),
                 )
               : calcOutGivenIn(
                   poolAssetBalance,
                   assetWeight,
-                  poolZtgBalance,
-                  ztgWeight,
-                  new Decimal(item.amount).mul(ZTG),
-                  swapFee.div(ZTG),
+                  poolZulBalance,
+                  zulWeight,
+                  new Decimal(item.amount).mul(ZUL),
+                  swapFee.div(ZUL),
                 );
 
           let transaction: SubmittableExtrinsic<
@@ -327,18 +327,18 @@ export const useTradeslipItemsState = (
             try {
               if (item.action == "buy") {
                 const maxAmountIn = calcInGivenOut(
-                  poolZtgBalance,
-                  ztgWeight,
+                  poolZulBalance,
+                  zulWeight,
                   poolAssetBalance,
                   assetWeight,
                   amount,
-                  swapFee.div(ZTG),
+                  swapFee.div(ZUL),
                 ).mul(new Decimal(slippage / 100 + 1));
 
                 if (!maxAmountIn.isNaN()) {
                   transaction = sdk.api.tx.swaps.swapExactAmountOut(
                     pool.poolId,
-                    { Ztg: null },
+                    { Zul: null },
                     maxAmountIn.toFixed(0),
                     asset.assetId,
                     amount.toFixed(0),
@@ -349,10 +349,10 @@ export const useTradeslipItemsState = (
                 const minAmountOut = calcOutGivenIn(
                   poolAssetBalance,
                   assetWeight,
-                  poolZtgBalance,
-                  ztgWeight,
+                  poolZulBalance,
+                  zulWeight,
                   amount.toNumber(),
-                  swapFee.div(ZTG),
+                  swapFee.div(ZUL),
                 ).mul(new Decimal(1 - slippage / 100));
 
                 if (!minAmountOut.isNaN()) {
@@ -360,7 +360,7 @@ export const useTradeslipItemsState = (
                     pool.poolId,
                     asset.assetId,
                     amount.toFixed(0),
-                    { Ztg: null },
+                    { Zul: null },
                     minAmountOut.toFixed(0),
                     null,
                   );
@@ -376,11 +376,11 @@ export const useTradeslipItemsState = (
             pool,
             asset,
             market,
-            ztgWeight,
+            zulWeight,
             assetWeight,
             swapFee,
-            traderZtgBalance,
-            poolZtgBalance,
+            traderZulBalance,
+            poolZulBalance,
             traderAssetBalance,
             poolAssetBalance,
             tradeablePoolBalance,

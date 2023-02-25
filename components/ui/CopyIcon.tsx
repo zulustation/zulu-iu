@@ -33,9 +33,9 @@ const CopyIcon: FC<CopyIconProps> = observer(
     }, [recentlyCopied]);
 
     return (
-      <div className={"w-ztg-20 flex items-center " + className}>
+      <div className={"w-zul-20 flex items-center " + className}>
         {recentlyCopied ? (
-          <span className="text-sky-600 text-ztg-12-150 ml-auto">Copied!</span>
+          <span className="text-sky-600 text-zul-12-150 ml-auto">Copied!</span>
         ) : (
           <Copy
             size={size}

@@ -1,10 +1,10 @@
-import { MarketDeadlines } from "@zeitgeistpm/sdk/dist/types";
+import { MarketDeadlines } from "@zulustation/sdk/dist/types";
 import Decimal from "decimal.js";
 import resolveTailwindConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config";
 import { EndpointOption, SupportedParachain } from "../types";
 
-export const ZTG = 10 ** 10;
+export const ZUL = 10 ** 10;
 
 export const MAX_IN_OUT_RATIO = new Decimal(1).div(3).toString();
 
@@ -19,8 +19,8 @@ export const NUM_BLOCKS_IN_HOUR = 3600 / BLOCK_TIME_SECONDS;
 export const NUM_BLOCKS_IN_DAY = NUM_BLOCKS_IN_HOUR * 24;
 export const DAY_SECONDS = 86400;
 
-export const ZTG_BLUE_COLOR = resolveTailwindConfig(tailwindConfig as any).theme
-  .colors["ztg-blue"];
+export const ZUL_BLUE_COLOR = resolveTailwindConfig(tailwindConfig as any).theme
+  .colors["zul-blue"];
 
 export const DEFAULT_DEADLINES: MarketDeadlines = {
   gracePeriod: "0",

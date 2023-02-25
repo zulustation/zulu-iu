@@ -28,7 +28,7 @@ const SlippageSettingInput: FC<SlippageInputProps> = observer(
     const inputRef = useRef();
 
     const baseClassName =
-      "flex items-center h-ztg-24 text-sky-600 text-ztg-12-150";
+      "flex items-center h-zul-24 text-sky-600 text-zul-12-150";
     return (
       <div className={baseClassName + " " + className}>
         {editMode ? (
@@ -42,19 +42,19 @@ const SlippageSettingInput: FC<SlippageInputProps> = observer(
               name={name}
               ref={inputRef}
               showErrorMessage={false}
-              containerClass="h-ztg-24 max-w-ztg-68"
-              className="h-ztg-24"
+              containerClass="h-zul-24 max-w-zul-68"
+              className="h-zul-24"
             />
             <Check
               size={20}
-              className="ml-ztg-15 cursor-pointer"
+              className="ml-zul-15 cursor-pointer"
               onClick={() => submit()}
             />
           </>
         ) : (
           <div className="flex items-center h-full">
-            {label && <div className="pr-ztg-10">{label}</div>}
-            <div className="mr-ztg-15">{value}%</div>
+            {label && <div className="pr-zul-10">{label}</div>}
+            <div className="mr-zul-15">{value}%</div>
             <Settings
               size={16}
               className="cursor-pointer"

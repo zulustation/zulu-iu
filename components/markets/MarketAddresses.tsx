@@ -25,33 +25,33 @@ const AddressInspectContent = ({
 
   return (
     <div>
-      <div className="flex w-full border-sky-600 border-t-1 border-b-1 py-ztg-15">
-        <div className="flex items-center text-white pr-ztg-10 mr-auto w-[90%]">
-          <div className="w-ztg-30 h-ztg-30 rounded-full bg-white mr-ztg-10">
+      <div className="flex w-full border-sky-600 border-t-1 border-b-1 py-zul-15">
+        <div className="flex items-center text-white pr-zul-10 mr-auto w-[90%]">
+          <div className="w-zul-30 h-zul-30 rounded-full bg-white mr-zul-10">
             <Avatar address={address} />
           </div>
           <div
-            className="text-black dark:text-white font-mono text-ztg-12-150 ml-ztg-10 overflow-hidden"
+            className="text-black dark:text-white font-mono text-zul-12-150 ml-zul-10 overflow-hidden"
             data-test="addressDetails"
           >
             {address}
           </div>
         </div>
-        <div className="w-ztg-40 flex items-center">
+        <div className="w-zul-40 flex items-center">
           <CopyIcon copyText={address} className="flex-grow" />
         </div>
       </div>
       {showSocialMediaRow ? (
-        <div className="flex flex-row  border-sky-600 border-b-1 py-ztg-15">
+        <div className="flex flex-row  border-sky-600 border-b-1 py-zul-15">
           {identity.twitter?.length > 0 ? (
             <a
-              className="flex items-center mr-ztg-40"
+              className="flex items-center mr-zul-40"
               href={`https://twitter.com/${identity.twitter}`}
               target="_blank"
               rel="noreferrer"
             >
               <TwitterIcon />
-              <span className="ml-ztg-10 ">{identity.twitter}</span>
+              <span className="ml-zul-10 ">{identity.twitter}</span>
             </a>
           ) : (
             <></>
@@ -59,7 +59,7 @@ const AddressInspectContent = ({
           {identity.discord?.length > 0 ? (
             <div className="flex items-center">
               <DiscordIcon />
-              <span className="ml-ztg-10">{identity.discord}</span>
+              <span className="ml-zul-10">{identity.discord}</span>
             </div>
           ) : (
             <></>
@@ -69,7 +69,7 @@ const AddressInspectContent = ({
         <></>
       )}
 
-      <div className="flex flex-col items-center sm:flex-row mb-ztg-5 mt-ztg-20 gap-7">
+      <div className="flex flex-col items-center sm:flex-row mb-zul-5 mt-zul-20 gap-7">
         <a
           className="flex"
           href={`https://sub.id/#/${address}`}
@@ -77,7 +77,7 @@ const AddressInspectContent = ({
           rel="noreferrer"
         >
           <SubIdIcon />
-          <span className="ml-ztg-10">Sub ID</span>
+          <span className="ml-zul-10">Sub ID</span>
         </a>
         <a
           className="flex"
@@ -86,7 +86,7 @@ const AddressInspectContent = ({
           rel="noreferrer"
         >
           <SubScanIcon />
-          <span className="ml-ztg-10">SubScan</span>
+          <span className="ml-zul-10">SubScan</span>
         </a>
         <Link
           className="flex"
@@ -95,7 +95,7 @@ const AddressInspectContent = ({
           rel="noreferrer"
         >
           <ZeitgeistIconDark width={25} height={25} />
-          <span className="ml-ztg-10">Portfolio</span>
+          <span className="ml-zul-10">Portfolio</span>
         </Link>
       </div>
     </div>
@@ -120,16 +120,16 @@ const AddressDetails = ({
 
   return (
     <div
-      className="flex flex-col sm:flex-row items-start sm:items-center mb-ztg-18 cursor-pointer hover:bg-sky-100 ztg-transition rounded-lg p-[5px]"
+      className="flex flex-col sm:flex-row items-start sm:items-center mb-zul-18 cursor-pointer hover:bg-sky-100 zul-transition rounded-lg p-[5px]"
       onClick={handleInspectClick}
       data-test="inspectButton"
     >
       <div className="flex items-center">
-        <div className="flex justify-center items-center pl-ztg-6 pr-ztg-10">
-          <div className="w-ztg-40 h-ztg-40 rounded-full bg-white overflow-hidden text-ztg-14-150 mr-[15px]">
+        <div className="flex justify-center items-center pl-zul-6 pr-zul-10">
+          <div className="w-zul-40 h-zul-40 rounded-full bg-white overflow-hidden text-zul-14-150 mr-[15px]">
             <Avatar address={address} size={40} />
           </div>
-          <div className="flex flex-col font-medium text-ztg-16-150">
+          <div className="flex flex-col font-medium text-zul-16-150">
             <div className=" text-sky-600">{title}</div>
             <div className="">
               {displayName ?? shortenAddress(address, 8, 8)}
@@ -160,10 +160,10 @@ const AddressModalHeader = ({
     }
   };
   return (
-    <span className="w-full mx-ztg-10">
-      <span className="text-sunglow-2 font-medium ml-ztg-30">{name}</span>
+    <span className="w-full mx-zul-10">
+      <span className="text-sunglow-2 font-medium ml-zul-30">{name}</span>
       <span
-        className={`text-ztg-10-150 mx-ztg-30 ${getJudgementColorClass(
+        className={`text-zul-10-150 mx-zul-30 ${getJudgementColorClass(
           judgement,
         )}`}
       >
@@ -200,7 +200,7 @@ const MarketAddresses = observer(
     };
 
     return (
-      <div className="flex flex-wrap gap-[20px] justify-center my-ztg-20">
+      <div className="flex flex-wrap gap-[20px] justify-center my-zul-20">
         <AddressDetails
           title="Creator"
           address={creatorAddress}

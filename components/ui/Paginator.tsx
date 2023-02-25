@@ -12,9 +12,9 @@ const Paginator = observer(
       onPlusClicked();
     };
     return (
-      <div className="mt-ztg-40 w-full flex justify-center items-center">
-        <div className="w-ztg-184 flex flex-col">
-          <div className="flex flex-row h-ztg-24 justify-center items-center">
+      <div className="mt-zul-40 w-full flex justify-center items-center">
+        <div className="w-zul-184 flex flex-col">
+          <div className="flex flex-row h-zul-24 justify-center items-center">
             <Plus
               onClick={() => {
                 if (!disabled) {
@@ -27,10 +27,10 @@ const Paginator = observer(
               }
             />
           </div>
-          <div className="flex flex-row h-ztg-38 justify-center">
+          <div className="flex flex-row h-zul-38 justify-center">
             <div
               className={
-                "text-ztg-12-150 font-medium w-ztg-164 h-full flex items-center justify-center " +
+                "text-zul-12-150 font-medium w-zul-164 h-full flex items-center justify-center " +
                 (!disabled ? "cursor-pointer" : "cursor-default opacity-20")
               }
             >

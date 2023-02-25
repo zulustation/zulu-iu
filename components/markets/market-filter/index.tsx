@@ -23,11 +23,11 @@ const Control = ({ children, label, ...rest }) => {
   const { onMouseDown } = innerProps;
   return (
     <div
-      className="flex justify-center items-center pl-ztg-20  font-medium text-ztg-16-150 text-sky-600 h-ztg-44"
+      className="flex justify-center items-center pl-zul-20  font-medium text-zul-16-150 text-sky-600 h-zul-44"
       onMouseDown={onMouseDown}
     >
       {label}
-      <ChevronDown size={18} className="text-sky-600 ml-ztg-8 font-bold" />
+      <ChevronDown size={18} className="text-sky-600 ml-zul-8 font-bold" />
       {children}
     </div>
   );
@@ -152,7 +152,7 @@ const MarketFilterOptions = ({
   onWithLiquidityOnlyChange,
 }: MarketFilterOptionsProps) => {
   return (
-    <div className="flex items-center gap-ztg-5 mb-[10px]">
+    <div className="flex items-center gap-zul-5 mb-[10px]">
       <label className="text-sky-600 font-medium">
         Liquidity only
         <input

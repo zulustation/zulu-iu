@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import { useMemo } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import { motion } from "framer-motion";
-import type { ScalarRangeType } from "@zeitgeistpm/sdk/dist/types";
+import type { ScalarRangeType } from "@zulustation/sdk/dist/types";
 import moment from "moment";
 
 interface ScalarPriceRangeProps {
@@ -84,7 +84,7 @@ const ScalarPriceRange = observer(
           {showShortAndLongPrices && (
             <motion.div
               layout
-              className="bg-vermilion h-1.5 w-1.5 rounded-full absolute bottom-ztg-0"
+              className="bg-vermilion h-1.5 w-1.5 rounded-full absolute bottom-zul-0"
               style={{ left: `${shortPosition}px` }}
             ></motion.div>
           )}
@@ -95,7 +95,7 @@ const ScalarPriceRange = observer(
             className="bg-blue h-1.5 absolute left-0 bottom-0 rounded-l"
           ></div>
           <div
-            className="absolute bottom-ztg-0"
+            className="absolute bottom-zul-0"
             style={{
               left: `${isNaN(averagePosition) ? 0 : averagePosition}px`,
               transform: "translateX(calc(-50% + 2px))",
@@ -111,7 +111,7 @@ const ScalarPriceRange = observer(
           {showShortAndLongPrices && (
             <motion.div
               layout
-              className="bg-sheen-green h-1.5 w-1.5 rounded-full absolute bottom-ztg-0"
+              className="bg-sheen-green h-1.5 w-1.5 rounded-full absolute bottom-zul-0"
               style={{ left: `${longPosition}px` }}
             ></motion.div>
           )}

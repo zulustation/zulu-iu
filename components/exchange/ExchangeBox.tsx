@@ -5,17 +5,17 @@ import { debounceTime } from "rxjs/operators";
 import { Decimal } from "decimal.js";
 import MobxReactForm from "mobx-react-form";
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
-import { ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { ExtSigner } from "@zulustation/sdk/dist/types";
 import { useModalStore } from "lib/stores/ModalStore";
 import { useStore } from "lib/stores/Store";
 import { useNotificationStore } from "lib/stores/NotificationStore";
 import { calcInGivenOut } from "lib/math";
 import { extrinsicCallback, signAndSend } from "lib/util/tx";
-import { ztgAsset } from "lib/types";
+import { zulAsset } from "lib/types";
 import { defaultOptions, defaultPlugins } from "lib/form";
 import {
   DEFAULT_SLIPPAGE_PERCENTAGE,
-  ZTG,
+  ZUL,
   MAX_IN_OUT_RATIO,
 } from "lib/constants";
 import ExchangeStore, { OutcomeOption } from "lib/stores/ExchangeStore";
@@ -57,41 +57,41 @@ const ExchangeConfirmModal = observer(
     exchangeStore: ExchangeStore;
   }) => {
     return (
-      <div className="mb-ztg-15">
-        <div className="bg-sky-200 dark:bg-black h-ztg-60 px-ztg-30 flex items-center rounded-ztg-10 mb-ztg-15">
-          <span className="capitalize font-bold text-ztg-16-150 mr-ztg-19">
+      <div className="mb-zul-15">
+        <div className="bg-sky-200 dark:bg-black h-zul-60 px-zul-30 flex items-center rounded-zul-10 mb-zul-15">
+          <span className="capitalize font-bold text-zul-16-150 mr-zul-19">
             {type}
           </span>
           <span
-            className="rounded-full w-ztg-20 h-ztg-20 border-sky-600 border-2 mr-ztg-8"
+            className="rounded-full w-zul-20 h-zul-20 border-sky-600 border-2 mr-zul-8"
             style={{
               backgroundColor: exchangeStore.outcome.metadata["color"],
             }}
           ></span>
-          <span className="font-bold  text-ztg-16-150">
+          <span className="font-bold  text-zul-16-150">
             {exchangeStore.outcome.metadata["ticker"]}
           </span>
-          <span className="font-mono text-ztg-16-150 ml-auto">
+          <span className="font-mono text-zul-16-150 ml-auto">
             {exchangeStore.amount.toFixed(4)}
           </span>
         </div>
-        <div className="bg-sky-100 dark:bg-black px-ztg-30 py-ztg-20 rounded-ztg-10">
-          <div className="flex mb-ztg-8">
-            <div className="text-sky-600 text-ztg-14-150">ZTG amount:</div>
-            <div className="font-mono text-ztg-14-150 ml-ztg-5">
-              {exchangeStore.ztgAmount.toFixed(4)}
+        <div className="bg-sky-100 dark:bg-black px-zul-30 py-zul-20 rounded-zul-10">
+          <div className="flex mb-zul-8">
+            <div className="text-sky-600 text-zul-14-150">ZUL amount:</div>
+            <div className="font-mono text-zul-14-150 ml-zul-5">
+              {exchangeStore.zulAmount.toFixed(4)}
             </div>
           </div>
-          <div className="flex mb-ztg-8">
-            <div className="text-sky-600 text-ztg-14-150">Transaction fee:</div>
-            <div className="font-mono text-ztg-14-150 ml-ztg-5">
-              {txFee} ZTG
+          <div className="flex mb-zul-8">
+            <div className="text-sky-600 text-zul-14-150">Transaction fee:</div>
+            <div className="font-mono text-zul-14-150 ml-zul-5">
+              {txFee} ZUL
             </div>
           </div>
-          <div className="flex mb-ztg-8">
-            <div className="text-sky-600 text-ztg-14-150">Total ZTG spent:</div>
-            <div className="font-mono text-ztg-14-150 ml-ztg-5">
-              {type === "buy" ? total.toFixed(4) : txFee} ZTG
+          <div className="flex mb-zul-8">
+            <div className="text-sky-600 text-zul-14-150">Total ZUL spent:</div>
+            <div className="font-mono text-zul-14-150 ml-zul-5">
+              {type === "buy" ? total.toFixed(4) : txFee} ZUL
             </div>
           </div>
         </div>
@@ -135,19 +135,19 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
           return maxFromPool.toString();
         }
 
-        const maxFromZtgBalance = Math.abs(
+        const maxFromZulBalance = Math.abs(
           calcInGivenOut(
             exchangeStore.poolBalance.toString(),
             exchangeStore.outcomeWeight,
-            exchangeStore.ztgPoolBalance.toString(),
-            exchangeStore.ztgWeight,
+            exchangeStore.zulPoolBalance.toString(),
+            exchangeStore.zulWeight,
             wallets.activeBalance.toString(),
-            exchangeStore.swapFee.div(ZTG),
+            exchangeStore.swapFee.div(ZUL),
           ).toNumber(),
         );
 
-        return maxFromPool.gt(maxFromZtgBalance)
-          ? maxFromZtgBalance.toString()
+        return maxFromPool.gt(maxFromZulBalance)
+          ? maxFromZulBalance.toString()
           : maxFromPool.toString();
       }
 
@@ -197,27 +197,27 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
         type === "buy"
           ? generateSwapExactAmountOutTx(
               store.sdk.api,
-              ztgAsset,
+              zulAsset,
               exchangeStore.outcome.asset,
-              exchangeStore.ztgPoolBalance.mul(ZTG),
-              new Decimal(exchangeStore.ztgWeight),
-              exchangeStore.poolBalance.mul(ZTG),
+              exchangeStore.zulPoolBalance.mul(ZUL),
+              new Decimal(exchangeStore.zulWeight),
+              exchangeStore.poolBalance.mul(ZUL),
               new Decimal(exchangeStore.outcomeWeight),
-              exchangeStore.amount.mul(ZTG),
-              swapFee.div(ZTG),
+              exchangeStore.amount.mul(ZUL),
+              swapFee.div(ZUL),
               new Decimal(slippagePercentage).div(100),
               poolId,
             )
           : generateSwapExactAmountInTx(
               store.sdk.api,
               exchangeStore.outcome.asset,
-              ztgAsset,
-              exchangeStore.poolBalance.mul(ZTG),
+              zulAsset,
+              exchangeStore.poolBalance.mul(ZUL),
               new Decimal(exchangeStore.outcomeWeight),
-              exchangeStore.ztgPoolBalance.mul(ZTG),
-              new Decimal(exchangeStore.ztgWeight),
-              exchangeStore.amount.mul(ZTG),
-              swapFee.div(ZTG),
+              exchangeStore.zulPoolBalance.mul(ZUL),
+              new Decimal(exchangeStore.zulWeight),
+              exchangeStore.amount.mul(ZUL),
+              swapFee.div(ZUL),
               new Decimal(slippagePercentage).div(100),
               poolId,
             );
@@ -245,7 +245,7 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
               wallets.activeAccount.address,
             );
 
-            const partialFee = paymentInfo.partialFee.toNumber() / ZTG;
+            const partialFee = paymentInfo.partialFee.toNumber() / ZUL;
 
             fee = partialFee.toFixed(4);
           }
@@ -338,7 +338,7 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
       const { activeAccount } = wallets;
       if (!activeAccount) return;
 
-      const total = new Decimal(txFee).add(exchangeStore.ztgAmount);
+      const total = new Decimal(txFee).add(exchangeStore.zulAmount);
 
       modalStore.openConfirmModal(
         <ExchangeConfirmModal
@@ -362,7 +362,7 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
     if (exchangeStore == null) {
       return (
         <Skeleton
-          className="!py-ztg-10 !rounded-ztg-10 !transform-none"
+          className="!py-zul-10 !rounded-zul-10 !transform-none"
           height={474}
         />
       );
@@ -381,14 +381,14 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
           )) ||
         (type === "sell" &&
           exchangeStore.amount?.greaterThanOrEqualTo(
-            exchangeStore.ztgPoolBalance,
+            exchangeStore.zulPoolBalance,
           ))
       );
     };
 
     return (
-      <div className="py-ztg-10 rounded-ztg-10 bg-white dark:bg-sky-1000 max-h-[500px]">
-        <div className="flex h-ztg-25 items-center px-ztg-16">
+      <div className="py-zul-10 rounded-zul-10 bg-white dark:bg-sky-1000 max-h-[500px]">
+        <div className="flex h-zul-25 items-center px-zul-16">
           <TypeSwitch type={type} onChange={(t) => setType(t)} />
           <SlippageSettingInput
             form={exchangeForm}
@@ -400,7 +400,7 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
           />
         </div>
         {!isSelectView ? (
-          <div className="px-ztg-16">
+          <div className="px-zul-16">
             <AssetSelectButton
               selection={selectedAssetOption}
               onClick={() => {
@@ -410,19 +410,19 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
             />
             <AmountInput
               containerClass="dark:bg-sky-1000"
-              className="mb-ztg-10"
+              className="mb-zul-10"
               form={exchangeForm}
               name="amount"
               showErrorMessage={false}
               ref={inputRef}
               leftComponent={
                 <button
-                  className="absolute flex items-center h-ztg-40 text-gray-dark-3 ml-ztg-8 focus:outline-none"
+                  className="absolute flex items-center h-zul-40 text-gray-dark-3 ml-zul-8 focus:outline-none"
                   onClick={() => {
                     changeInAmount(maxIn);
                   }}
                 >
-                  <div className=" text-ztg-12-150 center">MAX</div>
+                  <div className=" text-zul-12-150 center">MAX</div>
                 </button>
               }
               value={exchangeStore?.amount?.toString()}
@@ -431,41 +431,41 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
                 changeInAmount(v);
               }}
             />
-            <div className="h-ztg-18 flex px-ztg-8 justify-between mb-ztg-16 text-sky-600">
-              <span className=" text-ztg-12-150">Price per Share:</span>
-              <span className="font-mono text-ztg-12-150 text-right font-medium">
+            <div className="h-zul-18 flex px-zul-8 justify-between mb-zul-16 text-sky-600">
+              <span className=" text-zul-12-150">Price per Share:</span>
+              <span className="font-mono text-zul-12-150 text-right font-medium">
                 {exchangeStore?.spotPrice?.toFixed(4)}
               </span>
             </div>
-            <div className="w-full center h-ztg-40 flex items-center mb-ztg-10">
-              <div className=" rounded-ztg-10 w-ztg-40 h-ztg-40 text-ztg-14-150 text-sky-600 center font-bold bg-sky-100 dark:bg-sky-1100">
+            <div className="w-full center h-zul-40 flex items-center mb-zul-10">
+              <div className=" rounded-zul-10 w-zul-40 h-zul-40 text-zul-14-150 text-sky-600 center font-bold bg-sky-100 dark:bg-sky-1100">
                 For
               </div>
             </div>
-            <div className="flex h-ztg-36 items-center mb-ztg-10">
-              <div className="w-ztg-108">
-                <div className="flex h-ztg-20">
-                  <div className="w-ztg-20 h-ztg-20 border-2 border-sky-600 rounded-full mr-ztg-8 bg-ztg-blue"></div>
+            <div className="flex h-zul-36 items-center mb-zul-10">
+              <div className="w-zul-108">
+                <div className="flex h-zul-20">
+                  <div className="w-zul-20 h-zul-20 border-2 border-sky-600 rounded-full mr-zul-8 bg-zul-blue"></div>
                   <div className=" text-base font-bold flex items-center dark:text-white">
                     {store.config.tokenSymbol}
                   </div>
                 </div>
               </div>
-              <div className="flex-grow text-right font-mono text-ztg-12-150 text-sky-600">
-                {exchangeStore?.ztgBalance?.toString()}
+              <div className="flex-grow text-right font-mono text-zul-12-150 text-sky-600">
+                {exchangeStore?.zulBalance?.toString()}
               </div>
             </div>
             <AmountInput
               containerClass="dark:bg-sky-1000"
-              className="mb-ztg-10"
-              value={exchangeStore?.ztgAmount?.toString()}
+              className="mb-zul-10"
+              value={exchangeStore?.zulAmount?.toString()}
               disabled
             />
-            <div className="h-ztg-53 mb-ztg-6 flex items-center px-ztg-5">
+            <div className="h-zul-53 mb-zul-6 flex items-center px-zul-5">
               <Slider value={percentageDisplay} onChange={setPercentage} />
             </div>
             <TransactionButton
-              className="mb-ztg-10 shadow-ztg-2"
+              className="mb-zul-10 shadow-zul-2"
               disabled={
                 !exchangeForm?.isValid || !exchangeStore.spotPrice?.gt(0)
               }
@@ -475,24 +475,24 @@ const ExchangeBox: FC<{ exchangeStore: ExchangeStore }> = observer(
             >
               Sign Transaction
             </TransactionButton>
-            <div className=" h-ztg-18 flex px-ztg-8 justify-between text-ztg-12-150 font-bold text-sky-600">
+            <div className=" h-zul-18 flex px-zul-8 justify-between text-zul-12-150 font-bold text-sky-600">
               <span>Max profit:</span>
               <span className="font-mono">
                 {exchangeStore?.maxProfit} {store.config.tokenSymbol}
               </span>
             </div>
-            <div className=" h-ztg-18 flex px-ztg-8 justify-between text-ztg-12-150 font-bold text-sky-600">
+            <div className=" h-zul-18 flex px-zul-8 justify-between text-zul-12-150 font-bold text-sky-600">
               <span>Network Fee:</span>
               <span className="font-mono">
                 {txFee} {store.config.tokenSymbol}
               </span>
             </div>
-            <div className=" h-ztg-18 flex px-ztg-8 justify-between text-ztg-12-150 font-bold text-sky-600">
+            <div className=" h-zul-18 flex px-zul-8 justify-between text-zul-12-150 font-bold text-sky-600">
               <span>Trading Fee:</span>
               <span className="font-mono">
                 {`${(
                   exchangeStore?.amount?.mul(
-                    exchangeStore.swapFee?.div(ZTG) ?? 0,
+                    exchangeStore.swapFee?.div(ZUL) ?? 0,
                   ) ?? 0
                 ).toString()} ${feeCurrencySymbol}`}
               </span>

@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { isNA, isRpcSdk } from "@zeitgeistpm/sdk-next";
+import { isNA, isRpcSdk } from "@zulustation/sdk-next";
 import Decimal from "decimal.js";
 import { calcSpotPrice } from "lib/math";
 import { useSdkv2 } from "../useSdkv2";
 import { useAccountPoolAssetBalances } from "./useAccountPoolAssetBalances";
 import { useMarket } from "./useMarket";
-import { useZtgBalance } from "./useZtgBalance";
-import { FullMarketFragment } from "@zeitgeistpm/indexer";
+import { useZulBalance } from "./useZulBalance";
+import { FullMarketFragment } from "@zulustation/indexer";
 import { OrmlTokensAccountData } from "@polkadot/types/lookup";
 import { calcResolvedMarketPrices } from "lib/util/calc-resolved-market-prices";
 
@@ -24,7 +24,7 @@ export const useMarketSpotPrices = (marketId: number, blockNumber?: number) => {
     pool,
     blockNumber,
   );
-  const { data: basePoolBalance } = useZtgBalance(pool?.accountId, blockNumber);
+  const { data: basePoolBalance } = useZulBalance(pool?.accountId, blockNumber);
 
   const query = useQuery(
     [id, marketSpotPricesKey, pool, blockNumber, balances, basePoolBalance],

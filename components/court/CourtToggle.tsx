@@ -14,15 +14,15 @@ const CourtToggle = ({
   jurorsCount: number;
 }) => {
   const [selectedTab, setSelectedTab] = useState<CourtTab>("allCases");
-  const inactiveClasses = "text-sky-600 text-ztg-16-150";
-  const activeClasses = "text-ztg-18-150 cursor-default";
+  const inactiveClasses = "text-sky-600 text-zul-16-150";
+  const activeClasses = "text-zul-18-150 cursor-default";
 
   useEffect(() => {
     onToggle(selectedTab);
   }, [selectedTab]);
 
   return (
-    <div className="flex items-center mt-ztg-49">
+    <div className="flex items-center mt-zul-49">
       <button
         className={` font-bold focus:outline-none ${
           selectedTab === "allCases" ? activeClasses : inactiveClasses
@@ -32,7 +32,7 @@ const CourtToggle = ({
         All Cases {allCasesCount ? `(${allCasesCount})` : <></>}
       </button>
       <button
-        className={` font-bold focus:outline-none ml-ztg-10 ${
+        className={` font-bold focus:outline-none ml-zul-10 ${
           selectedTab === "myCases" ? activeClasses : inactiveClasses
         }`}
         onClick={() => setSelectedTab("myCases")}
@@ -40,7 +40,7 @@ const CourtToggle = ({
         My Cases {myCasesCount ? `(${myCasesCount})` : <></>}
       </button>
       <button
-        className={` font-bold focus:outline-none ml-ztg-10 ${
+        className={` font-bold focus:outline-none ml-zul-10 ${
           selectedTab === "jurors" ? activeClasses : inactiveClasses
         }`}
         onClick={() => setSelectedTab("jurors")}

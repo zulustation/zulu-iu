@@ -14,7 +14,7 @@ const AccountModalHead = observer(() => {
     <div className="flex flex-row justify-between">
       <div>Account</div>
       <div
-        className="mr-ztg-7 cursor-pointer underline"
+        className="mr-zul-7 cursor-pointer underline"
         onClick={() => {
           switchExtension();
         }}

@@ -7,12 +7,12 @@ const TrendingMarkets = observer(
   ({ markets }: { markets: TrendingMarketInfo[] }) => {
     return (
       <div>
-        <h5 className=" font-bold text-[24px] my-ztg-30">Trending Markets</h5>
+        <h5 className=" font-bold text-[24px] my-zul-30">Trending Markets</h5>
         <div className="flex flex-col sm:flex-row gap-6">
           {markets == null ? (
             <Skeleton
               height={200}
-              className="flex w-full !rounded-ztg-10 !transform-none"
+              className="flex w-full !rounded-zul-10 !transform-none"
             />
           ) : (
             markets.map((info, index) => (

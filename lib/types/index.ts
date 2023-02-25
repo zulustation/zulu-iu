@@ -1,5 +1,5 @@
-import { AssetId } from "@zeitgeistpm/sdk/dist/types";
-import { Asset } from "@zeitgeistpm/types/dist/interfaces";
+import { AssetId } from "@zulustation/sdk/dist/types";
+import { Asset } from "@zulustation/types/dist/interfaces";
 import Decimal from "decimal.js";
 import { NextPage } from "next";
 import { FC } from "react";
@@ -57,11 +57,11 @@ export const isAsset = (val: any): val is Asset => {
   return val.type === "Asset";
 };
 
-export const ztgAsset = { ztg: null };
-export const ztgAssetJson = JSON.stringify(ztgAsset);
+export const zulAsset = { zul: null };
+export const zulAssetJson = JSON.stringify(zulAsset);
 
-export const isAssetZTG = (val: any): val is { ztg: null } => {
-  return JSON.stringify(val) === ztgAssetJson;
+export const isAssetZUL = (val: any): val is { zul: null } => {
+  return JSON.stringify(val) === zulAssetJson;
 };
 
 export type Primitive = null | number | string | boolean;

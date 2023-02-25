@@ -1,4 +1,4 @@
-import { ZTG } from "@zeitgeistpm/sdk-next";
+import { ZUL } from "@zulustation/sdk-next";
 import Table, { TableColumn, TableData } from "components/ui/Table";
 import { usePool } from "lib/hooks/queries/usePool";
 import { useSaturatedPoolsIndex } from "lib/hooks/queries/useSaturatedPoolsIndex";
@@ -35,7 +35,7 @@ const PoolTable = ({ poolId }: { poolId: number }) => {
     },
     weights: asset.percentage,
     poolBalance: {
-      value: asset.amount.div(ZTG).toFixed(2),
+      value: asset.amount.div(ZUL).toFixed(2),
       usdValue: 0,
     },
   }));

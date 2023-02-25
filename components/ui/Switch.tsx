@@ -35,7 +35,7 @@ const Switch = observer(
     };
 
     return (
-      <div className="flex items-center h-ztg-30 overflow-hidden rounded-full cursor-pointer text-ztg-14-110 font-bold mb-ztg-16">
+      <div className="flex items-center h-zul-30 overflow-hidden rounded-full cursor-pointer text-zul-14-110 font-bold mb-zul-16">
         <div
           className="h-full w-1/2 center"
           style={{

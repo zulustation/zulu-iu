@@ -81,7 +81,7 @@ input[type="number"] {
 
 .button {
   @apply text-base;
-  @apply bg-ztg-blue;
+  @apply bg-zul-blue;
   @apply h-11;
   @apply font-medium;
   color: #fff;
@@ -273,7 +273,7 @@ tr {
 
 .sub-header {
   @apply font-medium;
-  @apply text-ztg-20-150;
+  @apply text-zul-20-150;
 }
 
 /* Skeleton */
@@ -311,7 +311,7 @@ tr {
     url(/nft/ellipse-background.png);
 }
 
-.ztg-transition {
+.zul-transition {
   @apply transition duration-200 ease-in-out;
 }
 

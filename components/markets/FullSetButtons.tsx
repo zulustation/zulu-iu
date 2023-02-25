@@ -37,13 +37,13 @@ const FullSetButtons = observer(({ marketId }: { marketId: number }) => {
         <>
           <button
             onClick={handleBuyFullSetClick}
-            className="h-ztg-19 ml-ztg-20 text-sky-600 border-sky-600 rounded-ztg-100 border-2 text-ztg-10-150 px-ztg-10 font-bold"
+            className="h-zul-19 ml-zul-20 text-sky-600 border-sky-600 rounded-zul-100 border-2 text-zul-10-150 px-zul-10 font-bold"
           >
             Buy Full Set
           </button>
           <button
             onClick={handleSellFullSetClick}
-            className="h-ztg-19 ml-ztg-15 text-sky-600 border-sky-600 rounded-ztg-100 border-2 text-ztg-10-150 px-ztg-10 font-bold"
+            className="h-zul-19 ml-zul-15 text-sky-600 border-sky-600 rounded-zul-100 border-2 text-zul-10-150 px-zul-10 font-bold"
           >
             Sell Full Set
           </button>

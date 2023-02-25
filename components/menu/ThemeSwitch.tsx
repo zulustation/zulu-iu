@@ -14,9 +14,9 @@ const ThemeIcon: FC<{
   const Icon = theme === "dark" ? Moon : Sun;
   return (
     <div
-      className={`rounded-full w-ztg-34 h-ztg-34 cursor-pointer center flex-shrink-0
+      className={`rounded-full w-zul-34 h-zul-34 cursor-pointer center flex-shrink-0
         ${
-          selected ? "text-ztg-blue" : "text-sky-400 dark:text-sky-600"
+          selected ? "text-zul-blue" : "text-sky-400 dark:text-sky-600"
         } ${className}`}
       onClick={() => onClick()}
     >
@@ -48,17 +48,17 @@ const ThemeSwitch: FC<HTMLProps<HTMLDivElement>> = observer(({ ...props }) => {
           selected={true}
         />
       ) : (
-        <div className="flex bg-sky-200 dark:bg-sky-700 rounded-ztg-100 py-ztg-4 px-ztg-6">
+        <div className="flex bg-sky-200 dark:bg-sky-700 rounded-zul-100 py-zul-4 px-zul-6">
           <motion.div
             variants={variants}
             animate={userStore.theme === "light" ? "light" : "dark"}
-            className={`rounded-full w-ztg-34 h-ztg-34 cursor-pointer center flex-shrink-0 absolute bg-white dark:bg-black`}
+            className={`rounded-full w-zul-34 h-zul-34 cursor-pointer center flex-shrink-0 absolute bg-white dark:bg-black`}
           ></motion.div>
           <ThemeIcon
             theme="light"
             onClick={() => userStore.toggleTheme("light")}
             selected={userStore.theme === "light"}
-            className="mr-ztg-16 z-40"
+            className="mr-zul-16 z-40"
           />
           <ThemeIcon
             theme="dark"

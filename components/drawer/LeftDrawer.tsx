@@ -20,30 +20,30 @@ const LeftDrawer = observer(() => {
     <Drawer side="left" className="h-auto sm:!block">
       <div className="flex flex-col h-full bg-fog-of-war dark:bg-black text-sky-600">
         <div
-          className="flex mx-ztg-30 mt-ztg-20 h-ztg-35 mb-ztg-36"
+          className="flex mx-zul-30 mt-zul-20 h-zul-35 mb-zul-36"
           onClick={handleHomeClick}
           role="button"
         >
           <Logo />
           <div
-            className={`flex flex-col text-white  ml-ztg-14  ${
+            className={`flex flex-col text-white  ml-zul-14  ${
               leftDrawerClosed ? "hidden" : ""
             }`}
           >
             {leftDrawerClosed === false ? (
               <>
                 <div className="flex items-center">
-                  <h1 className="text-ztg-19-120 font-bold font-kanit text-white">
+                  <h1 className="text-zul-19-120 font-bold font-kanit text-white">
                     Zeitgeist
                   </h1>
                   {process.env.NEXT_PUBLIC_ENVIRONMENT_NAME?.length > 0 && (
-                    <span className="bg-ztg-blue rounded-ztg-5 px-ztg-10 py-ztg-3  font-bold text-ztg-14-120 ml-ztg-10">
+                    <span className="bg-zul-blue rounded-zul-5 px-zul-10 py-zul-3  font-bold text-zul-14-120 ml-zul-10">
                       {process.env.NEXT_PUBLIC_ENVIRONMENT_NAME}
                     </span>
                   )}
                 </div>
 
-                <p className="text-ztg-12-150 font-mono text-sky-600">
+                <p className="text-zul-12-150 font-mono text-sky-600">
                   {blockNumber ? blockNumber.toHuman() : 0}
                 </p>
               </>

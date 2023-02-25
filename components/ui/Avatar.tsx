@@ -1,7 +1,7 @@
 import BoringAvatar from "boring-avatars";
 import { decodeAddress } from "@polkadot/keyring";
 import { observer } from "mobx-react";
-import { ZeitgeistAvatar } from "@zeitgeistpm/avatara-react";
+import { ZeitgeistAvatar } from "@zulustation/avatara-react";
 
 const blues = ["#0001fe", "#a000ff", "#70f8ff"];
 const reds = ["#fb7ce8", "#FF0054", "#FAB400"];

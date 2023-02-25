@@ -1,4 +1,4 @@
-import { FullMarketFragment } from "@zeitgeistpm/indexer";
+import { FullMarketFragment } from "@zulustation/indexer";
 import Decimal from "decimal.js";
 import { MarketPrices } from "lib/hooks/queries/useMarketSpotPrices";
 import { calcScalarResolvedPrices } from "./calc-scalar-winnings";

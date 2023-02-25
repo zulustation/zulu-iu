@@ -2,7 +2,7 @@ import {
   blockDate,
   ChainTime,
   dateBlock,
-} from "@zeitgeistpm/utility/dist/time";
+} from "@zulustation/utility/dist/time";
 import { DateTimeInput } from "components/ui/inputs";
 import { useChainTimeNow } from "lib/hooks/queries/useChainTime";
 import { useMarketDeadlineConstants } from "lib/hooks/queries/useMarketDeadlineConstants";
@@ -142,12 +142,12 @@ export const MarketDeadlinesInput = (props: {
   return (
     <>
       <div
-        className="inline-flex h-ztg-40 items-center px-ztg-10
-        rounded-full justify-between mr-ztg-27 bg-mid-content-lt dark:bg-sky-1000 mb-ztg-20"
+        className="inline-flex h-zul-40 items-center px-zul-10
+        rounded-full justify-between mr-zul-27 bg-mid-content-lt dark:bg-sky-1000 mb-zul-20"
       >
         <div
           onClick={() => setTab("grace")}
-          className={`rounded-full h-ztg-24 px-8 flex items-center cursor-pointer font-medium mr-2 border-1 ${
+          className={`rounded-full h-zul-24 px-8 flex items-center cursor-pointer font-medium mr-2 border-1 ${
             tab === "grace" && "bg-white"
           } ${!graceIsValid && "border-vermilion"}`}
         >
@@ -155,7 +155,7 @@ export const MarketDeadlinesInput = (props: {
         </div>
         <div
           onClick={() => setTab("oracle")}
-          className={`rounded-full h-ztg-24 px-8 flex items-center cursor-pointer font-medium mr-2 border-1  ${
+          className={`rounded-full h-zul-24 px-8 flex items-center cursor-pointer font-medium mr-2 border-1  ${
             tab === "oracle" && "bg-white"
           } ${!oracleIsValid && "border-vermilion"}`}
         >
@@ -163,14 +163,14 @@ export const MarketDeadlinesInput = (props: {
         </div>
         <div
           onClick={() => setTab("dispute")}
-          className={`rounded-full h-ztg-24 px-8 flex items-center cursor-pointer font-medium border-1  ${
+          className={`rounded-full h-zul-24 px-8 flex items-center cursor-pointer font-medium border-1  ${
             tab === "dispute" && "bg-white"
           } ${!disputeIsValid && "border-vermilion"}`}
         >
           Set Dispute Duration
         </div>
       </div>
-      <div className="flex w-full mb-ztg-20 h-14 items-center">
+      <div className="flex w-full mb-zul-20 h-14 items-center">
         {tab === "grace" ? (
           <GracePeriodInput
             value={props.value.grace}
@@ -204,7 +204,7 @@ const GracePeriodInput = (props: {
     <>
       <div
         onClick={() => props.onChange({ label: "None", value: 0 })}
-        className={`cursor-pointer border-1  py-2 px-4 mr-3 rounded-3xl ztg-transition
+        className={`cursor-pointer border-1  py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200  text-sky-600 ${
           props.value.label === "None" && "border-gray-700"
         }`}
@@ -213,7 +213,7 @@ const GracePeriodInput = (props: {
       </div>
       <div
         onClick={() => props.onChange({ label: "1 Hour", value: 300 })}
-        className={`cursor-pointer border-1  py-2 px-4 mr-3 rounded-3xl ztg-transition
+        className={`cursor-pointer border-1  py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200  text-sky-600 ${
           props.value.label === "1 Hour" && "border-gray-700"
         }`}
@@ -224,7 +224,7 @@ const GracePeriodInput = (props: {
         onClick={() => {
           props.onChange({ label: "1 Day", value: 7200 });
         }}
-        className={`cursor-pointer border-1 py-2 px-4 mr-3 rounded-3xl ztg-transition
+        className={`cursor-pointer border-1 py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200  text-sky-600 ${
           props.value.label === "1 Day" && "border-gray-700"
         }`}
@@ -261,7 +261,7 @@ const OracleAndDisputePeriodInput = (props: {
     <>
       <div
         onClick={() => props.onChange({ label: "1 Day", value: 7200 })}
-        className={`cursor-pointer border-1  py-2 px-4 mr-3 rounded-3xl ztg-transition
+        className={`cursor-pointer border-1  py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200  text-sky-600 ${
           props.value.label === "1 Day" && "border-gray-700"
         }`}
@@ -270,7 +270,7 @@ const OracleAndDisputePeriodInput = (props: {
       </div>
       <div
         onClick={() => props.onChange({ label: "4 Days", value: 28800 })}
-        className={`cursor-pointer border-1 py-2 px-4 mr-3 rounded-3xl ztg-transition
+        className={`cursor-pointer border-1 py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200  text-sky-600 ${
           props.value.label === "4 Days" && "border-gray-700"
         }`}
@@ -280,7 +280,7 @@ const OracleAndDisputePeriodInput = (props: {
       <div className={"flex"}>
         <div
           className={`flex w-32 mr-4 border-1 ${
-            props.value.label === "Custom" && "border-gray-700 rounded-ztg-5"
+            props.value.label === "Custom" && "border-gray-700 rounded-zul-5"
           } ${!props.isValid && "border-1 !border-vermilion"}`}
         >
           <input
@@ -306,15 +306,15 @@ const OracleAndDisputePeriodInput = (props: {
                 ? 1
                 : props.value.value.days
             }
-            className="bg-sky-200 dark:bg-black text-ztg-14-150 w-full rounded-ztg-5 h-ztg-40 p-ztg-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-18"
+            className="bg-sky-200 dark:bg-black text-zul-14-150 w-full rounded-zul-5 h-zul-40 p-zul-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-18"
           />
-          <div className="bg-sky-200 dark:bg-black text-ztg-14-150  -ml-2 font-bold rounded-ztg-5 h-ztg-40 p-ztg-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-14">
+          <div className="bg-sky-200 dark:bg-black text-zul-14-150  -ml-2 font-bold rounded-zul-5 h-zul-40 p-zul-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-14">
             DAYS
           </div>
         </div>
         <div
           className={`flex w-32 mr-4 border-1 ${
-            props.value.label === "Custom" && "border-gray-700 rounded-ztg-5"
+            props.value.label === "Custom" && "border-gray-700 rounded-zul-5"
           } ${!props.isValid && "border-1 !border-vermilion"}`}
         >
           <input
@@ -339,9 +339,9 @@ const OracleAndDisputePeriodInput = (props: {
                 ? 0
                 : props.value.value.hours
             }
-            className="bg-sky-200 dark:bg-black text-ztg-14-150 w-full rounded-ztg-5 h-ztg-40 p-ztg-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-18"
+            className="bg-sky-200 dark:bg-black text-zul-14-150 w-full rounded-zul-5 h-zul-40 p-zul-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-18"
           />
-          <div className="bg-sky-200 dark:bg-black text-ztg-14-150 w-full -ml-2 font-bold rounded-ztg-5 h-ztg-40 p-ztg-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-18">
+          <div className="bg-sky-200 dark:bg-black text-zul-14-150 w-full -ml-2 font-bold rounded-zul-5 h-zul-40 p-zul-8  focus:outline-none border-1 dark:border-black text-black dark:text-white text-right  w-18">
             HOURS
           </div>
         </div>

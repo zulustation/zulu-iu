@@ -49,16 +49,16 @@ const MarketSlugField: FC<MarketSlugProps> = ({
 
   return (
     <div className="flex" data-test="marketSlugField">
-      <div className="w-ztg-70 h-ztg-70 rounded-ztg-10 center relative mr-ztg-20 bg-sky-600">
+      <div className="w-zul-70 h-zul-70 rounded-zul-10 center relative mr-zul-20 bg-sky-600">
         {base64Image == null && <ImageIcon size={20} color="#fff" />}
         {base64Image != null && (
           <img
             src={base64Image}
-            className="w-full h-full rounded-ztg-10"
+            className="w-full h-full rounded-zul-10"
             style={{ objectFit: "cover" }}
           />
         )}
-        <div className="h-ztg-24 w-ztg-24 rounded-full absolute top-ztg-6 -right-ztg-12 center bg-white dark:bg-black">
+        <div className="h-zul-24 w-zul-24 rounded-full absolute top-zul-6 -right-zul-12 center bg-white dark:bg-black">
           <Edit3
             size={14}
             className="cursor-pointer text-sky-600"
@@ -83,7 +83,7 @@ const MarketSlugField: FC<MarketSlugProps> = ({
         type="text"
         ref={marketSlug}
         placeholder="who-will-win"
-        className="w-ztg-247"
+        className="w-zul-247"
         value={slug}
         maxLength={textMaxLength}
         name="slug"

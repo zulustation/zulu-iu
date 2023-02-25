@@ -1,6 +1,6 @@
-import { AssetId } from "@zeitgeistpm/sdk/dist/types";
+import { AssetId } from "@zulustation/sdk/dist/types";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import {
   IReactionDisposer,
   makeAutoObservable,
@@ -10,7 +10,7 @@ import {
 } from "mobx";
 import { useEffect, useMemo } from "react";
 import { calcInGivenOut, calcOutGivenIn, calcSpotPrice } from "../math";
-import { JSONObject, ztgAsset } from "../types";
+import { JSONObject, zulAsset } from "../types";
 import Store, { useStore } from "./Store";
 
 export type OutcomeOption = {
@@ -65,7 +65,7 @@ export default class ExchangeStore {
     return this.outcome?.market.id;
   }
 
-  get ztgWeight(): number | undefined {
+  get zulWeight(): number | undefined {
     return this.weights && this.weights[1];
   }
 
@@ -216,39 +216,39 @@ export default class ExchangeStore {
   }
 
   amount: Decimal | null = null;
-  ztgAmount: Decimal = new Decimal(0);
+  zulAmount: Decimal = new Decimal(0);
 
   balance: Decimal | null = null;
-  ztgBalance: Decimal;
+  zulBalance: Decimal;
 
   poolBalance: Decimal | null = null;
-  ztgPoolBalance: Decimal | null = null;
+  zulPoolBalance: Decimal | null = null;
 
   spotPrice: Decimal;
   mode: "buy" | "sell";
 
   get hasPoolBalances(): boolean {
-    return this.poolBalance != null && this.ztgPoolBalance != null;
+    return this.poolBalance != null && this.zulPoolBalance != null;
   }
 
-  calcZtgAmount(): Decimal {
+  calcZulAmount(): Decimal {
     if (this.mode === "buy") {
       return calcInGivenOut(
-        this.ztgPoolBalance.toString(),
-        this.ztgWeight,
+        this.zulPoolBalance.toString(),
+        this.zulWeight,
         this.poolBalance.toString(),
         this.outcomeWeight,
         this.amount?.toString() || "0",
-        this.swapFee.div(ZTG),
+        this.swapFee.div(ZUL),
       );
     } else {
       return calcOutGivenIn(
         this.poolBalance.toString(),
         this.outcomeWeight,
-        this.ztgPoolBalance.toString(),
-        this.ztgWeight,
+        this.zulPoolBalance.toString(),
+        this.zulWeight,
         this.amount?.toString() || "0",
-        this.swapFee.div(ZTG),
+        this.swapFee.div(ZUL),
       );
     }
   }
@@ -260,9 +260,9 @@ export default class ExchangeStore {
       this.amount = null;
     }
     if (this.hasPoolBalances) {
-      this.ztgAmount = this.calcZtgAmount();
+      this.zulAmount = this.calcZulAmount();
     } else {
-      this.ztgAmount = new Decimal(0);
+      this.zulAmount = new Decimal(0);
     }
   }
 
@@ -274,7 +274,7 @@ export default class ExchangeStore {
 
   resetBalances() {
     this.poolBalance = null;
-    this.ztgPoolBalance = null;
+    this.zulPoolBalance = null;
     this.balance = null;
   }
 
@@ -282,11 +282,11 @@ export default class ExchangeStore {
     const asset = this.getActiveOutcomeByAssetId(this.outcomeOption.value);
 
     const balance = await this.store.getBalance(asset.asset);
-    const ztgBalance = await this.store.getBalance();
+    const zulBalance = await this.store.getBalance();
 
     runInAction(() => {
       this.balance = balance;
-      this.ztgBalance = ztgBalance;
+      this.zulBalance = zulBalance;
     });
   }
 
@@ -297,11 +297,11 @@ export default class ExchangeStore {
       this.outcome.asset,
     );
 
-    const ztgBalance = await this.store.getPoolBalance(market.pool, ztgAsset);
+    const zulBalance = await this.store.getPoolBalance(market.pool, zulAsset);
 
     runInAction(() => {
       this.poolBalance = balance;
-      this.ztgPoolBalance = ztgBalance;
+      this.zulPoolBalance = zulBalance;
     });
   }
 
@@ -319,11 +319,11 @@ export default class ExchangeStore {
    */
   updateSpotPrice() {
     const price = calcSpotPrice(
-      this.ztgPoolBalance,
-      this.ztgWeight,
+      this.zulPoolBalance,
+      this.zulWeight,
       this.poolBalance,
       this.outcomeWeight,
-      this.swapFee.div(ZTG),
+      this.swapFee.div(ZUL),
     );
     runInAction(() => {
       this.spotPrice = price;
@@ -337,7 +337,7 @@ export default class ExchangeStore {
 
   get maxProfit(): string {
     const amount = this.amount || new Decimal(0);
-    return amount.sub(this.ztgAmount).toFixed(4);
+    return amount.sub(this.zulAmount).toFixed(4);
   }
 }
 

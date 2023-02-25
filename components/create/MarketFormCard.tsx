@@ -7,7 +7,7 @@ const SectionTitle: FC<{ text: string; className?: string }> = ({
   text,
   className = "",
 }) => {
-  const classes = "text-ztg-16-150 font-bold mb-ztg-20 " + className;
+  const classes = "text-zul-16-150 font-bold mb-zul-20 " + className;
   return <div className={classes}>{text}</div>;
 };
 
@@ -17,13 +17,13 @@ const MarketFormCard: FC<{ header: string }> = observer(
 
     if (!store.initialized) {
       return (
-        <Skeleton className="!transform-none !h-ztg-99 w-full !mb-ztg-23" />
+        <Skeleton className="!transform-none !h-zul-99 w-full !mb-zul-23" />
       );
     }
     return (
       <div
         data-test={header}
-        className="p-ztg-20 rounded-ztg-10 mb-ztg-23 bg-sky-100 dark:bg-sky-700"
+        className="p-zul-20 rounded-zul-10 mb-zul-23 bg-sky-100 dark:bg-sky-700"
       >
         <SectionTitle text={header} />
         {children}

@@ -88,12 +88,12 @@ export const OutcomeColor: FC<{
   return (
     <div className="relative" data-target-id={targetId}>
       <div
-        className="w-ztg-40 h-ztg-40 rounded-full cursor-pointer flex-grow-0 flex-shrink-0 border-2 border-sky-600"
+        className="w-zul-40 h-zul-40 rounded-full cursor-pointer flex-grow-0 flex-shrink-0 border-2 border-sky-600"
         style={{ background: color === "" ? "#c4c4c4" : color.toString() }}
         onClick={() => setPickerOpen(!pickerOpen)}
       ></div>
       {pickerOpen && (
-        <div className="absolute right-0 z-ztg-1">
+        <div className="absolute right-0 z-zul-1">
           <ColorPicker
             color={color}
             onChange={(color) => onChange(color.hex)}
@@ -108,21 +108,21 @@ export const YesNoOutcomesField: FC<{ entries: YesNoOutcome }> = ({
   entries,
 }) => {
   return (
-    <div className="text-ztg-10-150 font-bold mb-ztg-8 text-sky-600 uppercase ">
-      <div className="flex-ztg-basis-520 flex-grow flex-shrink mb-2">
+    <div className="text-zul-10-150 font-bold mb-zul-8 text-sky-600 uppercase ">
+      <div className="flex-zul-basis-520 flex-grow flex-shrink mb-2">
         OUTCOMES/TICKER
       </div>
       <div className="flex">
         <div className="flex items-center mr-4">
           <div
-            className="w-ztg-40 mr-2 h-ztg-40 flex-shrink-0 rounded-full center"
+            className="w-zul-40 mr-2 h-zul-40 flex-shrink-0 rounded-full center"
             style={{ background: entries[0].color }}
           ></div>
           <div className="text-base">{entries[0].ticker}</div>
         </div>
         <div className="flex items-center">
           <div
-            className="w-ztg-40 mr-2 h-ztg-40 flex-shrink-0 rounded-full center ml-ztg-13"
+            className="w-zul-40 mr-2 h-zul-40 flex-shrink-0 rounded-full center ml-zul-13"
             style={{ background: entries[1].color }}
           ></div>
           <div className="text-base">{entries[1].ticker}</div>
@@ -185,10 +185,10 @@ export const MultipleOutcomeRow: FC<{
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}
         transition={{ type: "spring", duration: 0.5 }}
-        className="flex mb-ztg-10"
+        className="flex mb-zul-10"
       >
         <div
-          className="flex-ztg-basis-520 pr-ztg-16 flex-grow flex-shrink"
+          className="flex-zul-basis-520 pr-zul-16 flex-grow flex-shrink"
           data-test="outComeInput"
         >
           <Input
@@ -207,7 +207,7 @@ export const MultipleOutcomeRow: FC<{
           />
         </div>
         <div
-          className="flex-ztg-basis-85 pr-ztg-15 flex-grow"
+          className="flex-zul-basis-85 pr-zul-15 flex-grow"
           data-test="outComeTicker"
         >
           <Input
@@ -228,7 +228,7 @@ export const MultipleOutcomeRow: FC<{
         <OutcomeColor color={color} onChange={onColorChange} name={name} />
         {canRemove && (
           <div
-            className="w-ztg-40 h-ztg-40 rounded-ztg-5 border-2 border-sky-600 center ml-ztg-15 flex-grow-0 flex-shrink-0 cursor-pointer"
+            className="w-zul-40 h-zul-40 rounded-zul-5 border-2 border-sky-600 center ml-zul-15 flex-grow-0 flex-shrink-0 cursor-pointer"
             onClick={() => onRemove()}
           >
             <Minus size={20} className="text-sky-600" />
@@ -268,12 +268,12 @@ export const MultipleOutcomesField: FC<{
 
   return (
     <div data-test="multipleOutcomesField">
-      <div className="flex text-ztg-10-150 font-bold mb-ztg-8 h-ztg-15 text-sky-600 uppercase ">
-        <div className="flex-ztg-basis-520 flex-grow flex-shrink">Outcomes</div>
-        <div className="flex-ztg-basis-85 flex-grow">Ticker</div>
-        <div className="w-ztg-40 flex-shrink-0 text-center">Color</div>
+      <div className="flex text-zul-10-150 font-bold mb-zul-8 h-zul-15 text-sky-600 uppercase ">
+        <div className="flex-zul-basis-520 flex-grow flex-shrink">Outcomes</div>
+        <div className="flex-zul-basis-85 flex-grow">Ticker</div>
+        <div className="w-zul-40 flex-shrink-0 text-center">Color</div>
         {entries.length > 2 && (
-          <div className="w-ztg-40 ml-ztg-15 flex-shrink-0"></div>
+          <div className="w-zul-40 ml-zul-15 flex-shrink-0"></div>
         )}
       </div>
       <AnimatePresence>
@@ -296,7 +296,7 @@ export const MultipleOutcomesField: FC<{
       </AnimatePresence>
       {entries.length < config?.markets.maxCategories && (
         <div
-          className="w-ztg-40 h-ztg-40 rounded-ztg-5 border-2 border-sky-600 center flex-grow-0 flex-shrink-0 cursor-pointer"
+          className="w-zul-40 h-zul-40 rounded-zul-5 border-2 border-sky-600 center flex-grow-0 flex-shrink-0 cursor-pointer"
           onClick={addOutcome}
           role="button"
         >
@@ -365,19 +365,19 @@ export const RangeOutcomeField: FC<{
 
   return (
     <>
-      <div className="flex text-ztg-10-150 uppercase text-sky-600 font-medium mb-ztg-8 h-ztg-15">
-        <div className="flex-ztg-basis-248 flex-grow flex-shrink">
+      <div className="flex text-zul-10-150 uppercase text-sky-600 font-medium mb-zul-8 h-zul-15">
+        <div className="flex-zul-basis-248 flex-grow flex-shrink">
           Minimum (Ticker-S)
         </div>
-        <div className="flex-ztg-basis-248 flex-grow flex-shrink">
+        <div className="flex-zul-basis-248 flex-grow flex-shrink">
           Maximum (Ticker-L)
         </div>
-        <div className="flex-ztg-basis-85">Ticker</div>
-        <div className="w-ztg-40 flex-shrink-0">Short</div>
-        <div className="w-ztg-40 flex-shrink-0 ml-ztg-13">Long</div>
+        <div className="flex-zul-basis-85">Ticker</div>
+        <div className="w-zul-40 flex-shrink-0">Short</div>
+        <div className="w-zul-40 flex-shrink-0 ml-zul-13">Long</div>
       </div>
       <div className="flex mb-2">
-        <div className="flex-ztg-basis-248 h-12 flex-grow flex-shrink pr-ztg-16">
+        <div className="flex-zul-basis-248 h-12 flex-grow flex-shrink pr-zul-16">
           {outcome.type === "number" ? (
             <Input
               data-test="minRangeValueInput"
@@ -404,7 +404,7 @@ export const RangeOutcomeField: FC<{
             />
           )}
         </div>
-        <div className="flex-ztg-basis-248 h-12 flex-grow flex-shrink pr-ztg-16">
+        <div className="flex-zul-basis-248 h-12 flex-grow flex-shrink pr-zul-16">
           {outcome.type === "number" ? (
             <Input
               data-test="maxRangeValueInput"
@@ -432,7 +432,7 @@ export const RangeOutcomeField: FC<{
             />
           )}
         </div>
-        <div className="flex-ztg-basis-85 pr-ztg-15">
+        <div className="flex-zul-basis-85 pr-zul-15">
           <Input
             data-test="rangeTickerInput"
             type="text"
@@ -448,13 +448,13 @@ export const RangeOutcomeField: FC<{
           />
         </div>
         <div
-          className="w-ztg-40 h-ztg-40 flex-shrink-0 rounded-full center"
+          className="w-zul-40 h-zul-40 flex-shrink-0 rounded-full center"
           style={{ background: "#FF0000" }}
         >
           <ArrowDownCircle size={20} className="text-black" />
         </div>
         <div
-          className="w-ztg-40 h-ztg-40 flex-shrink-0 rounded-full center ml-ztg-13"
+          className="w-zul-40 h-zul-40 flex-shrink-0 rounded-full center ml-zul-13"
           style={{ background: "#24FF00" }}
         >
           <ArrowUpCircle size={20} className="text-black" />
@@ -483,7 +483,7 @@ const OutcomeTypeSelection: FC<{
           value === "yesno"
             ? "border-gray-600 dark:border-white"
             : "border-sky-200 dark:border-sky-800"
-        } py-2 px-4 mr-3 rounded-3xl ztg-transition
+        } py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200 dark:bg-sky-800 text-sky-600`}
         onClick={() => onChange("yesno")}
       >
@@ -494,7 +494,7 @@ const OutcomeTypeSelection: FC<{
           value === "multiple"
             ? "border-gray-600 dark:border-white"
             : "border-sky-200 dark:border-sky-800"
-        } py-2 px-4 mr-3 rounded-3xl ztg-transition
+        } py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200 dark:bg-sky-800 text-sky-600`}
         onClick={() => onChange("multiple")}
       >
@@ -505,7 +505,7 @@ const OutcomeTypeSelection: FC<{
           value === "range"
             ? "border-gray-600 dark:border-white"
             : "border-sky-200 dark:border-sky-800"
-        } py-2 px-4 mr-3 rounded-3xl ztg-transition
+        } py-2 px-4 mr-3 rounded-3xl zul-transition
         bg-sky-200 dark:bg-sky-800 text-sky-600`}
         onClick={() => onChange("range")}
       >

@@ -1,32 +1,32 @@
 import { PalletBalancesAccountData } from "@polkadot/types/lookup";
 import { useQueries } from "@tanstack/react-query";
-import { Context, isRpcSdk, PoolList } from "@zeitgeistpm/sdk-next";
+import { Context, isRpcSdk, PoolList } from "@zulustation/sdk-next";
 import { getApiAtBlock } from "lib/util/get-api-at";
 import { useSdkv2 } from "../useSdkv2";
 import { usePoolAccountIds } from "./usePoolAccountIds";
 
-export const rootKey = "pool-ztg-balance";
+export const rootKey = "pool-zul-balance";
 
 /**
  * Account balance index for pr pool.
  */
-export type PoolZtgBalanceLookup = {
+export type PoolZulBalanceLookup = {
   [poolId: number]: PalletBalancesAccountData;
 };
 
 /**
- * Fetch pool ZTG balances for a list of pools.
+ * Fetch pool ZUL balances for a list of pools.
  *
  * @param pools PoolList<Context>
- * @returns PoolZtgBalanceLookup
+ * @returns PoolZulBalanceLookup
  */
-export const usePoolZtgBalance = (
+export const usePoolZulBalance = (
   pools?: PoolList<Context>,
   blockNumber?: number,
   opts?: {
     enabled?: boolean;
   },
-): PoolZtgBalanceLookup => {
+): PoolZulBalanceLookup => {
   const [sdk, id] = useSdkv2();
 
   const poolAccountIds = usePoolAccountIds(pools);
@@ -57,7 +57,7 @@ export const usePoolZtgBalance = (
       }) ?? [],
   });
 
-  return query.reduce<PoolZtgBalanceLookup>((index, query) => {
+  return query.reduce<PoolZulBalanceLookup>((index, query) => {
     if (!query.data) return index;
     return {
       ...index,

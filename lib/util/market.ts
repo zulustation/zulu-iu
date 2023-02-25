@@ -1,4 +1,4 @@
-import { Asset } from "@zeitgeistpm/types/dist/interfaces/index";
+import { Asset } from "@zulustation/types/dist/interfaces/index";
 interface BondPrices {
   advisedCost: number;
   permissionlessCost: number;

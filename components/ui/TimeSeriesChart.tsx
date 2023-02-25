@@ -43,22 +43,22 @@ const ChartToolTip = observer((props) => {
       props.label !== -Infinity &&
       props.label !== Infinity ? (
         <div
-          className="px-ztg-9 py-ztg-12 bg-white dark:bg-black  rounded-ztg-10"
+          className="px-zul-9 py-zul-12 bg-white dark:bg-black  rounded-zul-10"
           style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
         >
-          <div className="font-bold text-ztg-14-150">
+          <div className="font-bold text-zul-14-150">
             <span>
               {new Intl.DateTimeFormat("default", {
                 dateStyle: "short",
               }).format(new Date(props.label))}
             </span>
-            <span className="text-sky-600 ml-ztg-34">
+            <span className="text-sky-600 ml-zul-34">
               {new Intl.DateTimeFormat("default", {
                 hour: "numeric",
                 minute: "numeric",
               }).format(new Date(props.label))}
             </span>
-            <div className="mt-ztg-13">
+            <div className="mt-zul-13">
               {series && (
                 <div className="flex">
                   <span style={{ color: series.color }}>{series.label}</span>
@@ -219,7 +219,7 @@ const TimeSeriesChart = observer(
           </ResponsiveContainer>
         ) : (
           <Skeleton
-            className="ml-ztg-20 rounded-ztg-5"
+            className="ml-zul-20 rounded-zul-5"
             animation="wave"
             height={350}
             variant="rect"

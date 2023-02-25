@@ -1,5 +1,5 @@
 import { Tab } from "@headlessui/react";
-import { getIndexOf } from "@zeitgeistpm/sdk-next";
+import { getIndexOf } from "@zulustation/sdk-next";
 import BondsTable from "components/portfolio/BondsTable";
 import { PortfolioBreakdown } from "components/portfolio/Breakdown";
 import {
@@ -9,7 +9,7 @@ import {
 import TransactionHistoryTable from "components/portfolio/TransactionHistoryTable";
 import InfoBoxes from "components/ui/InfoBoxes";
 import { usePortfolioPositions } from "lib/hooks/queries/usePortfolioPositions";
-import { useZtgInfo } from "lib/hooks/queries/useZtgInfo";
+import { useZulInfo } from "lib/hooks/queries/useZulInfo";
 import { groupBy, range } from "lodash-es";
 import { observer } from "mobx-react";
 import { NextPage } from "next";
@@ -24,7 +24,7 @@ const Portfolio: NextPage = observer(() => {
 
   const { markets, subsidy, breakdown } = usePortfolioPositions(address);
 
-  const { data: ztgPrice } = useZtgInfo();
+  const { data: zulPrice } = useZulInfo();
 
   const marketPositionsByMarket = useMemo(
     () => markets && groupBy(markets, (position) => position.market.marketId),
@@ -52,7 +52,7 @@ const Portfolio: NextPage = observer(() => {
           <Tab.Panel>
             {" "}
             <div className="mb-12">
-              <h3 className="font-bold text-ztg-22-120 mb-6 text-center">
+              <h3 className="font-bold text-zul-22-120 mb-6 text-center">
                 Breakdown
               </h3>
               <PortfolioBreakdown
@@ -62,7 +62,7 @@ const Portfolio: NextPage = observer(() => {
               />
             </div>
             <div className="mb-12">
-              <h3 className="font-bold text-ztg-22-120 mb-6 text-center">
+              <h3 className="font-bold text-zul-22-120 mb-6 text-center">
                 Predictions
               </h3>
               <Tab.Group>
@@ -86,7 +86,7 @@ const Portfolio: NextPage = observer(() => {
 
                 <Tab.Panels>
                   <Tab.Panel>
-                    {!marketPositionsByMarket || !ztgPrice
+                    {!marketPositionsByMarket || !zulPrice
                       ? range(0, 8).map((i) => (
                           <MarketPositionsSkeleton className="mb-14" key={i} />
                         ))
@@ -116,7 +116,7 @@ const Portfolio: NextPage = observer(() => {
                                 key={market.marketId}
                                 className="mb-14 border-b-4 border-gray-200"
                                 market={market}
-                                usdZtgPrice={ztgPrice.price}
+                                usdZulPrice={zulPrice.price}
                                 positions={marketPositions.filter((position) =>
                                   position.userBalance.gt(0),
                                 )}
@@ -127,7 +127,7 @@ const Portfolio: NextPage = observer(() => {
                   </Tab.Panel>
 
                   <Tab.Panel>
-                    {!subsidyPositionsByMarket || !ztgPrice
+                    {!subsidyPositionsByMarket || !zulPrice
                       ? range(0, 8).map((i) => (
                           <MarketPositionsSkeleton className="mb-14" key={i} />
                         ))
@@ -139,7 +139,7 @@ const Portfolio: NextPage = observer(() => {
                                 key={market.marketId}
                                 className="mb-14 border-b-4 border-gray-200"
                                 market={market}
-                                usdZtgPrice={ztgPrice.price}
+                                usdZulPrice={zulPrice.price}
                                 positions={subsidyPositions.filter((position) =>
                                   position.userBalance.gt(0),
                                 )}

@@ -1,5 +1,5 @@
 import { Skeleton } from "@material-ui/lab";
-import { ZTG } from "@zeitgeistpm/sdk-next";
+import { ZUL } from "@zulustation/sdk-next";
 import Decimal from "decimal.js";
 import { PorfolioBreakdown } from "lib/hooks/queries/usePortfolioPositions";
 import { formatNumberLocalized } from "lib/util";
@@ -31,7 +31,7 @@ export const PortfolioBreakdown = (props: PortfolioBreakdownProps) => {
           <BreakdownSlot
             title="Total Value"
             value={props.total.value}
-            usdZtgPrice={props.usdZtgPrice}
+            usdZulPrice={props.usdZulPrice}
             changePercentage={props.total.changePercentage}
           />
         )}
@@ -43,7 +43,7 @@ export const PortfolioBreakdown = (props: PortfolioBreakdownProps) => {
           <BreakdownSlot
             title="Trading Positions"
             value={props.tradingPositions.value}
-            usdZtgPrice={props.usdZtgPrice}
+            usdZulPrice={props.usdZulPrice}
             changePercentage={props.tradingPositions.changePercentage}
           />
         )}
@@ -55,7 +55,7 @@ export const PortfolioBreakdown = (props: PortfolioBreakdownProps) => {
           <BreakdownSlot
             title="Subsidy"
             value={props.subsidy.value}
-            usdZtgPrice={props.usdZtgPrice}
+            usdZulPrice={props.usdZulPrice}
             changePercentage={props.subsidy.changePercentage}
           />
         )}
@@ -67,7 +67,7 @@ export const PortfolioBreakdown = (props: PortfolioBreakdownProps) => {
           <BreakdownSlot
             title="Bonded"
             value={props.bonded.value}
-            usdZtgPrice={props.usdZtgPrice}
+            usdZulPrice={props.usdZulPrice}
             changePercentage={props.bonded.changePercentage}
           />
         )}
@@ -82,13 +82,13 @@ export type BreakdownSlotProps = {
    */
   title: string;
   /**
-   * The value of the slot in ztg(planck)
+   * The value of the slot in zul(planck)
    */
   value: Decimal;
   /**
-   * The price of ztg in usd
+   * The price of zul in usd
    */
-  usdZtgPrice: Decimal;
+  usdZulPrice: Decimal;
   /**
    * The change in percentage of the value represented.
    */
@@ -104,18 +104,18 @@ export type BreakdownSlotProps = {
 export const BreakdownSlot = ({
   title,
   value,
-  usdZtgPrice,
+  usdZulPrice,
   changePercentage,
 }: BreakdownSlotProps) => {
   return (
     <>
-      <h4 className="font-medium text-sky-600 text-ztg-12-150 mb-1">{title}</h4>
+      <h4 className="font-medium text-sky-600 text-zul-12-150 mb-1">{title}</h4>
       <div className="flex text-lg mb-1">
-        <div className="w-2/3 font-semibold text-ztg-16-150">
-          {formatNumberLocalized(value.div(ZTG).toNumber())} ZTG
+        <div className="w-2/3 font-semibold text-zul-16-150">
+          {formatNumberLocalized(value.div(ZUL).toNumber())} ZUL
         </div>
         <div
-          className={`flex-1 w-1/3 text-ztg-14-120 ${
+          className={`flex-1 w-1/3 text-zul-14-120 ${
             changePercentage < 0.01
               ? "text-gray-800"
               : changePercentage < 0
@@ -126,8 +126,8 @@ export const BreakdownSlot = ({
           {changePercentage.toFixed(1)}%
         </div>
       </div>
-      <div className="text-sky-600 mb-1 text-ztg-14-150">
-        ${formatNumberLocalized(usdZtgPrice.mul(value.div(ZTG)).toNumber())}
+      <div className="text-sky-600 mb-1 text-zul-14-150">
+        ${formatNumberLocalized(usdZulPrice.mul(value.div(ZUL)).toNumber())}
       </div>
     </>
   );

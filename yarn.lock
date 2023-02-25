@@ -3326,9 +3326,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/augment-api@npm:^2.8.1":
+"@zulustation/augment-api@npm:^2.8.1":
   version: 2.8.1
-  resolution: "@zeitgeistpm/augment-api@npm:2.8.1"
+  resolution: "@zulustation/augment-api@npm:2.8.1"
   peerDependencies:
     "@polkadot/api-base": "*"
     "@polkadot/rpc-core": "*"
@@ -3337,13 +3337,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/avatara-nft-sdk@npm:^1.3.0":
+"@zulustation/avatara-nft-sdk@npm:^1.3.0":
   version: 1.3.0
-  resolution: "@zeitgeistpm/avatara-nft-sdk@npm:1.3.0"
+  resolution: "@zulustation/avatara-nft-sdk@npm:1.3.0"
   dependencies:
-    "@zeitgeistpm/avatara-util": ^1.2.0
-    "@zeitgeistpm/avatara-zeitgeist-sdk": ^1.3.0
-    "@zeitgeistpm/substrate": ^1.2.0
+    "@zulustation/avatara-util": ^1.2.0
+    "@zulustation/avatara-zeitgeist-sdk": ^1.3.0
+    "@zulustation/substrate": ^1.2.0
     cids: ^1.1.9
     fp-ts: ^2.12.2
     graphql: ^16.3.0
@@ -3363,12 +3363,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/avatara-react@npm:^1.3.0":
+"@zulustation/avatara-react@npm:^1.3.0":
   version: 1.3.0
-  resolution: "@zeitgeistpm/avatara-react@npm:1.3.0"
+  resolution: "@zulustation/avatara-react@npm:1.3.0"
   dependencies:
-    "@zeitgeistpm/avatara-nft-sdk": ^1.3.0
-    "@zeitgeistpm/avatara-util": ^1.2.0
+    "@zulustation/avatara-nft-sdk": ^1.3.0
+    "@zulustation/avatara-util": ^1.2.0
     copy-to-clipboard: ^3.3.1
     jotai: ^1.6.1
   peerDependencies:
@@ -3378,9 +3378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/avatara-util@npm:^1.2.0":
+"@zulustation/avatara-util@npm:^1.2.0":
   version: 1.2.0
-  resolution: "@zeitgeistpm/avatara-util@npm:1.2.0"
+  resolution: "@zulustation/avatara-util@npm:1.2.0"
   dependencies:
     io-ts: ^2.2.17
     ms: ^2.1.3
@@ -3388,9 +3388,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/avatara-zeitgeist-sdk@npm:^1.3.0":
+"@zulustation/avatara-zeitgeist-sdk@npm:^1.3.0":
   version: 1.3.0
-  resolution: "@zeitgeistpm/avatara-zeitgeist-sdk@npm:1.3.0"
+  resolution: "@zulustation/avatara-zeitgeist-sdk@npm:1.3.0"
   dependencies:
     "@apollo/client": ^3.5.10
     decimal.js: ^10.3.1
@@ -3403,9 +3403,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/indexer@npm:^2.11.0":
+"@zulustation/indexer@npm:^2.11.0":
   version: 2.11.0
-  resolution: "@zeitgeistpm/indexer@npm:2.11.0"
+  resolution: "@zulustation/indexer@npm:2.11.0"
   dependencies:
     graphql: ^16.6.0
     graphql-request: ^5.0.0
@@ -3414,12 +3414,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/rpc@npm:^2.5.1":
+"@zulustation/rpc@npm:^2.5.1":
   version: 2.5.1
-  resolution: "@zeitgeistpm/rpc@npm:2.5.1"
+  resolution: "@zulustation/rpc@npm:2.5.1"
   dependencies:
-    "@zeitgeistpm/augment-api": ^2.8.1
-    "@zeitgeistpm/utility": ^2.9.1
+    "@zulustation/augment-api": ^2.8.1
+    "@zulustation/utility": ^2.9.1
   peerDependencies:
     "@polkadot/api": "*"
     "@polkadot/keyring": "*"
@@ -3428,15 +3428,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/sdk-next@npm:@zeitgeistpm/sdk@2.17.0":
+"@zulustation/sdk-next@npm:@zulustation/sdk@2.17.0":
   version: 2.17.0
-  resolution: "@zeitgeistpm/sdk@npm:2.17.0"
+  resolution: "@zulustation/sdk@npm:2.17.0"
   dependencies:
-    "@zeitgeistpm/augment-api": ^2.8.1
-    "@zeitgeistpm/indexer": ^2.11.0
-    "@zeitgeistpm/rpc": ^2.5.1
-    "@zeitgeistpm/utility": ^2.9.1
-    "@zeitgeistpm/web3.storage": ^2.5.0
+    "@zulustation/augment-api": ^2.8.1
+    "@zulustation/indexer": ^2.11.0
+    "@zulustation/rpc": ^2.5.1
+    "@zulustation/utility": ^2.9.1
+    "@zulustation/web3.storage": ^2.5.0
     cids: ^1.1.9
     decimal.js: ^10.4.2
     lodash-es: ^4.17.21
@@ -3453,16 +3453,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/sdk@npm:^1.0.3":
+"@zulustation/sdk@npm:^1.0.3":
   version: 1.0.3
-  resolution: "@zeitgeistpm/sdk@npm:1.0.3"
+  resolution: "@zulustation/sdk@npm:1.0.3"
   dependencies:
     "@polkadot/api": ^9.13.2
     "@polkadot/keyring": ^10.3.1
     "@polkadot/util": ^10.3.1
     "@polkadot/util-crypto": ^10.3.1
-    "@zeitgeistpm/type-defs": ^1.0.0
-    "@zeitgeistpm/types": ^1.0.2
+    "@zulustation/type-defs": ^1.0.0
+    "@zulustation/types": ^1.0.2
     commander: ^7.2.0
     decimal.js: ^10.3.1
     graphql: 15.x
@@ -3474,9 +3474,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/substrate@npm:^1.2.0":
+"@zulustation/substrate@npm:^1.2.0":
   version: 1.2.0
-  resolution: "@zeitgeistpm/substrate@npm:1.2.0"
+  resolution: "@zulustation/substrate@npm:1.2.0"
   dependencies:
     fp-ts: ^2.12.2
     io-ts: ^2.2.17
@@ -3489,27 +3489,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/type-defs@npm:^1.0.0":
+"@zulustation/type-defs@npm:^1.0.0":
   version: 1.0.0
-  resolution: "@zeitgeistpm/type-defs@npm:1.0.0"
+  resolution: "@zulustation/type-defs@npm:1.0.0"
   checksum: a45ecee6aeff82dcad8264c081845c7c7484ee5307e44fda03fd1b1240a8ea9fc4c4d34433ac1515191260399f0d4bd5b376042ef5d318459ea20d5b88bfe771
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/types@npm:^1.0.2":
+"@zulustation/types@npm:^1.0.2":
   version: 1.0.2
-  resolution: "@zeitgeistpm/types@npm:1.0.2"
+  resolution: "@zulustation/types@npm:1.0.2"
   dependencies:
     "@polkadot/types": 9.13.2
-    "@zeitgeistpm/type-defs": ^1.0.0
+    "@zulustation/type-defs": ^1.0.0
     axios: ^0.21.1
   checksum: 338d67a6af6e84eb64425bec255f55e2fc14fd2c866f851372d3fd7377577214231f5812b18aca74c7f03972f35af45f25a55ad3c5d37eb9308cd036958a252f
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/ui@workspace:.":
+"@zulustation/ui@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@zeitgeistpm/ui@workspace:."
+  resolution: "@zulustation/ui@workspace:."
   dependencies:
     "@babel/helper-compilation-targets": ^7.19.3
     "@headlessui/react": ^1.7.7
@@ -3538,13 +3538,13 @@ __metadata:
     "@vercel/og": ^0.0.27
     "@yornaath/batshit": ^0.7.1
     "@yornaath/batshit-devtools-react": ^0.5.4
-    "@zeitgeistpm/augment-api": ^2.8.1
-    "@zeitgeistpm/avatara-nft-sdk": ^1.3.0
-    "@zeitgeistpm/avatara-react": ^1.3.0
-    "@zeitgeistpm/avatara-util": ^1.2.0
-    "@zeitgeistpm/sdk": ^1.0.3
-    "@zeitgeistpm/sdk-next": "npm:@zeitgeistpm/sdk@2.17.0"
-    "@zeitgeistpm/utility": ^2.9.1
+    "@zulustation/augment-api": ^2.8.1
+    "@zulustation/avatara-nft-sdk": ^1.3.0
+    "@zulustation/avatara-react": ^1.3.0
+    "@zulustation/avatara-util": ^1.2.0
+    "@zulustation/sdk": ^1.0.3
+    "@zulustation/sdk-next": "npm:@zulustation/sdk@2.17.0"
+    "@zulustation/utility": ^2.9.1
     autoprefixer: 10.2.5
     axios: ^0.21.4
     boring-avatars: ^1.6.1
@@ -3602,9 +3602,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zeitgeistpm/utility@npm:^2.9.0, @zeitgeistpm/utility@npm:^2.9.1":
+"@zulustation/utility@npm:^2.9.0, @zulustation/utility@npm:^2.9.1":
   version: 2.9.1
-  resolution: "@zeitgeistpm/utility@npm:2.9.1"
+  resolution: "@zulustation/utility@npm:2.9.1"
   dependencies:
     decimal.js: ^10.4.2
     lodash.omit: ^4.5.0
@@ -3618,11 +3618,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeitgeistpm/web3.storage@npm:^2.5.0":
+"@zulustation/web3.storage@npm:^2.5.0":
   version: 2.5.0
-  resolution: "@zeitgeistpm/web3.storage@npm:2.5.0"
+  resolution: "@zulustation/web3.storage@npm:2.5.0"
   dependencies:
-    "@zeitgeistpm/utility": ^2.9.0
+    "@zulustation/utility": ^2.9.0
     cids: ^1.1.9
     ipfs-http-client: ^58.0.1
     merge-options: ^3.0.4

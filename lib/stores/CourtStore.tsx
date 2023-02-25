@@ -1,4 +1,4 @@
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { convertBlockNumberToTimestamp } from "lib/util";
 import { autorun, makeAutoObservable, runInAction } from "mobx";
 import Store, { useStore } from "./Store";
@@ -162,7 +162,7 @@ export default class CourtStore {
 
     runInAction(() => {
       if (courtReserve) {
-        const courtStake = Number(courtReserve.amount.replace(",", "")) / ZTG;
+        const courtStake = Number(courtReserve.amount.replace(",", "")) / ZUL;
         this.activeJurorStake = courtStake;
       } else {
         this.activeJurorStake = 0;

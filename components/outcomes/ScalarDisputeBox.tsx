@@ -3,11 +3,11 @@ import {
   IndexerContext,
   isRpcSdk,
   Market,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import { AmountInput, DateTimeInput } from "components/ui/inputs";
 import TransactionButton from "components/ui/TransactionButton";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { useMarketDisputes } from "lib/hooks/queries/useMarketDisputes";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
 import { useNotificationStore } from "lib/stores/NotificationStore";
@@ -60,7 +60,7 @@ const ScalarDisputeBox = observer(
         lastDispute?.outcome.asScalar.toString() ??
           market.report?.outcome.scalar,
       )
-        .div(ZTG)
+        .div(ZUL)
         .toString();
       if (isScalarDate) {
         return moment(Number(reportVal)).format("YYYY-MM-DD HH:mm");
@@ -72,7 +72,7 @@ const ScalarDisputeBox = observer(
     const handleSignTransaction = async () => {
       if (!isRpcSdk(sdk)) return;
       const outcomeReport = {
-        Scalar: new Decimal(scalarReportValue).mul(ZTG).toFixed(0),
+        Scalar: new Decimal(scalarReportValue).mul(ZUL).toFixed(0),
       };
 
       const callback = extrinsicCallback({
@@ -102,7 +102,7 @@ const ScalarDisputeBox = observer(
 
     return (
       <>
-        <div className=" text-ztg-10-150 mb-ztg-5">
+        <div className=" text-zul-10-150 mb-zul-5">
           Bond will start at {disputeBond} {tokenSymbol}, increasing by{" "}
           {disputeFactor} {tokenSymbol} for each dispute
         </div>
@@ -131,13 +131,13 @@ const ScalarDisputeBox = observer(
             showErrorMessage={false}
           />
         )}
-        <div className="my-ztg-10">
-          <div className=" h-ztg-18 flex px-ztg-8 justify-between text-ztg-12-150 font-bold text-sky-600">
+        <div className="my-zul-10">
+          <div className=" h-zul-18 flex px-zul-8 justify-between text-zul-12-150 font-bold text-sky-600">
             <span>Previous Report:</span>
             <span className="font-mono">{getPreviousReport()}</span>
           </div>
           {bondAmount !== disputeBond && bondAmount !== undefined ? (
-            <div className=" h-ztg-18 flex px-ztg-8 justify-between text-ztg-12-150 font-bold text-sky-600 ">
+            <div className=" h-zul-18 flex px-zul-8 justify-between text-zul-12-150 font-bold text-sky-600 ">
               <span>Previous Bond:</span>
               <span className="font-mono">{bondAmount - disputeFactor}</span>
             </div>
@@ -147,7 +147,7 @@ const ScalarDisputeBox = observer(
         </div>
 
         <TransactionButton
-          className="my-ztg-10 shadow-ztg-2"
+          className="my-zul-10 shadow-zul-2"
           onClick={handleSignTransaction}
         >
           Dispute Outcome

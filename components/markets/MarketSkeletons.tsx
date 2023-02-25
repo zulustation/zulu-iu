@@ -8,7 +8,7 @@ const MarketSkeletons = ({ pageSize }: { pageSize: number }) => {
         return (
           <Skeleton
             height={175}
-            className="!rounded-ztg-10 !mb-ztg-15 !transform-none"
+            className="!rounded-zul-10 !mb-zul-15 !transform-none"
             key={idx}
           />
         );

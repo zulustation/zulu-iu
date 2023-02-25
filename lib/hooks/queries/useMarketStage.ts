@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Context, isRpcSdk, Market } from "@zeitgeistpm/sdk-next";
-import { ChainTime } from "@zeitgeistpm/utility/dist/time";
+import { Context, isRpcSdk, Market } from "@zulustation/sdk-next";
+import { ChainTime } from "@zulustation/utility/dist/time";
 import { useSdkv2 } from "../useSdkv2";
 import { useChainTimeNow } from "./useChainTime";
 import { marketsRootQuery } from "./useMarket";

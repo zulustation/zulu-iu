@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Context, isIndexedSdk, Pool } from "@zeitgeistpm/sdk-next";
+import { Context, isIndexedSdk, Pool } from "@zulustation/sdk-next";
 import { useSdkv2 } from "../useSdkv2";
 
 export const rootKey = "saturated-pools-index";

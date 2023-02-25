@@ -1,6 +1,6 @@
 import { SubmittableExtrinsic } from "@polkadot/api/types";
 import { ISubmittableResult } from "@polkadot/types/types";
-import { ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { ExtSigner } from "@zulustation/sdk/dist/types";
 import { useNotificationStore } from "lib/stores/NotificationStore";
 import { useStore } from "lib/stores/Store";
 import { extrinsicCallback, signAndSend } from "lib/util/tx";

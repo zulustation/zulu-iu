@@ -4,7 +4,7 @@ import PoolSettings, {
 } from "components/liquidity/PoolSettings";
 import TransactionButton from "components/ui/TransactionButton";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import MarketStore from "lib/stores/MarketStore";
 import { useNotificationStore } from "lib/stores/NotificationStore";
 import { useStore } from "lib/stores/Store";
@@ -44,7 +44,7 @@ const PoolDeployer = observer(
       const amount = poolRows[0].amount;
 
       const weights = poolRows.slice(0, -1).map((row) => {
-        return new Decimal(row.weight).mul(ZTG).toFixed(0, Decimal.ROUND_DOWN);
+        return new Decimal(row.weight).mul(ZUL).toFixed(0, Decimal.ROUND_DOWN);
       });
 
       const signer = store.wallets.getActiveSigner();
@@ -54,7 +54,7 @@ const PoolDeployer = observer(
           marketStore.market.deploySwapPoolAndAdditionalLiquidity(
             signer,
             swapFee,
-            new Decimal(amount).mul(ZTG).toFixed(0),
+            new Decimal(amount).mul(ZUL).toFixed(0),
             weights,
             extrinsicCallback({
               notificationStore,
@@ -90,8 +90,8 @@ const PoolDeployer = observer(
       <>
         {marketStore?.poolExists === false ? (
           poolRows ? (
-            <div className="my-ztg-20">
-              <div className="sub-header mt-ztg-40 mb-ztg-15">Deploy Pool</div>
+            <div className="my-zul-20">
+              <div className="sub-header mt-zul-40 mb-zul-15">Deploy Pool</div>
               <PoolSettings
                 data={poolRows}
                 onChange={(v) => {
@@ -103,13 +103,13 @@ const PoolDeployer = observer(
               />
               <div className="flex items-center">
                 <TransactionButton
-                  className="w-ztg-266 ml-ztg-8"
+                  className="w-zul-266 ml-zul-8"
                   onClick={handleDeploySignClick}
                   disabled={store.wallets.activeBalance.lessThan(poolCost)}
                 >
                   Deploy Pool
                 </TransactionButton>
-                <div className="text-ztg-12-150 text-sky-600 font-bold ml-[27px]">
+                <div className="text-zul-12-150 text-sky-600 font-bold ml-[27px]">
                   Total Cost:
                   <span className="font-mono">
                     {" "}
@@ -122,7 +122,7 @@ const PoolDeployer = observer(
             <>
               {marketStore.is("Active") && (
                 <button
-                  className="my-ztg-20  font-bold text-ztg-16-150 text-sky-600 border-1 px-ztg-20 py-ztg-10 rounded-ztg-10 border-sky-600"
+                  className="my-zul-20  font-bold text-zul-16-150 text-sky-600 border-1 px-zul-20 py-zul-10 rounded-zul-10 border-sky-600"
                   data-test="deployLiquidityButton"
                   onClick={handleDeployClick}
                 >

@@ -60,9 +60,9 @@ const ProgressReport = ({
       ) : (
         <></>
       )}
-      <div className="w-full flex flex-col justify-center ml-ztg-20">
-        <div className="font-bold text-ztg-18-150">{title}</div>
-        <div className="font text-ztg-14-150 text-sky-600 mb-ztg-11">
+      <div className="w-full flex flex-col justify-center ml-zul-20">
+        <div className="font-bold text-zul-18-150">{title}</div>
+        <div className="font text-zul-14-150 text-sky-600 mb-zul-11">
           {description}
         </div>
         <TimeLine

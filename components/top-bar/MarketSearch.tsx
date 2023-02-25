@@ -18,10 +18,10 @@ const MarketSearch: FC = observer(() => {
 
   return (
     <div
-      className="flex flex-ztg-basis-400 rounded-full h-ztg-40 items-center justify-between w-full pl-ztg-15 pr-ztg-10 flex-shrink mr-ztg-20 bg-sky-200 dark:bg-black"
+      className="flex flex-zul-basis-400 rounded-full h-zul-40 items-center justify-between w-full pl-zul-15 pr-zul-10 flex-shrink mr-zul-20 bg-sky-200 dark:bg-black"
       onClick={() => focusInput()}
     >
-      <div className="flex items-center text-ztg-16-150 flex-grow mr-ztg-15  text-sky-600">
+      <div className="flex items-center text-zul-16-150 flex-grow mr-zul-15  text-sky-600">
         <form
           onSubmit={(e) => {
             e.preventDefault();

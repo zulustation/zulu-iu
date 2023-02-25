@@ -64,7 +64,7 @@ const ActivityFeed: NextPage = observer(() => {
       type: "text",
     },
     {
-      header: "Value (ZTG)",
+      header: "Value (ZUL)",
       accessor: "value",
       type: "currency",
     },
@@ -79,7 +79,7 @@ const ActivityFeed: NextPage = observer(() => {
   return (
     <div>
       <InfoBoxes />
-      <h2 className="text-ztg-18-150 font-medium mb-ztg-23">Activity Feed</h2>
+      <h2 className="text-zul-18-150 font-medium mb-zul-23">Activity Feed</h2>
       <Table data={tableData} columns={columns} />
     </div>
   );

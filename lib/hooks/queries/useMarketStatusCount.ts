@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { isIndexedSdk } from "@zeitgeistpm/sdk-next";
+import { isIndexedSdk } from "@zulustation/sdk-next";
 import { useSdkv2 } from "../useSdkv2";
 
 export const rootKey = "market-status-count";

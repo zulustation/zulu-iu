@@ -45,21 +45,21 @@ const LiquidityCell = ({
 
   return (
     <div>
-      <div className="flex items-center mt-ztg-24 mb-ztg-8">
+      <div className="flex items-center mt-zul-24 mb-zul-8">
         <div
-          className="rounded-full w-ztg-20 h-ztg-20 mr-ztg-10 border-sky-600 border-2 "
+          className="rounded-full w-zul-20 h-zul-20 mr-zul-10 border-sky-600 border-2 "
           style={{ background: color }}
         ></div>
-        <div className="font-bold   text-ztg-16-150 uppercase text-black dark:text-white">
+        <div className="font-bold   text-zul-16-150 uppercase text-black dark:text-white">
           {asset}
         </div>
-        <span className="font-mono text-ztg-12-150 font-medium ml-auto ">
+        <span className="font-mono text-zul-12-150 font-medium ml-auto ">
           {formatNumber(balance)}
         </span>
       </div>
       <AmountInput
         containerClass="dark:bg-sky-1000"
-        className="h-ztg-40 w-full rounded-ztg-5 bg-sky-200 text-gray-dark-3 text-right !pr-ztg-8 !pl-ztg-38 dark:bg-black"
+        className="h-zul-40 w-full rounded-zul-5 bg-sky-200 text-gray-dark-3 text-right !pr-zul-8 !pl-zul-38 dark:bg-black"
         value={amountValue.toString()}
         onChange={handleAmountChange}
         disabled={disabled}

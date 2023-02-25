@@ -1,4 +1,4 @@
-import { ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { ExtSigner } from "@zulustation/sdk/dist/types";
 import TransactionButton from "components/ui/TransactionButton";
 import { useCourtStore } from "lib/stores/CourtStore";
 import { useModalStore } from "lib/stores/ModalStore";
@@ -28,11 +28,11 @@ const JurorStatusPill = ({ active }: { active: boolean }) => {
 
   return (
     <div
-      className={`ml-auto border-1 rounded-ztg-50 pl-ztg-10 py-ztg-3 pr-ztg-5 flex items-center mr-ztg-20 ${
+      className={`ml-auto border-1 rounded-zul-50 pl-zul-10 py-zul-3 pr-zul-5 flex items-center mr-zul-20 ${
         active === true ? activeColorClasses : tardyColorClasses
       }`}
     >
-      <span className="font-bold text-ztg-12-150 mr-ztg-15">
+      <span className="font-bold text-zul-12-150 mr-zul-15">
         {active === true ? "Active" : "Tardy"}
       </span>
       <div>
@@ -40,14 +40,14 @@ const JurorStatusPill = ({ active }: { active: boolean }) => {
           size={20}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="inline cursor-pointer ml-ztg-10 mb-ztg-2"
+          className="inline cursor-pointer ml-zul-10 mb-zul-2"
         />
         {hoveringInfo === true ? (
-          <div className="bg-white dark:bg-black absolute rounded-ztg-10 text-black dark:text-white px-ztg-8 py-ztg-14  text-ztg-12-150 w-ztg-240">
-            <div className="font-bold mb-ztg-4">
+          <div className="bg-white dark:bg-black absolute rounded-zul-10 text-black dark:text-white px-zul-8 py-zul-14  text-zul-12-150 w-zul-240">
+            <div className="font-bold mb-zul-4">
               {active === true ? "Active Juror" : "Tardy Juror"}
             </div>
-            <div className="mb-ztg-2">
+            <div className="mb-zul-2">
               Your stake: {activeJurorStake} {config.tokenSymbol}
             </div>
             <div className="">
@@ -103,17 +103,17 @@ const JoinModalContent = observer(() => {
   }, [modalStore, handleJoinCourt]);
 
   return (
-    <div className="text-ztg-12-150" style={{ width: "300px" }}>
-      <div className="flex font-bold text-ztg-14-150 ">
+    <div className="text-zul-12-150" style={{ width: "300px" }}>
+      <div className="flex font-bold text-zul-14-150 ">
         <div>Stake:</div>
-        <div className="ml-ztg-15">
+        <div className="ml-zul-15">
           {store.config.court.stakeWeight * (jurors.length + 1)}{" "}
           {store.config.tokenSymbol}
         </div>
       </div>
-      <div className="font-bold text-ztg-14-150 mt-ztg-10">Rewards</div>
+      <div className="font-bold text-zul-14-150 mt-zul-10">Rewards</div>
       <div>
-        <ul className="list-disc list-inside text-ztg-blue">
+        <ul className="list-disc list-inside text-zul-blue">
           <li>
             <span className="text-black dark:text-white">
               If you reach consensus with other jurors you will be rewarded with
@@ -122,8 +122,8 @@ const JoinModalContent = observer(() => {
           </li>
         </ul>
       </div>
-      <div className="font-bold text-ztg-14-150 mt-ztg-10">Penalties</div>
-      <ul className="list-disc list-inside text-ztg-blue">
+      <div className="font-bold text-zul-14-150 mt-zul-10">Penalties</div>
+      <ul className="list-disc list-inside text-zul-blue">
         <li>
           <span className="text-black dark:text-white">
             If you fail to vote on an assigned case your juror status will
@@ -139,7 +139,7 @@ const JoinModalContent = observer(() => {
         </li>
       </ul>
       <TransactionButton
-        className="!rounded-ztg-10 h-ztg-50 mt-ztg-20"
+        className="!rounded-zul-10 h-zul-50 mt-zul-20"
         onClick={handleJoinCourt}
       >
         Join court
@@ -188,11 +188,11 @@ const ExitModalContent = observer(() => {
 
   return (
     <div>
-      <div className="font-bold text-ztg-14-150">
+      <div className="font-bold text-zul-14-150">
         You will be removed from the Court and your stake will be returned.
       </div>
       <TransactionButton
-        className="!rounded-ztg-10 h-ztg-50 mt-ztg-20"
+        className="!rounded-zul-10 h-zul-50 mt-zul-20"
         onClick={handleExitCourt}
       >
         Exit court
@@ -219,7 +219,7 @@ const CourtHeader = observer(() => {
 
   return (
     <>
-      <div className="flex items-center mb-ztg-22">
+      <div className="flex items-center mb-zul-22">
         <h2 className="header ">Court</h2>
         {activeJurorStatus !== null ? (
           <JurorStatusPill active={activeJurorStatus === "OK"} />
@@ -228,21 +228,21 @@ const CourtHeader = observer(() => {
         )}
         {activeJurorStatus !== null ? (
           <button
-            className="font-bold text-white text-ztg-12-150 px-ztg-20 py-ztg-7 bg-rose rounded-ztg-100"
+            className="font-bold text-white text-zul-12-150 px-zul-20 py-zul-7 bg-rose rounded-zul-100"
             onClick={handleExitCourtClick}
           >
             Unstake and Leave Court
           </button>
         ) : (
           <button
-            className="font-bold text-white text-ztg-12-150 px-ztg-20 py-ztg-7 bg-fushsia rounded-ztg-100 ml-auto"
+            className="font-bold text-white text-zul-12-150 px-zul-20 py-zul-7 bg-fushsia rounded-zul-100 ml-auto"
             onClick={handleJoinCourtClick}
           >
             Stake and Join Court
           </button>
         )}
       </div>
-      <img className="w-full mb-ztg-30" src="/court.png" />
+      <img className="w-full mb-zul-30" src="/court.png" />
     </>
   );
 });

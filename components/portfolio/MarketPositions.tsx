@@ -5,8 +5,8 @@ import {
   IOMarketOutcomeAssetId,
   IOPoolShareAssetId,
   Market,
-  ZTG,
-} from "@zeitgeistpm/sdk-next";
+  ZUL,
+} from "@zulustation/sdk-next";
 import DisputeButton from "components/assets/AssetActionButtons/DisputeButton";
 import RedeemButton from "components/assets/AssetActionButtons/RedeemButton";
 import ReportButton from "components/assets/AssetActionButtons/ReportButton";
@@ -19,7 +19,7 @@ import Link from "next/link";
 import MarketPositionHeader from "./MarketPositionHeader";
 
 export type MarketPositionsProps = {
-  usdZtgPrice: Decimal;
+  usdZulPrice: Decimal;
   positions: Position[];
   market: Market<IndexerContext>;
   className?: string;
@@ -36,7 +36,7 @@ export type MarketPosition = {
 
 export const MarketPositions = ({
   positions,
-  usdZtgPrice,
+  usdZulPrice,
   market,
   className,
 }: MarketPositionsProps) => {
@@ -89,34 +89,34 @@ export const MarketPositions = ({
           ({ assetId, price, userBalance, outcome, changePercentage }) => {
             return {
               outcome: outcome,
-              userBalance: userBalance.div(ZTG).toNumber(),
+              userBalance: userBalance.div(ZUL).toNumber(),
               price: {
                 value: price,
-                usdValue: usdZtgPrice,
+                usdValue: usdZulPrice,
               },
               value: {
-                value: userBalance.mul(price).div(ZTG),
-                usdValue: usdZtgPrice,
+                value: userBalance.mul(price).div(ZUL),
+                usdValue: usdZulPrice,
               },
               change: isNaN(changePercentage) ? 0 : changePercentage.toFixed(1),
               actions: (
                 <div className="text-right">
                   {IOPoolShareAssetId.is(assetId) ? (
                     <Link href={`/liquidity/${market.pool?.poolId}`}>
-                      <span className="text-mariner font-semibold text-ztg-14-120">
+                      <span className="text-mariner font-semibold text-zul-14-120">
                         View Pool
                       </span>
                     </Link>
                   ) : marketStage?.type === "Trading" ? (
                     <Link href={`/markets/${market.marketId}`}>
-                      <span className="text-mariner font-semibold text-ztg-14-120">
+                      <span className="text-mariner font-semibold text-zul-14-120">
                         Trade
                       </span>
                     </Link>
                   ) : marketStage?.type === "Resolved" ? (
                     <RedeemButton
                       market={market}
-                      value={userBalance.mul(price).div(ZTG)}
+                      value={userBalance.mul(price).div(ZUL)}
                     />
                   ) : marketStage?.type === "Reported" ? (
                     <DisputeButton market={market} assetId={assetId} />
@@ -174,7 +174,7 @@ export const MarketPositions = ({
                   </td>
                   <td className="py-6 px-2 text-right pl-0">
                     <span className="text-blue-500">
-                      {formatNumberLocalized(userBalance.div(ZTG).toNumber())}
+                      {formatNumberLocalized(userBalance.div(ZUL).toNumber())}
                     </span>
                   </td>
                   <td className="py-6 px-2 text-right pl-0">
@@ -183,20 +183,20 @@ export const MarketPositions = ({
                     </div>
                     <div className="text-gray-400 font-light">
                       ≈ $
-                      {formatNumberLocalized(usdZtgPrice.mul(price).toNumber())}
+                      {formatNumberLocalized(usdZulPrice.mul(price).toNumber())}
                     </div>
                   </td>
                   <td className="py-6 px-2 text-right pl-0">
                     <div className="font-bold mb-2">
                       {formatNumberLocalized(
-                        userBalance.mul(price).div(ZTG).toNumber(),
+                        userBalance.mul(price).div(ZUL).toNumber(),
                       )}
                     </div>
                     <div className="text-gray-400 font-light">
                       ≈ $
                       {formatNumberLocalized(
-                        usdZtgPrice
-                          .mul(userBalance.mul(price).div(ZTG))
+                        usdZulPrice
+                          .mul(userBalance.mul(price).div(ZUL))
                           .toNumber(),
                       )}
                     </div>
@@ -233,7 +233,7 @@ export const MarketPositions = ({
                     ) : marketStage?.type === "Resolved" ? (
                       <RedeemButton
                         market={market}
-                        value={userBalance.mul(price).div(ZTG)}
+                        value={userBalance.mul(price).div(ZUL)}
                       />
                     ) : marketStage?.type === "Reported" ? (
                       <DisputeButton market={market} assetId={assetId} />

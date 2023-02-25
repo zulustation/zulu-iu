@@ -127,7 +127,7 @@ export default async function GenerateOgImage(request: NextRequest) {
               style={{ color: "#ABC1F9" }}
             >
               {volume}
-              {" ZTG"}
+              {" ZUL"}
             </div>
           </div>
         </div>

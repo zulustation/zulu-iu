@@ -47,19 +47,19 @@ const WalletSelect = observer(() => {
           <div key={wallet.extensionName}>
             <div
               className={
-                "flex flex-row h-ztg-64 items-center rounded-ztg-12 bg-sky-100 dark:bg-sky-700 px-ztg-12 cursor-pointer " +
-                (idx < 2 ? "mb-ztg-12 " : "")
+                "flex flex-row h-zul-64 items-center rounded-zul-12 bg-sky-100 dark:bg-sky-700 px-zul-12 cursor-pointer " +
+                (idx < 2 ? "mb-zul-12 " : "")
               }
               onClick={() => {
                 selectWallet(wallet);
               }}
             >
               <img
-                className="w-ztg-32 h-ztg-32 text-ztg-12-120 center mr-ztg-10"
+                className="w-zul-32 h-zul-32 text-zul-12-120 center mr-zul-10"
                 alt={wallet.logo.alt}
                 src={wallet.logo.src}
               />
-              <div className="flex items-center  text-ztg-18-150">
+              <div className="flex items-center  text-zul-18-150">
                 {wallet.title}
               </div>
               {!wallet.installed && (
@@ -68,7 +68,7 @@ const WalletSelect = observer(() => {
                 </div>
               )}
               {hasError && (
-                <div className="text-vermilion ml-auto  text-ztg-12-120 w-ztg-275">
+                <div className="text-vermilion ml-auto  text-zul-12-120 w-zul-275">
                   {error.message}
                 </div>
               )}

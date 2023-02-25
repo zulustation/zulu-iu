@@ -24,24 +24,24 @@ const SubMenuItem: FC<SubMenuItemProps> = ({
   return (
     <Wrap>
       <div
-        className={`cursor-pointer h-ztg-56 flex items-center py-ztg-16 ml-ztg-24 
-        text-ztg-16-150  ${
+        className={`cursor-pointer h-zul-56 flex items-center py-zul-16 ml-zul-24 
+        text-zul-16-150  ${
           active
             ? "font-bold text-black dark:text-white"
             : "font-medium text-sky-600"
         }
-        ${showDot ? "mr-ztg-37" : "mr-ztg-28"}
+        ${showDot ? "mr-zul-37" : "mr-zul-28"}
         `}
         onClick={onClick}
       >
         {active && showDot ? (
-          <div className="bg-ztg-blue w-ztg-5 h-ztg-5 rounded-full ml-ztg-25"></div>
+          <div className="bg-zul-blue w-zul-5 h-zul-5 rounded-full ml-zul-25"></div>
         ) : (
           <></>
         )}
         <span
-          className={`ztg-transition text-sky-600 hover:text-black dark:hover:text-white ${
-            active && showDot ? "ml-ztg-25" : showDot ? "ml-ztg-55" : ""
+          className={`zul-transition text-sky-600 hover:text-black dark:hover:text-white ${
+            active && showDot ? "ml-zul-25" : showDot ? "ml-zul-55" : ""
           }`}
         >
           {label}
@@ -49,8 +49,8 @@ const SubMenuItem: FC<SubMenuItemProps> = ({
         {detail ? (
           <span
             className={`${
-              active ? "text-ztg-blue " : "text-sky-600"
-            } text-ztg-10-150 ml-auto font-bold`}
+              active ? "text-zul-blue " : "text-sky-600"
+            } text-zul-10-150 ml-auto font-bold`}
           >
             {" "}
             {detail}

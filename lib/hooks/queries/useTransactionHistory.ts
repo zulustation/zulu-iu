@@ -4,10 +4,10 @@ import {
   getMarketIdOf,
   isIndexedSdk,
   IOMarketOutcomeAssetId,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import Decimal from "decimal.js";
 import { gql } from "graphql-request";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { useSdkv2 } from "../useSdkv2";
 
 export const transactionHistoryKey = "transaction-history";
@@ -19,7 +19,7 @@ const transactionHistoryQuery = gql`
       orderBy: timestamp_DESC
     ) {
       assetId
-      ztgTraded
+      zulTraded
       timestamp
       event
       newPrice
@@ -69,7 +69,7 @@ export const useTransactionHistory = (address: string) => {
           historicalAssets: {
             assetId: string;
             dAmountInPool: string;
-            ztgTraded: string;
+            zulTraded: string;
             newPrice: number;
             dPrice: number;
             timestamp: string;
@@ -119,8 +119,8 @@ export const useTransactionHistory = (address: string) => {
             question: marketsMap.get(marketId).question,
             action: action,
             value:
-              action === "Trade" && asset.ztgTraded != null
-                ? new Decimal(asset.ztgTraded).div(ZTG).toNumber()
+              action === "Trade" && asset.zulTraded != null
+                ? new Decimal(asset.zulTraded).div(ZUL).toNumber()
                 : null,
             price:
               action === "Trade" ? asset.newPrice - asset.dPrice / 2 : null,

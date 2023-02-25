@@ -61,7 +61,7 @@ const TimeLineEvent = observer(
         <div
           onMouseEnter={handleMouseEnterEvent}
           onMouseLeave={handleMouseLeaveEvent}
-          className="bg-white h-ztg-20 w-ztg-20 rounded-full "
+          className="bg-white h-zul-20 w-zul-20 rounded-full "
           style={{
             backgroundColor: color,
             border: `2px solid ${borderColor}`,
@@ -72,7 +72,7 @@ const TimeLineEvent = observer(
           <div
             onMouseEnter={handleMouseEnterEventDetails}
             onMouseLeave={handleMouseLeaveEventDetails}
-            className="text-white absolute bottom-ztg-25 z-20 right-0"
+            className="text-white absolute bottom-zul-25 z-20 right-0"
           >
             {hoverComponent}
           </div>

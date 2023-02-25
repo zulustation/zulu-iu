@@ -1,8 +1,8 @@
-import { Swap } from "@zeitgeistpm/sdk/dist/models";
-import { AssetId, FilteredPoolsListItem } from "@zeitgeistpm/sdk/dist/types";
-import { ZTG_BLUE_COLOR } from "lib/constants";
+import { Swap } from "@zulustation/sdk/dist/models";
+import { AssetId, FilteredPoolsListItem } from "@zulustation/sdk/dist/types";
+import { ZUL_BLUE_COLOR } from "lib/constants";
 import { calcSpotPrice } from "lib/math";
-import { isAssetZTG, PoolsListQuery } from "lib/types";
+import { isAssetZUL, PoolsListQuery } from "lib/types";
 import { getAssetIds } from "lib/util/market";
 import * as N from "lib/util/normalize";
 import { makeAutoObservable, runInAction } from "mobx";
@@ -172,7 +172,7 @@ export default class PoolsStore {
   ): Promise<CAsset[]> {
     const { pool } = marketStore;
     const assets: CAsset[] = [];
-    const ztgBalance = await this.store.getPoolBalance(pool, { ztg: null });
+    const zulBalance = await this.store.getPoolBalance(pool, { zul: null });
 
     //base weight is equal to the sum of all other assets
     const baseWeight = Number(pool.totalWeight) / 2;
@@ -180,8 +180,8 @@ export default class PoolsStore {
     for (const [token, weight] of pool.weights.unwrap().entries()) {
       // convert token to JSON / AssetId
       const assetId = token.toJSON() as AssetId;
-      // check if token is ZTG
-      const isZTG = isAssetZTG(assetId);
+      // check if token is ZUL
+      const isZUL = isAssetZUL(assetId);
       const assetWeight = weight.toNumber();
 
       const ids = getAssetIds(token);
@@ -190,12 +190,12 @@ export default class PoolsStore {
       const amount =
         ids != null
           ? (await this.store.getPoolBalance(pool, assetId)).toNumber()
-          : ztgBalance.toNumber();
+          : zulBalance.toNumber();
 
-      const price = isZTG
+      const price = isZUL
         ? 1
         : calcSpotPrice(
-            ztgBalance,
+            zulBalance,
             baseWeight,
             amount,
             assetWeight,
@@ -206,10 +206,10 @@ export default class PoolsStore {
       const marketOutcome = marketStore.getMarketOutcome(assetId);
 
       if (marketOutcome) {
-        const ticker = isZTG
+        const ticker = isZUL
           ? this.store.config.tokenSymbol
           : marketOutcome.metadata["ticker"];
-        const color = isZTG ? ZTG_BLUE_COLOR : marketOutcome.metadata["color"];
+        const color = isZUL ? ZUL_BLUE_COLOR : marketOutcome.metadata["color"];
 
         assets.push({
           id,

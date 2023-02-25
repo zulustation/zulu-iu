@@ -1,8 +1,8 @@
-import { parseAssetId } from "@zeitgeistpm/sdk-next";
+import { parseAssetId } from "@zulustation/sdk-next";
 import Decimal from "decimal.js";
 import AssetActionButtons from "components/assets/AssetActionButtons";
 import Table, { TableColumn, TableData } from "components/ui/Table";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import MarketStore from "lib/stores/MarketStore";
 import { useNavigationStore } from "lib/stores/NavigationStore";
 import { useStore } from "lib/stores/Store";
@@ -175,7 +175,7 @@ const MarketAssetDetails = observer(
         lastDispute?.outcome.asScalar.toString() ??
           market.report?.outcome.scalar,
       )
-        .div(ZTG)
+        .div(ZUL)
         .toString();
       if (market.scalarType === "date") {
         return moment(Number(reportVal)).format("YYYY-MM-DD HH:mm");
@@ -198,7 +198,7 @@ const MarketAssetDetails = observer(
       <div>
         {marketStore?.is("Disputed") && authReportNumberOrId != null && (
           <>
-            <div className="sub-header mt-ztg-40">Authorized Report</div>
+            <div className="sub-header mt-zul-40">Authorized Report</div>
             {marketStore.type === "categorical" ? (
               <Table
                 columns={columns}
@@ -214,7 +214,7 @@ const MarketAssetDetails = observer(
                 loadingNumber={1}
               />
             ) : (
-              <div className="font-mono font-bold text-ztg-18-150 mt-ztg-10">
+              <div className="font-mono font-bold text-zul-18-150 mt-zul-10">
                 {authReportNumberOrId}
               </div>
             )}
@@ -222,7 +222,7 @@ const MarketAssetDetails = observer(
         )}
         {marketStore?.is("Reported") && (
           <>
-            <div className="sub-header mt-ztg-40">Reported Outcome</div>
+            <div className="sub-header mt-zul-40">Reported Outcome</div>
             {marketStore.type === "categorical" ? (
               <Table
                 columns={columns}
@@ -230,7 +230,7 @@ const MarketAssetDetails = observer(
                 loadingNumber={1}
               />
             ) : (
-              <div className="font-mono font-bold text-ztg-18-150 mt-ztg-10 mb-[10px]">
+              <div className="font-mono font-bold text-zul-18-150 mt-zul-10 mb-[10px]">
                 {getReportedScalarOutcome()}
               </div>
             )}
@@ -238,7 +238,7 @@ const MarketAssetDetails = observer(
         )}
         {marketStore?.is("Disputed") && (
           <>
-            <div className="sub-header mt-ztg-40">Disputed Outcome</div>
+            <div className="sub-header mt-zul-40">Disputed Outcome</div>
             {marketStore.type === "categorical" ? (
               <Table
                 columns={columns}
@@ -246,7 +246,7 @@ const MarketAssetDetails = observer(
                 loadingNumber={1}
               />
             ) : (
-              <div className="font-mono font-bold text-ztg-18-150 mt-ztg-10 mb-[10px]">
+              <div className="font-mono font-bold text-zul-18-150 mt-zul-10 mb-[10px]">
                 {getReportedScalarOutcome()}
               </div>
             )}
@@ -254,7 +254,7 @@ const MarketAssetDetails = observer(
         )}
         {marketStore?.is("Resolved") ? (
           <>
-            <div className="sub-header mt-ztg-40">Winning Outcome</div>
+            <div className="sub-header mt-zul-40">Winning Outcome</div>
             {marketStore.type === "categorical" ? (
               <Table
                 columns={columns}
@@ -263,8 +263,8 @@ const MarketAssetDetails = observer(
               />
             ) : (
               market && (
-                <div className="font-mono font-bold text-ztg-18-150 mt-ztg-10">
-                  {new Decimal(market.resolvedOutcome).div(ZTG).toNumber()}
+                <div className="font-mono font-bold text-zul-18-150 mt-zul-10">
+                  {new Decimal(market.resolvedOutcome).div(ZUL).toNumber()}
                 </div>
               )
             )}

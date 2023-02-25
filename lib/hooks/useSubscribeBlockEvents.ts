@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { isRpcSdk } from "@zeitgeistpm/sdk-next";
+import { isRpcSdk } from "@zulustation/sdk-next";
 import { useEffect } from "react";
 import { accountAssetBalanceRootKey } from "./queries/useAccountAssetBalances";
 import { accountPoolAssetBalancesRootKey } from "./queries/useAccountPoolAssetBalances";
-import { ztgBalanceRootKey } from "./queries/useZtgBalance";
+import { zulBalanceRootKey } from "./queries/useZulBalance";
 import { useSdkv2 } from "./useSdkv2";
 
 export const useSubscribeBlockEvents = () => {
@@ -40,7 +40,7 @@ export const useSubscribeBlockEvents = () => {
             accountAssetBalanceRootKey,
             account,
           ]);
-          queryClient.invalidateQueries([id, ztgBalanceRootKey, account]);
+          queryClient.invalidateQueries([id, zulBalanceRootKey, account]);
         });
       });
     }

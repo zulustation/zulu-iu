@@ -5,7 +5,7 @@ import {
   isRpcSdk,
   Market,
   ScalarAssetId,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import ScalarReportBox from "components/outcomes/ScalarReportBox";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
 import { useModalStore } from "lib/stores/ModalStore";
@@ -82,7 +82,7 @@ const ReportButton = observer(
       <button
         onClick={handleClick}
         disabled={reportDisabled}
-        className="text-mariner font-semibold text-ztg-14-120"
+        className="text-mariner font-semibold text-zul-14-120"
       >
         Report Outcome
       </button>

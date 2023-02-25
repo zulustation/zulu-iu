@@ -1,11 +1,11 @@
 import Decimal from "decimal.js";
 import { gql, GraphQLClient } from "graphql-request";
 
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { IndexedMarketCardData } from "components/markets/market-card/index";
-import { MarketCreation } from "@zeitgeistpm/sdk/dist/types";
+import { MarketCreation } from "@zulustation/sdk/dist/types";
 import { MarketOutcome, MarketOutcomes } from "lib/types/markets";
-import { ScalarRangeType } from "@zeitgeistpm/sdk-next";
+import { ScalarRangeType } from "@zulustation/sdk-next";
 
 import { getCurrentPrediction } from "lib/util/assets";
 
@@ -152,7 +152,7 @@ const getFeaturedMarkets = async (
         creation: market.creation,
         img: market.img,
         prediction: prediction,
-        volume: new Decimal(pool.volume).div(ZTG).toNumber(),
+        volume: new Decimal(pool.volume).div(ZUL).toNumber(),
         baseAsset: pool.baseAsset,
         outcomes: marketCategories,
         pool: market.pool,

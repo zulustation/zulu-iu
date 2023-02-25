@@ -13,14 +13,14 @@ interface EndTypeSwitchProps {
 
 const EndTypeSwitch: FC<EndTypeSwitchProps> = ({ selected, onChange }) => {
   const optionBaseCls =
-    "w-ztg-123 rounded-full h-ztg-24 flex items-center cursor-pointer font-medium";
+    "w-zul-123 rounded-full h-zul-24 flex items-center cursor-pointer font-medium";
   const optionNonActiveCls = "text-sky-600";
   const optionActiveCls = "bg-white dark:bg-black text-black dark:text-white";
 
   return (
     <div
-      className={`flex h-ztg-40 items-center w-ztg-275 px-ztg-10
-        rounded-full justify-between mr-ztg-27 bg-mid-content-lt dark:bg-sky-1000`}
+      className={`flex h-zul-40 items-center w-zul-275 px-zul-10
+        rounded-full justify-between mr-zul-27 bg-mid-content-lt dark:bg-sky-1000`}
     >
       {["timestamp", "block"].map((type: EndType, idx) => {
         const active = type === selected;
@@ -34,7 +34,7 @@ const EndTypeSwitch: FC<EndTypeSwitchProps> = ({ selected, onChange }) => {
             data-test={`${type}Button`}
           >
             <div className="center w-full">
-              <span className="text-ztg-14-150" data-test="marketEndTypeSwitch">
+              <span className="text-zul-14-150" data-test="marketEndTypeSwitch">
                 {type === "timestamp" ? "End Date" : "Endblock"}
               </span>
             </div>
@@ -74,7 +74,7 @@ const EndField: FC<EndFieldProps> = observer(
 
     return (
       <div
-        className={`flex flex-wrap gap-y-ztg-10	${className}`}
+        className={`flex flex-wrap gap-y-zul-10	${className}`}
         data-test="marketEndField"
       >
         <EndTypeSwitch selected={endType} onChange={onEndTypeChange} />
@@ -86,7 +86,7 @@ const EndField: FC<EndFieldProps> = observer(
               form={form}
               type="number"
               name={blockNumberFieldName}
-              className="w-ztg-275"
+              className="w-zul-275"
               min={blockNumber}
               step={1}
               onChange={(e) => {

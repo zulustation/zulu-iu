@@ -3,8 +3,8 @@ import {
   AccountBalanceOrderByInput,
   AccountBalancesQuery,
   AccountBalanceWhereInput,
-} from "@zeitgeistpm/indexer";
-import { isIndexedSdk } from "@zeitgeistpm/sdk-next";
+} from "@zulustation/indexer";
+import { isIndexedSdk } from "@zulustation/sdk-next";
 import { useSdkv2 } from "../useSdkv2";
 
 export const rootKey = "account-token-positions";

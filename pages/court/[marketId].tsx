@@ -73,14 +73,14 @@ const JurorsTable = ({
 const CaseSummary = ({ courtCase }: { courtCase: Case }) => {
   return (
     <div className="flex w-full">
-      <div className="flex justify-between bg-sky-100 dark:bg-black p-ztg-15 rounded-ztg-10 w-full mr-ztg-10">
-        <span className="bg-sky-300 dark:bg-sky-700 rounded-ztg-50 font-bold text-ztg-14-120 p-ztg-6">
+      <div className="flex justify-between bg-sky-100 dark:bg-black p-zul-15 rounded-zul-10 w-full mr-zul-10">
+        <span className="bg-sky-300 dark:bg-sky-700 rounded-zul-50 font-bold text-zul-14-120 p-zul-6">
           Jurors
         </span>
         <span className="font-mono font-bold">{courtCase?.jurors.length}</span>
       </div>
-      <div className="flex justify-between bg-sky-100 dark:bg-black p-ztg-15 rounded-ztg-10 w-full mr-ztg-10">
-        <span className="bg-sky-300 dark:bg-sky-700 rounded-ztg-50 font-bold text-ztg-14-120 p-ztg-6">
+      <div className="flex justify-between bg-sky-100 dark:bg-black p-zul-15 rounded-zul-10 w-full mr-zul-10">
+        <span className="bg-sky-300 dark:bg-sky-700 rounded-zul-50 font-bold text-zul-14-120 p-zul-6">
           Votes
         </span>
         <span className="font-mono font-bold">{courtCase?.votes.length}</span>
@@ -119,17 +119,17 @@ const Court: NextPage = observer(() => {
     <section>
       <CourtHeader />
       <button
-        className=" text-ztg-16-150 text-sky-600"
+        className=" text-zul-16-150 text-sky-600"
         onClick={handleBackClick}
       >
         Back to Cases
       </button>
 
-      <h2 className="header my-ztg-23">{marketStore?.slug}</h2>
-      <p className=" text-ztg-16-150 mb-ztg-20">{marketStore?.description}</p>
+      <h2 className="header my-zul-23">{marketStore?.slug}</h2>
+      <p className=" text-zul-16-150 mb-zul-20">{marketStore?.description}</p>
       <CaseSummary courtCase={courtCase} />
       {courtCase.endTimestamp - new Date().getTime() > 0 ? (
-        <div className="my-ztg-20 ml-ztg-10">
+        <div className="my-zul-20 ml-zul-10">
           <ProgressReport
             title="Voting started"
             description="Waiting for voting period to end"
@@ -153,9 +153,9 @@ const Court: NextPage = observer(() => {
       ) : (
         <></>
       )}
-      <div className=" text-ztg-16-150 mt-ztg-20 font-bold">Outcomes</div>
+      <div className=" text-zul-16-150 mt-zul-20 font-bold">Outcomes</div>
       <OutcomesTable marketStore={marketStore} courtCase={courtCase} />
-      <div className=" text-ztg-16-150 mt-ztg-20 font-bold">Jurors</div>
+      <div className=" text-zul-16-150 mt-zul-20 font-bold">Jurors</div>
       <JurorsTable courtCase={courtCase} marketStore={marketStore} />
     </section>
   );

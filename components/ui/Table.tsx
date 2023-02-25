@@ -14,7 +14,7 @@ import { ChartData } from "./TimeSeriesChart";
 import Avatar from "./Avatar";
 import { range } from "lodash";
 import { useIsOnScreen } from "lib/hooks/useIsOnScreen";
-import { useZtgInfo } from "lib/hooks/queries/useZtgInfo";
+import { useZulInfo } from "lib/hooks/queries/useZulInfo";
 
 interface TableProps {
   data: TableData[];
@@ -121,16 +121,16 @@ const Cell = observer(
     value: string | number | CurrencyData;
     onClick?: () => void;
   }) => {
-    const { data: ztgInfo } = useZtgInfo();
+    const { data: zulInfo } = useZulInfo();
 
-    const base = `dark:text-white px-ztg-15 h-ztg-72 ${
+    const base = `dark:text-white px-zul-15 h-zul-72 ${
       onClick ? "cursor-pointer" : ""
     }`;
     const style = { height: `${rowHeight}px` };
     if (value == null) {
       return (
         <td
-          className={`font-semibold text-ztg-12-150 ${base}`}
+          className={`font-semibold text-zul-12-150 ${base}`}
           onClick={onClick}
           style={style}
         >
@@ -144,7 +144,7 @@ const Cell = observer(
       case "text":
         return (
           <td
-            className={`text-ztg-14-150 ${base}`}
+            className={`text-zul-14-150 ${base}`}
             data-test="outcomeText"
             onClick={onClick}
             style={style}
@@ -155,7 +155,7 @@ const Cell = observer(
       case "number":
         return (
           <td
-            className={`font-semibold text-ztg-12-150 ${base}`}
+            className={`font-semibold text-zul-12-150 ${base}`}
             onClick={onClick}
             style={style}
           >
@@ -189,7 +189,7 @@ const Cell = observer(
       case "paragraph":
         return (
           <td
-            className={` font-semibold text-ztg-12-150 text-left ${base}`}
+            className={` font-semibold text-zul-12-150 text-left ${base}`}
             onClick={onClick}
             style={style}
           >
@@ -200,13 +200,13 @@ const Cell = observer(
         if (isCurrencyData(value)) {
           return (
             <td className={`${base} `} onClick={onClick} style={style}>
-              <div className="text-ztg-14-150 font-mediun mb-[2px]">
+              <div className="text-zul-14-150 font-mediun mb-[2px]">
                 {formatNumberLocalized(value.value)}
               </div>
-              <div className="text-ztg-12-150 font-light text-sky-600">
+              <div className="text-zul-12-150 font-light text-sky-600">
                 $
                 {(
-                  (value.usdValue || ztgInfo?.price.toNumber()) * value.value
+                  (value.usdValue || zulInfo?.price.toNumber()) * value.value
                 ).toFixed(2)}
               </div>
             </td>
@@ -217,7 +217,7 @@ const Cell = observer(
           <td className={` ${base}`} onClick={onClick} style={style}>
             <div className="flex items-center">
               <Avatar address={typeof value === "string" ? value : ""} />
-              <div className="font-semibold text-ztg-12-150 ml-ztg-10">
+              <div className="font-semibold text-zul-12-150 ml-zul-10">
                 {typeof value === "string" ? value : ""}
               </div>
             </div>
@@ -229,11 +229,11 @@ const Cell = observer(
             <td className={` ${base}`} onClick={onClick} style={style}>
               <div className="flex items-center">
                 <div
-                  className="rounded-full w-ztg-20 h-ztg-20 mr-ztg-10 border-sky-600 border-2"
+                  className="rounded-full w-zul-20 h-zul-20 mr-zul-10 border-sky-600 border-2"
                   style={{ background: value.color }}
                 ></div>
                 <div
-                  className="font-semibold text-ztg-16-150 uppercase"
+                  className="font-semibold text-zul-16-150 uppercase"
                   data-test="tokenText"
                 >
                   {value.label}
@@ -248,11 +248,11 @@ const Cell = observer(
             <td className={` ${base}`} onClick={onClick} style={style}>
               <div className="flex items-center">
                 <img
-                  className="rounded-ztg-5 w-ztg-40 h-ztg-40 mr-ztg-10"
+                  className="rounded-zul-5 w-zul-40 h-zul-40 mr-zul-10"
                   src={value.url}
                   loading="lazy"
                 />
-                <span className="font-semibold text-ztg-10-150 text-sky-600 uppercase">
+                <span className="font-semibold text-zul-10-150 text-sky-600 uppercase">
                   {value.label}
                 </span>
               </div>
@@ -262,7 +262,7 @@ const Cell = observer(
       case "percentage":
         return (
           <td
-            className={`text-ztg-14-150 ${base}`}
+            className={`text-zul-14-150 ${base}`}
             onClick={onClick}
             style={style}
           >
@@ -273,12 +273,12 @@ const Cell = observer(
         if (isAmountInput(value)) {
           return (
             <td
-              className={`font-mono text-ztg-14-150 font-semibold ${base}`}
+              className={`font-mono text-zul-14-150 font-semibold ${base}`}
               onClick={onClick}
               style={style}
             >
               <AmountInput
-                className="h-ztg-40 w-full rounded-ztg-5 bg-sky-200 !pr-ztg-8 dark:bg-sky-800"
+                className="h-zul-40 w-full rounded-zul-5 bg-sky-200 !pr-zul-8 dark:bg-sky-800"
                 value={value.value}
                 onChange={value.onChange}
                 min={value.min}
@@ -335,7 +335,7 @@ const Table = observer(
 
     const getHeaderClass = (column: TableColumn) => {
       const base =
-        "px-ztg-15 text-sky-600 font-semibold text-ztg-12-150 text-left";
+        "px-zul-15 text-sky-600 font-semibold text-zul-12-150 text-left";
 
       if (column.alignment) {
         return `${column.alignment} ${base}`;
@@ -393,7 +393,7 @@ const Table = observer(
               <Skeleton
                 key={index}
                 height={120}
-                className="!-mb-ztg-40 !rounded-ztg-10"
+                className="!-mb-zul-40 !rounded-zul-10"
               />
             ))}
           </div>
@@ -436,7 +436,7 @@ const Table = observer(
                               role="button"
                               onClick={handleSortClick}
                               size={14}
-                              className="ml-ztg-8 cursor-pointer"
+                              className="ml-zul-8 cursor-pointer"
                             />
                           ) : (
                             <></>
@@ -458,7 +458,7 @@ const Table = observer(
                         key={row.id}
                         className={`
                     ${rowColorClass}
-                    ${onRowClick ? "cursor-pointer" : ""} mx-ztg-5`}
+                    ${onRowClick ? "cursor-pointer" : ""} mx-zul-5`}
                         onClick={() => handleRowClick(row)}
                       >
                         {row.cells.map((cell, index) => {
@@ -488,14 +488,14 @@ const Table = observer(
                     <Skeleton
                       key={index}
                       height={80}
-                      className="!transform-none block !mb-ztg-16 !rounded-ztg-10"
+                      className="!transform-none block !mb-zul-16 !rounded-zul-10"
                     />
                   ))}
               </div>
 
               {!loadingMore && rows.length === 0 ? (
                 <div className="w-full flex justify-center">
-                  <div className="text-ztg-16-120 font-bold mt-ztg-60">
+                  <div className="text-zul-16-120 font-bold mt-zul-60">
                     {noDataMessage}
                   </div>
                 </div>
@@ -511,9 +511,9 @@ const Table = observer(
             )}
 
             {onLoadMore && !hideLoadMore && (
-              <div className="flex justify-center mt-ztg-16 mb-ztg-20">
+              <div className="flex justify-center mt-zul-16 mb-zul-20">
                 <div
-                  className="uppercase  text-sky-600 font-bold text-ztg-10-150"
+                  className="uppercase  text-sky-600 font-bold text-zul-10-150"
                   role="button"
                   onClick={handleLoadMore}
                 >

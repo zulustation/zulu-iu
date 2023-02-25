@@ -48,7 +48,7 @@ export const HeroControls: FC<HeroControlsProps> = ({
           setAnimate(true);
           moveSlider("prev", currentSlide, setCurrentSlide, slidesLength);
         }}
-        className={`bg-black border border-white flex items-center justify-center w-[40px] h-[40px] rounded-full ztg-transition`}
+        className={`bg-black border border-white flex items-center justify-center w-[40px] h-[40px] rounded-full zul-transition`}
       >
         <ChevronRight className="text-white relative left-[1px]" />
       </button>

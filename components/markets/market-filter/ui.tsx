@@ -1,7 +1,7 @@
 export const ClearAllBtn = ({ clear }) => {
   return (
     <button
-      className="flex px-ztg-10 py-ztg-5 bg-white rounded-ztg-5 text-black text-ztg-14-150 border-gray-800 border"
+      className="flex px-zul-10 py-zul-5 bg-white rounded-zul-5 text-black text-zul-14-150 border-gray-800 border"
       onClick={clear}
     >
       Clear All

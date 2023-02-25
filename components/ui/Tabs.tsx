@@ -27,7 +27,7 @@ const Tabs: FC<HTMLProps<HTMLDivElement> & TabsProps> = observer(
             return (
               <div key={`drawerTab${idx}`} className={`w-full`}>
                 <div
-                  className={`text-ztg-14-150 font-bold h-ztg-40 center w-full cursor-pointer ${textColor}`}
+                  className={`text-zul-14-150 font-bold h-zul-40 center w-full cursor-pointer ${textColor}`}
                   onMouseDown={() => {
                     onTabChange && onTabChange(idx);
                   }}
@@ -38,7 +38,7 @@ const Tabs: FC<HTMLProps<HTMLDivElement> & TabsProps> = observer(
             );
           })}
         </div>
-        <div className="mx-ztg-28">
+        <div className="mx-zul-28">
           <motion.div
             variants={variants}
             animate={active === 0 ? "left" : "right"}

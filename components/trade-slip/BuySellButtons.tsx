@@ -2,7 +2,7 @@ import {
   AssetId,
   IOCategoricalAssetId,
   IOScalarAssetId,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import { useTradeslipItems } from "lib/state/tradeslip/items";
 import { useStore } from "lib/stores/Store";
 import { observer } from "mobx-react";
@@ -84,7 +84,7 @@ const TradeButton: FC<{
   type: "buy" | "sell";
 }> = observer(({ onClick, active, type, children, disabled = false }) => {
   const defaultClass =
-    "rounded-full h-ztg-20  text-ztg-10-150 w-ztg-47 font-normal flex items-center justify-center focus:outline-none border-2";
+    "rounded-full h-zul-20  text-zul-10-150 w-zul-47 font-normal flex items-center justify-center focus:outline-none border-2";
 
   const classes = useMemo(() => {
     if (disabled) {

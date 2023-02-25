@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 import { useRouter } from "next/router";
 import { ReactFragment, useEffect, useMemo, useState } from "react";
 import { useTradeslipItems } from "lib/state/tradeslip/items";
-import { useZtgInfo } from "lib/hooks/queries/useZtgInfo";
+import { useZulInfo } from "lib/hooks/queries/useZulInfo";
 
 import ExchangeBox from "../exchange/ExchangeBox";
 import LiquidityPoolsBox from "../liquidity/LiquidityPoolsBox";
@@ -15,27 +15,27 @@ import TradeSlip from "../trade-slip";
 import Tabs from "../ui/Tabs";
 import Drawer from "./Drawer";
 
-const ZTGSummary = observer(() => {
-  const { data: ztgInfo } = useZtgInfo();
+const ZULSummary = observer(() => {
+  const { data: zulInfo } = useZulInfo();
 
   return (
-    <div className="flex px-ztg-28 items-center ">
-      <div className=" flex items-center justify-center rounded-ztg-10 flex-shrink-0 mb-auto mt-ztg-5">
-        <img src="/icons/ZTG.svg" alt="logo" />
+    <div className="flex px-zul-28 items-center ">
+      <div className=" flex items-center justify-center rounded-zul-10 flex-shrink-0 mb-auto mt-zul-5">
+        <img src="/icons/ZUL.svg" alt="logo" />
       </div>
 
-      <div className="flex flex-col ml-ztg-12 mr-ztg-6">
-        <div className=" text-ztg-16-150 font-bold text-sky-1100 dark:text-white">
-          ZTG
+      <div className="flex flex-col ml-zul-12 mr-zul-6">
+        <div className=" text-zul-16-150 font-bold text-sky-1100 dark:text-white">
+          ZUL
         </div>
-        <div className=" text-ztg-12-150 text-sky-600 w-ztg-90 ">Zeitgeist</div>
+        <div className=" text-zul-12-150 text-sky-600 w-zul-90 ">Zeitgeist</div>
       </div>
-      {ztgInfo ? (
+      {zulInfo ? (
         <>
-          <div className="bg-white dark:bg-sky-700 dark:text-white font-mono px-ztg-12 py-ztg-6 rounded-full text-ztg-12-120 text-center whitespace-nowrap mr-ztg-12">
-            = ${ztgInfo?.price.toFixed(2) ?? 0}
+          <div className="bg-white dark:bg-sky-700 dark:text-white font-mono px-zul-12 py-zul-6 rounded-full text-zul-12-120 text-center whitespace-nowrap mr-zul-12">
+            = ${zulInfo?.price.toFixed(2) ?? 0}
           </div>
-          <PercentageChange change={ztgInfo?.change.toFixed(0) ?? "0"} />
+          <PercentageChange change={zulInfo?.change.toFixed(0) ?? "0"} />
         </>
       ) : (
         <></>
@@ -50,7 +50,7 @@ const Box = observer(
   ({ mode, tabIndex }: { mode: DisplayMode; tabIndex: number }) => {
     const withSpacing = (children: ReactFragment) => {
       return (
-        <div className="px-ztg-28 mt-ztg-20 overflow-auto">{children}</div>
+        <div className="px-zul-28 mt-zul-20 overflow-auto">{children}</div>
       );
     };
     const exchangeStore = useExchangeStore();
@@ -115,32 +115,32 @@ const RightDrawer = observer(() => {
   return (
     <Drawer
       side="right"
-      className="bg-sky-100 !fixed sm:!block right-0 z-ztg-10 w-0"
+      className="bg-sky-100 !fixed sm:!block right-0 z-zul-10 w-0"
     >
       <div className="h-full">
-        <div className="mt-ztg-10 h-full flex flex-col">
-          <ZTGSummary />
+        <div className="mt-zul-10 h-full flex flex-col">
+          <ZULSummary />
           {tabLabels ? (
             <Tabs
               labels={tabLabels}
               active={activeTabIndex}
               onTabChange={setActiveTabIndex}
-              className="mt-ztg-25 px-ztg-28"
+              className="mt-zul-25 px-zul-28"
             />
           ) : (
             <></>
           )}
           <Box tabIndex={activeTabIndex} mode={displayMode} />
           <div className="mt-auto" />
-          <div className="p-ztg-28 pt-0">
+          <div className="p-zul-28 pt-0">
             <button
-              className="border-solid border-1 border-sky-600 rounded-ztg-10 flex flex-row h-ztg-64 w-full items-center"
+              className="border-solid border-1 border-sky-600 rounded-zul-10 flex flex-row h-zul-64 w-full items-center"
               onClick={() => window.open("https://discord.gg/xv8HuA4s8v")}
             >
               <div className="w-1/4 flex justify-center items-center">
-                <img src="/support.png" className="w-ztg-18 h-ztg-18" />
+                <img src="/support.png" className="w-zul-18 h-zul-18" />
               </div>
-              <p className="font-bold text-sky-600  text-ztg-16-150">
+              <p className="font-bold text-sky-600  text-zul-16-150">
                 Feedback and Support
               </p>
             </button>

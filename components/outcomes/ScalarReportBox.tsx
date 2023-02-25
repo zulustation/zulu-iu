@@ -3,11 +3,11 @@ import {
   IndexerContext,
   isRpcSdk,
   Market,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import { AmountInput, DateTimeInput } from "components/ui/inputs";
 import TransactionButton from "components/ui/TransactionButton";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
 import { useNotificationStore } from "lib/stores/NotificationStore";
 import { useStore } from "lib/stores/Store";
@@ -52,7 +52,7 @@ const ScalarReportBox = observer(
 
     const handleSignTransaction = async () => {
       const outcomeReport: any = {
-        scalar: new Decimal(scalarReportValue).mul(ZTG).toFixed(0),
+        scalar: new Decimal(scalarReportValue).mul(ZUL).toFixed(0),
       };
       const signer = wallets.getActiveSigner();
 
@@ -111,7 +111,7 @@ const ScalarReportBox = observer(
           />
         )}
         <TransactionButton
-          className="my-ztg-10 shadow-ztg-2"
+          className="my-zul-10 shadow-zul-2"
           onClick={handleSignTransaction}
           disabled={reportDisabled}
         >

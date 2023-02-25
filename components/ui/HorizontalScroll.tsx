@@ -29,14 +29,14 @@ const HorizontalScroll: FC<HorizontalScrollProps> = ({
       {link && (
         <Link
           href={link}
-          className="leading-[40px] rounded-ztg-100 text-ztg-14-150 bg-mystic px-[15px] text-center w-full sm:w-fit"
+          className="leading-[40px] rounded-zul-100 text-zul-14-150 bg-mystic px-[15px] text-center w-full sm:w-fit"
         >
           {cta}
         </Link>
       )}
       <button
         onClick={handleLeftClick}
-        className={`hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full ml-[12px] mr-[8px] ztg-transition ${
+        className={`hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full ml-[12px] mr-[8px] zul-transition ${
           leftDisabled
             ? "bg-sky-600 opacity-30 text-pastel-blue"
             : "bg-pastel-blue text-white"
@@ -47,7 +47,7 @@ const HorizontalScroll: FC<HorizontalScrollProps> = ({
       </button>
       <button
         onClick={handleRightClick}
-        className={`hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full ztg-transition  ${
+        className={`hidden md:flex items-center justify-center w-[40px] h-[40px] rounded-full zul-transition  ${
           rightDisabled
             ? "bg-sky-600 opacity-30 text-pastel-blue"
             : "bg-pastel-blue text-white"

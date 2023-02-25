@@ -1,6 +1,6 @@
 import Table, { TableColumn, TableData } from "components/ui/Table";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { useAccountBonds } from "lib/hooks/queries/useAccountBonds";
 import MarketPositionHeader from "./MarketPositionHeader";
 
@@ -16,7 +16,7 @@ const columns: TableColumn[] = [
     type: "address",
   },
   {
-    header: "Value(ZTG)",
+    header: "Value(ZUL)",
     accessor: "value",
     type: "currency",
   },
@@ -45,7 +45,7 @@ const BondsTable = ({ address }: { address: string }) => {
                 type: "Creation",
                 responsible: market.bonds.creation.who,
                 value: {
-                  value: new Decimal(market.bonds.creation.value).div(ZTG),
+                  value: new Decimal(market.bonds.creation.value).div(ZUL),
                   usdValue: 0,
                 },
                 settled:
@@ -55,7 +55,7 @@ const BondsTable = ({ address }: { address: string }) => {
                 type: "Oracle",
                 responsible: market.bonds.oracle.who,
                 value: {
-                  value: new Decimal(market.bonds.oracle.value).div(ZTG),
+                  value: new Decimal(market.bonds.oracle.value).div(ZUL),
                   usdValue: 0,
                 },
                 settled: market.bonds.oracle.isSettled === true ? "Yes" : "No",

@@ -11,7 +11,7 @@ const CostRow = ({
   cost: string;
 }) => {
   return (
-    <div className="flex text-ztg-12-150">
+    <div className="flex text-zul-12-150">
       <div className="">
         <div>{title}</div>
         {description && <div className="text-sky-600">{description}</div>}

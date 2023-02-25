@@ -8,7 +8,7 @@ const Control = ({ children, ...rest }) => {
   const { innerProps } = rest;
   const { onMouseDown } = innerProps;
   return (
-    <div className="flex px-ztg-16" onMouseDown={onMouseDown}>
+    <div className="flex px-zul-16" onMouseDown={onMouseDown}>
       {children}
     </div>
   );
@@ -20,7 +20,7 @@ const Menu = (props) => {
 };
 
 const ValueContainer = ({ children }) => {
-  return <div className="flex h-ztg-40 w-full mb-ztg-12">{children}</div>;
+  return <div className="flex h-zul-40 w-full mb-zul-12">{children}</div>;
 };
 
 const cleanCommonProps = (props: any): any => {
@@ -48,15 +48,15 @@ const Input = (props) => {
     cleanCommonProps(props);
 
   return (
-    <div className="flex h-ztg-40 p-ztg-8 w-full rounded-ztg-5 bg-sky-200 dark:bg-black">
-      <Search size={24} className="text-sky-600 mr-ztg-10" />
+    <div className="flex h-zul-40 p-zul-8 w-full rounded-zul-5 bg-sky-200 dark:bg-black">
+      <Search size={24} className="text-sky-600 mr-zul-10" />
       <input
         {...innerProps}
         type="text"
         ref={innerRef}
         onBlur={() => {}}
         placeholder="Search by Name"
-        className="bg-transparent focus:outline-none text-sky-600  text-ztg-14-120"
+        className="bg-transparent focus:outline-none text-sky-600  text-zul-14-120"
       />
     </div>
   );
@@ -82,7 +82,7 @@ const Option = observer(({ innerProps, label, data, isSelected }) => {
   const { color, marketSlug, balance } = data;
 
   const baseClass =
-    "h-ztg-62 px-ztg-16 flex flex-col cursor-pointer pb-ztg-5 mb-ztg-5 dark:hover:bg-sky-700 hover:bg-sky-100";
+    "h-zul-62 px-zul-16 flex flex-col cursor-pointer pb-zul-5 mb-zul-5 dark:hover:bg-sky-700 hover:bg-sky-100";
 
   return (
     <div
@@ -91,18 +91,18 @@ const Option = observer(({ innerProps, label, data, isSelected }) => {
       }`}
       {...innerProps}
     >
-      <div className="h-ztg-15  font-bold text-ztg-10-150 flex items-center text-sky-600 mt-ztg-5 uppercase">
+      <div className="h-zul-15  font-bold text-zul-10-150 flex items-center text-sky-600 mt-zul-5 uppercase">
         {marketSlug}
       </div>
-      <div className="flex h-ztg-36 items-center">
+      <div className="flex h-zul-36 items-center">
         <div
-          className="h-ztg-20 w-ztg-20 border-2 border-sky-600 rounded-full mr-ztg-8"
+          className="h-zul-20 w-zul-20 border-2 border-sky-600 rounded-full mr-zul-8"
           style={{ background: `${color}` }}
         ></div>
-        <div className=" h-ztg-20 flex items-center font-bold dark:text-white">
+        <div className=" h-zul-20 flex items-center font-bold dark:text-white">
           {label}
         </div>
-        <div className="h-ztg-20 flex items-center font-mono text-ztg-12-120 ml-auto text-sky-600">
+        <div className="h-zul-20 flex items-center font-mono text-zul-12-120 ml-auto text-sky-600">
           {balance || "--"}
         </div>
       </div>
@@ -144,11 +144,11 @@ const AssetSelectView: FC<AssetSelectViewProps> = ({
   return (
     <>
       <div
-        className="cursor-pointer flex items-center h-ztg-25 my-ztg-6 px-ztg-16"
+        className="cursor-pointer flex items-center h-zul-25 my-zul-6 px-zul-16"
         onClick={() => onBack()}
       >
-        <ArrowLeft size={16} className="mr-ztg-10 text-sky-600" />
-        <div className=" text-ztg-14-150 text-sky-600 font-bold">
+        <ArrowLeft size={16} className="mr-zul-10 text-sky-600" />
+        <div className=" text-zul-14-150 text-sky-600 font-bold">
           Select Token
         </div>
       </div>

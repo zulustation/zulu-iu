@@ -48,7 +48,7 @@ export const slidesData = [
   // {
   //   id: 3,
   //   title: {
-  //     text: "ZTG is now traded on DEXs",
+  //     text: "ZUL is now traded on DEXs",
   //     styles: "text-white text-3xl sm:text-4xl md:text-6xl",
   //   },
   //   bg: "/carousel/slide-3.jpeg",

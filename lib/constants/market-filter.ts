@@ -28,8 +28,8 @@ export const marketTagFilterOptions: MarketTagFilter[] = defaultTags.map(
 export const marketCurrencyFilterOptions: MarketCurrencyFilter[] = [
   {
     type: "currency",
-    value: "Ztg",
-    label: "ZTG",
+    value: "Zul",
+    label: "ZUL",
   },
 ];
 

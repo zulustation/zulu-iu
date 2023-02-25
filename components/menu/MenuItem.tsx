@@ -57,11 +57,11 @@ export const MenuItem: FC<MenuItemProps> = observer(
     const store = useStore();
 
     const classes = useMemo(() => {
-      return `flex flex-row h-ztg-56 items-center cursor-pointer
+      return `flex flex-row h-zul-56 items-center cursor-pointer
       ${
         store.leftDrawerClosed === true
           ? "justify-center"
-          : "py-ztg-16 px-ztg-11"
+          : "py-zul-16 px-zul-11"
       }
     `;
     }, [store.leftDrawerClosed]);
@@ -72,23 +72,23 @@ export const MenuItem: FC<MenuItemProps> = observer(
           className={`${classes} ${className} ${
             active
               ? "bg-border-dark text-white dark:bg-sky-1100 font-bold"
-              : "ztg-transition text-sky-600 hover:text-white"
+              : "zul-transition text-sky-600 hover:text-white"
           } 
-           rounded-ztg-10 
-          mx-ztg-20
+           rounded-zul-10 
+          mx-zul-20
           `}
           onClick={onClick}
         >
-          <div className="center w-ztg-34">
+          <div className="center w-zul-34">
             <IconComponent
               size={24}
-              className={`p-ztg-2 rounded-ztg-5 ${
-                active ? "bg-ztg-blue text-white" : ""
+              className={`p-zul-2 rounded-zul-5 ${
+                active ? "bg-zul-blue text-white" : ""
               }`}
             />
           </div>
           <div
-            className={`text-ztg-16-150  ml-ztg-15 ${hideLabel ? "hidden" : ""}
+            className={`text-zul-16-150  ml-zul-15 ${hideLabel ? "hidden" : ""}
             ${open ? "text-black dark:text-white" : ""}`}
           >
             {textLabel}

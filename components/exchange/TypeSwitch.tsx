@@ -5,7 +5,7 @@ const TypeSwitch: FC<{
   onChange: (type: "buy" | "sell") => void;
 }> = ({ type, onChange }) => {
   const base =
-    "w-ztg-53  text-ztg-14-120 font-bold items-center cursor-pointer text-sky-600";
+    "w-zul-53  text-zul-14-120 font-bold items-center cursor-pointer text-sky-600";
 
   const activeClass = "text-sunglow-2";
 

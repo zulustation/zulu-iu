@@ -5,7 +5,7 @@ const spacings = [...new Array(101)]
   .reduce((prev, val) => {
     return {
       ...prev,
-      [`ztg-${val}`]: `${val}px`,
+      [`zul-${val}`]: `${val}px`,
     };
   }, {});
 
@@ -14,7 +14,7 @@ const zIndexes = [...new Array(51)]
   .reduce((prev, val) => {
     return {
       ...prev,
-      [`ztg-${val}`]: val,
+      [`zul-${val}`]: val,
     };
   }, {});
 
@@ -89,20 +89,20 @@ module.exports = {
       },
       borderRadius: {
         // NEW
-        "ztg-5": "5px",
-        "ztg-10": "10px",
-        "ztg-12": "12px",
-        "ztg-50": "50px",
-        "ztg-100": "100px",
+        "zul-5": "5px",
+        "zul-10": "10px",
+        "zul-12": "12px",
+        "zul-50": "50px",
+        "zul-100": "100px",
       },
       boxShadow: {
         // NEW
-        "ztg-1": "0px 4px 10px rgba(0, 0, 0, 0.1)",
-        "ztg-2":
+        "zul-1": "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        "zul-2":
           "0px 12.5216px 10.0172px rgba(0, 1, 254, 0.14), 0px 4.5288px 3.62304px rgba(0, 1, 254, 0.0975551)",
-        "ztg-3": "10px 30px 80px rgba(0, 1, 254, 0.5)",
-        "ztg-4": "0px 0px 80px #3A475A",
-        "ztg-5":
+        "zul-3": "10px 30px 80px rgba(0, 1, 254, 0.5)",
+        "zul-4": "0px 0px 80px #3A475A",
+        "zul-5":
           "0px 126px 50px rgba(0, 0, 0, 0.01), 0px 71px 43px rgba(0, 0, 0, 0.05), 0px 32px 32px rgba(0, 0, 0, 0.09), 0px 8px 17px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);",
       },
       fontSize: {
@@ -110,22 +110,22 @@ module.exports = {
         xxs: ["0.5625rem", "0.75rem"],
 
         // NEW
-        "ztg-10-150": ["0.625rem", "1.5"],
-        "ztg-10-180": ["0.625rem", "1.8"],
-        "ztg-12-120": ["0.75rem", "1.2"],
-        "ztg-12-150": ["0.75rem", "1.5"],
-        "ztg-14-110": ["0.875rem", "1.1"],
-        "ztg-14-120": ["0.875rem", "1.2"],
-        "ztg-14-150": ["0.875rem", "1.5"],
-        "ztg-14-165": ["0.875rem", "1.65"],
-        "ztg-14-180": ["0.875rem", "1.8"],
-        "ztg-16-150": ["1rem", "1.5"],
-        "ztg-18-150": ["1.125rem", "1.5"],
-        "ztg-19-120": ["1.1875rem", "1.2"],
-        "ztg-20-150": ["1.25rem", "1.5"],
-        "ztg-22-120": ["1.375rem", "1.2"],
-        "ztg-28-120": ["1.75rem", "1.2"],
-        "ztg-64-120": ["4rem", "1.2"],
+        "zul-10-150": ["0.625rem", "1.5"],
+        "zul-10-180": ["0.625rem", "1.8"],
+        "zul-12-120": ["0.75rem", "1.2"],
+        "zul-12-150": ["0.75rem", "1.5"],
+        "zul-14-110": ["0.875rem", "1.1"],
+        "zul-14-120": ["0.875rem", "1.2"],
+        "zul-14-150": ["0.875rem", "1.5"],
+        "zul-14-165": ["0.875rem", "1.65"],
+        "zul-14-180": ["0.875rem", "1.8"],
+        "zul-16-150": ["1rem", "1.5"],
+        "zul-18-150": ["1.125rem", "1.5"],
+        "zul-19-120": ["1.1875rem", "1.2"],
+        "zul-20-150": ["1.25rem", "1.5"],
+        "zul-22-120": ["1.375rem", "1.2"],
+        "zul-28-120": ["1.75rem", "1.2"],
+        "zul-64-120": ["4rem", "1.2"],
       },
       backgroundImage: (theme) => ({
         "rectangle-red": "url('/kusama-derby/rectangle-red.svg')",
@@ -195,7 +195,7 @@ module.exports = {
         "light-gray": "#F5F5F5",
         efefef: "#EFEFEF",
         //finalised proto colour pallet
-        "ztg-blue": "#0001FE",
+        "zul-blue": "#0001FE",
         "laser-lemon": "#F7FF58",
         sunglow: "#FFD23F",
         "sunglow-2": "#FAB400",
@@ -255,28 +255,28 @@ module.exports = {
         "42%": "42%",
 
         // NEW
-        "ztg-88": "88px",
-        "ztg-34": "34px",
-        "ztg-full": "100%",
+        "zul-88": "88px",
+        "zul-34": "34px",
+        "zul-full": "100%",
       },
       flex: {
         // NEW
-        "ztg-basis-54": "0 0 54px",
-        "ztg-basis-66": "0 0 66px",
-        "ztg-basis-80": "0 0 80px",
-        "ztg-basis-85": "0 0 85px",
-        "ztg-basis-100": "0 0 100px",
-        "ztg-basis-112": "0 0 112px",
-        "ztg-basis-115": "0 0 115px",
-        "ztg-basis-124": "0 0 124px",
-        "ztg-basis-144": "0 0 144px",
-        "ztg-basis-164": "0 0 164px",
-        "ztg-basis-240": "0 0 240px",
-        "ztg-basis-248": "0 0 248px",
-        "ztg-basis-355": "0 0 355px",
-        "ztg-basis-380": "0 0 380px",
-        "ztg-basis-400": "0 0 400px",
-        "ztg-basis-520": "0 0 520px",
+        "zul-basis-54": "0 0 54px",
+        "zul-basis-66": "0 0 66px",
+        "zul-basis-80": "0 0 80px",
+        "zul-basis-85": "0 0 85px",
+        "zul-basis-100": "0 0 100px",
+        "zul-basis-112": "0 0 112px",
+        "zul-basis-115": "0 0 115px",
+        "zul-basis-124": "0 0 124px",
+        "zul-basis-144": "0 0 144px",
+        "zul-basis-164": "0 0 164px",
+        "zul-basis-240": "0 0 240px",
+        "zul-basis-248": "0 0 248px",
+        "zul-basis-355": "0 0 355px",
+        "zul-basis-380": "0 0 380px",
+        "zul-basis-400": "0 0 400px",
+        "zul-basis-520": "0 0 520px",
       },
       spacing: {
         "90%": "90%",
@@ -295,8 +295,8 @@ module.exports = {
 
         // NEW
         ...spacings,
-        "ztg-107": "107px",
-        "ztg-138": "138px",
+        "zul-107": "107px",
+        "zul-138": "138px",
       },
       width: {
         29: "7.25rem",
@@ -309,65 +309,65 @@ module.exports = {
         320: "80rem",
 
         // NEW
-        "ztg-96": "96px",
-        "ztg-100": "100px",
-        "ztg-108": "108px",
-        "ztg-114": "114px",
-        "ztg-115": "115px",
-        "ztg-118": "118px",
-        "ztg-123": "123px",
-        "ztg-130": "130px",
-        "ztg-148": "148px",
-        "ztg-164": "164px",
-        "ztg-166": "166px",
-        "ztg-168": "168px",
-        "ztg-176": "176px",
-        "ztg-184": "184px",
-        "ztg-200": "200px",
-        "ztg-216": "216px",
-        "ztg-240": "240px",
-        "ztg-247": "247px",
-        "ztg-256": "256px",
-        "ztg-266": "266px",
-        "ztg-275": "275px",
-        "ztg-308": "308px",
-        "ztg-330": "330px",
-        "ztg-360": "360px",
-        "ztg-550": "550px",
+        "zul-96": "96px",
+        "zul-100": "100px",
+        "zul-108": "108px",
+        "zul-114": "114px",
+        "zul-115": "115px",
+        "zul-118": "118px",
+        "zul-123": "123px",
+        "zul-130": "130px",
+        "zul-148": "148px",
+        "zul-164": "164px",
+        "zul-166": "166px",
+        "zul-168": "168px",
+        "zul-176": "176px",
+        "zul-184": "184px",
+        "zul-200": "200px",
+        "zul-216": "216px",
+        "zul-240": "240px",
+        "zul-247": "247px",
+        "zul-256": "256px",
+        "zul-266": "266px",
+        "zul-275": "275px",
+        "zul-308": "308px",
+        "zul-330": "330px",
+        "zul-360": "360px",
+        "zul-550": "550px",
       },
       height: {
         // NEW
-        "ztg-full-vh": "100vh",
-        "ztg-104": "104px",
-        "ztg-136": "136px",
-        "ztg-232": "232px",
+        "zul-full-vh": "100vh",
+        "zul-104": "104px",
+        "zul-136": "136px",
+        "zul-232": "232px",
       },
       maxWidth: {
         "170px": "170px",
         "150px": "150px",
 
         // NEW
-        "ztg-68": "68px",
-        "ztg-184": "184px",
-        "ztg-390": "390px",
-        "ztg-1100": "1100px",
-        "ztg-1200": "1200px",
+        "zul-68": "68px",
+        "zul-184": "184px",
+        "zul-390": "390px",
+        "zul-1100": "1100px",
+        "zul-1200": "1200px",
       },
       minWidth: {
         // NEW
-        "ztg-85": "85px",
-        "ztg-100": "100px",
+        "zul-85": "85px",
+        "zul-100": "100px",
       },
       maxHeight: {
         "40px": "40px",
 
         // NEW
-        "ztg-70": "70px",
-        "ztg-474": "474px",
+        "zul-70": "70px",
+        "zul-474": "474px",
       },
       minHeight: {
         // NEW
-        "ztg-96": "96px",
+        "zul-96": "96px",
       },
     },
   },

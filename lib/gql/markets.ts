@@ -1,4 +1,4 @@
-import { ScalarRangeType } from "@zeitgeistpm/sdk/dist/types";
+import { ScalarRangeType } from "@zulustation/sdk/dist/types";
 import { gql, GraphQLClient } from "graphql-request";
 import { DAY_SECONDS } from "lib/constants";
 

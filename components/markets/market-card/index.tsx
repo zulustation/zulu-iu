@@ -5,11 +5,11 @@ import { MarketOutcomes } from "lib/types/markets";
 import MarketCardContext from "./context";
 import { motion } from "framer-motion";
 import ScalarPriceRange from "../ScalarPriceRange";
-import type { ScalarRangeType } from "@zeitgeistpm/sdk/dist/types";
+import type { ScalarRangeType } from "@zulustation/sdk/dist/types";
 import { Users, BarChart2, Droplet } from "react-feather";
 import { formatNumberCompact } from "lib/util/format-compact";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 
 export interface IndexedMarketCardData {
   marketId: number;
@@ -42,7 +42,7 @@ const Pill = ({ value, classes }: { value: string; classes: string }) => {
 
 const MarketCardInfo = ({ question }: { question: string }) => {
   return (
-    <div className="w-full h-full flex flex-col text-ztg-14-165 whitespace-normal">
+    <div className="w-full h-full flex flex-col text-zul-14-165 whitespace-normal">
       <h5 className="font-semibold text-lg w-full h-fit line-clamp-3">
         {question}
       </h5>
@@ -162,7 +162,7 @@ const MarketCardDetails = ({
         </div>
         {/* <div className="flex items-center gap-2">
             <Droplet size={18} />
-            <span>223K ZTG</span>
+            <span>223K ZUL</span>
           </div> */}
       </div>
     </div>
@@ -216,14 +216,14 @@ const MarketCard = ({
     hasEnded: hasEnded(),
     outcomes: outcomes.length,
     volume: volume,
-    baseAsset: baseAsset?.toUpperCase() ?? "ZTG",
+    baseAsset: baseAsset?.toUpperCase() ?? "ZUL",
   };
 
   const lower = marketType?.scalar?.[0]
-    ? new Decimal(marketType?.scalar?.[0]).div(ZTG).toNumber()
+    ? new Decimal(marketType?.scalar?.[0]).div(ZUL).toNumber()
     : 0;
   const upper = marketType?.scalar?.[1]
-    ? new Decimal(marketType?.scalar?.[1]).div(ZTG).toNumber()
+    ? new Decimal(marketType?.scalar?.[1]).div(ZUL).toNumber()
     : 0;
 
   return (

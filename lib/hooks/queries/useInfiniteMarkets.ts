@@ -4,8 +4,8 @@ import {
   IndexerContext,
   isIndexedSdk,
   Market,
-} from "@zeitgeistpm/sdk-next";
-import { MarketOrderByInput } from "@zeitgeistpm/indexer";
+} from "@zulustation/sdk-next";
+import { MarketOrderByInput } from "@zulustation/indexer";
 import { getOutcomesForMarkets } from "lib/gql/markets-list/outcomes-for-markets";
 import objectHash from "object-hash";
 import { useStore } from "lib/stores/Store";

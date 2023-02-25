@@ -28,13 +28,13 @@ const LearnCard = ({
       className={`w-full rounded-[10px] p-[15px] pr-[20px] ${classes} `}
     >
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <span className="bg-white p-[6px] rounded-[50px] w-fit text-ztg-12-120">
+        <span className="bg-white p-[6px] rounded-[50px] w-fit text-zul-12-120">
           {tag}
         </span>
         <div className="flex items-start justify-between gap-[30px]">
           <div>
-            <h6 className="font-semibold text-ztg-16-150 mt-[8px]">{title}</h6>
-            <p className="hidden md:block text-ztg-14-150">{description}</p>
+            <h6 className="font-semibold text-zul-16-150 mt-[8px]">{title}</h6>
+            <p className="hidden md:block text-zul-14-150">{description}</p>
           </div>
           <Image
             src={img}
@@ -63,7 +63,7 @@ const LearnSection = () => {
       <LearnCard
         tag="Earn"
         title="Liquidity Pools"
-        description="Earn ZTG by providing Liquidity"
+        description="Earn ZUL by providing Liquidity"
         link="https://docs.zeitgeist.pm/docs/learn/liquidity"
         classes="bg-link-water"
         img="/learn/learn-2.png"

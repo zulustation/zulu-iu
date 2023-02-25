@@ -1,4 +1,4 @@
-import { ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { ExtSigner } from "@zulustation/sdk/dist/types";
 import Decimal from "decimal.js";
 import MarketStore from "lib/stores/MarketStore";
 import { useNotificationStore } from "lib/stores/NotificationStore";
@@ -73,7 +73,7 @@ const RedeemAllButton = observer(
           notificationStore,
           successCallback: () => {
             //todo: swap token symbol with config when available
-            notificationStore.pushNotification(`Claimed ${totalWinnings} ZTG`, {
+            notificationStore.pushNotification(`Claimed ${totalWinnings} ZUL`, {
               type: "Success",
             });
             setTotalWinnings(0);
@@ -93,7 +93,7 @@ const RedeemAllButton = observer(
         {totalWinnings > 0 ? (
           <button
             onClick={handleClick}
-            className="text-ztg-12-150 font-medium text-white px-ztg-35 h-ztg-32 bg-ztg-blue rounded-ztg-100 cursor-pointer disabled:cursor-default disabled:opacity-20 focus:outline-none"
+            className="text-zul-12-150 font-medium text-white px-zul-35 h-zul-32 bg-zul-blue rounded-zul-100 cursor-pointer disabled:cursor-default disabled:opacity-20 focus:outline-none"
           >
             Redeem All Tokens (
             {`${totalWinnings.toFixed(0)} ${store.config.tokenSymbol}`})

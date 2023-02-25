@@ -48,13 +48,13 @@ const ModalContainer: FC = observer(({ children }) => {
   }, [modalRef]);
 
   const containerClasses =
-    "p-ztg-15 z-50 rounded-ztg-10 bg-white dark:text-white dark:bg-sky-1000 focus:outline-none";
+    "p-zul-15 z-50 rounded-zul-10 bg-white dark:text-white dark:bg-sky-1000 focus:outline-none";
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.05, type: "tween" }}
-      className="fixed w-full h-full z-ztg-50 bg-light-overlay dark:bg-dark-overlay flex justify-center items-center"
+      className="fixed w-full h-full z-zul-50 bg-light-overlay dark:bg-dark-overlay flex justify-center items-center"
     >
       <motion.div
         initial={{ y: 100 }}

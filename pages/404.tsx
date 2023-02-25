@@ -24,10 +24,10 @@ const NotFoundPage = observer(
           alt="404 Page"
         />
         {backText && backLink ? (
-          <div className="flex justify-center items-center mb-ztg-40">
+          <div className="flex justify-center items-center mb-zul-40">
             <button
               onClick={handleClick}
-              className=" font-bold text-sky-600 border border-sky-600 rounded-ztg-10 px-ztg-50 py-ztg-7"
+              className=" font-bold text-sky-600 border border-sky-600 rounded-zul-10 px-zul-50 py-zul-7"
             >
               {backText}
             </button>

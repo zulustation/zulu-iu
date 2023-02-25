@@ -19,10 +19,10 @@ const Modal: FC<ModalProps> = observer(
     const modalStore = useModalStore();
     return (
       <div>
-        <div className="flex justify-between items-center mb-ztg-16">
+        <div className="flex justify-between items-center mb-zul-16">
           <div
             className={
-              "font-bold text-ztg-16-150  dark:text-white text-black w-full" +
+              "font-bold text-zul-16-150  dark:text-white text-black w-full" +
               (centerHeadingText ? " text-center" : "")
             }
           >

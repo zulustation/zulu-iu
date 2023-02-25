@@ -56,20 +56,20 @@ const FooterNewsletterSub: FC<{ title: string }> = observer(({ title }) => {
         subscribe(formField.value);
       }}
     >
-      <h3 className="text-center md:text-start text-ztg-16-150 font-bold mb-ztg-30">
+      <h3 className="text-center md:text-start text-zul-16-150 font-bold mb-zul-30">
         {title}
       </h3>
-      <div className="flex gap-3 items-center h-ztg-40 mb-auto w-full">
+      <div className="flex gap-3 items-center h-zul-40 mb-auto w-full">
         <input
           value={newsletterSubForm.$("email").value}
           onChange={newsletterSubForm.$("email").onChange}
-          className={`h-full grow rounded text-sky-600 p-2 text-ztg-12-120 bg-anti-flash-white focus:outline-none ${
+          className={`h-full grow rounded text-sky-600 p-2 text-zul-12-120 bg-anti-flash-white focus:outline-none ${
             invalid ? "border-vermilion" : "border-none"
           }`}
         />
         <button
           type="submit"
-          className={`h-full w-ztg-40 flex-shrink-0 rounded-full center bg-pastel-blue text-white ${
+          className={`h-full w-zul-40 flex-shrink-0 rounded-full center bg-pastel-blue text-white ${
             invalid ? "cursor-default" : "cursor-pointer"
           }`}
         >
@@ -94,7 +94,7 @@ const FooterMenu: FC<FooterMenuProps> = observer(
           `}
       >
         <h3 className="font-bold">{title}</h3>
-        <div className="text-ztg-14-150 flex flex-col text-sky-600">
+        <div className="text-zul-14-150 flex flex-col text-sky-600">
           {links.map(({ text, href }, idx) => {
             return (
               <Link href={href} key={`footerMenuLink${idx}`} target="_blank">
@@ -133,7 +133,7 @@ const Footer = observer(() => {
             title="Technology"
             links={[
               { text: "Documentation", href: "https://docs.zeitgeist.pm" },
-              { text: "Github", href: "https://github.com/zeitgeistpm" },
+              { text: "Github", href: "https://github.com/zulustation" },
               {
                 text: "Polkadot-JS Apps",
                 href: "https://polkadot.js.org/apps/?rpc=wss://bsr.zeitgeist.pm",
@@ -151,7 +151,7 @@ const Footer = observer(() => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-5">
-        <span className="text-center md:text-start font-bold whitespace-nowrap text-ztg-12-150">
+        <span className="text-center md:text-start font-bold whitespace-nowrap text-zul-12-150">
           © 2022 Equipoise Corp.
         </span>
         <span className="text-sky-600 text-[11px] leading-relaxed">

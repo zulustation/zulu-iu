@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { isRpcSdk } from "@zeitgeistpm/sdk-next";
+import { isRpcSdk } from "@zulustation/sdk-next";
 import { Judgement } from "lib/stores/UserStore";
 import { useSdkv2 } from "../useSdkv2";
 

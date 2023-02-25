@@ -24,16 +24,16 @@ const TrendingMarketCard = observer(
   }: TrendingMarketInfo) => {
     return (
       <motion.div
-        className="bg-sky-100 dark:bg-black rounded-ztg-10 p-ztg-15 w-full"
+        className="bg-sky-100 dark:bg-black rounded-zul-10 p-zul-15 w-full"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 1 }}
       >
         <Link href={`/markets/${marketId}`}>
           <div className="flex-col">
             <div className="hidden sm:flex">
-              <div className="w-ztg-70 h-ztg-70 rounded-ztg-10 flex-shrink-0 bg-sky-600">
+              <div className="w-zul-70 h-zul-70 rounded-zul-10 flex-shrink-0 bg-sky-600">
                 <div
-                  className="w-ztg-70 h-ztg-70 rounded-ztg-10 flex-shrink-0"
+                  className="w-zul-70 h-zul-70 rounded-zul-10 flex-shrink-0"
                   style={{
                     backgroundImage:
                       img == null
@@ -45,24 +45,24 @@ const TrendingMarketCard = observer(
                 ></div>
               </div>
               <div className="flex flex-col ml-auto items-end">
-                <div className="text-sky-600 uppercase font-bold text-ztg-14-150">
+                <div className="text-sky-600 uppercase font-bold text-zul-14-150">
                   Outcomes
                 </div>
                 <div>{outcomes}</div>
               </div>
             </div>
-            <div className="text-ztg-14-120 mb-ztg-17 sm:my-ztg-17 line-clamp-2">
+            <div className="text-zul-14-120 mb-zul-17 sm:my-zul-17 line-clamp-2">
               {name}
             </div>
             <div className="flex">
               <div className="flex flex-col ">
-                <div className="text-sky-600 uppercase font-bold text-ztg-14-150">
+                <div className="text-sky-600 uppercase font-bold text-zul-14-150">
                   Prediction
                 </div>
                 <div>{prediction}</div>
               </div>
               <div className="flex flex-col ml-auto items-end">
-                <div className="text-sky-600 uppercase font-bold text-ztg-14-150">
+                <div className="text-sky-600 uppercase font-bold text-zul-14-150">
                   Volume
                 </div>
                 <div>

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { isIndexedSdk } from "@zeitgeistpm/sdk-next";
+import { isIndexedSdk } from "@zulustation/sdk-next";
 import { TimeFilter } from "components/ui/TimeFilters";
-import { HistoricalAccountBalanceOrderByInput } from "@zeitgeistpm/indexer";
+import { HistoricalAccountBalanceOrderByInput } from "@zulustation/indexer";
 import { useSdkv2 } from "../useSdkv2";
 
 export const rootKey = "account-balance-history";

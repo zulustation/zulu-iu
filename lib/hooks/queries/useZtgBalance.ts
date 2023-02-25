@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { isRpcSdk, NA } from "@zeitgeistpm/sdk-next";
+import { isRpcSdk, NA } from "@zulustation/sdk-next";
 import Decimal from "decimal.js";
 import { getApiAtBlock } from "lib/util/get-api-at";
 import { useSdkv2 } from "../useSdkv2";
 
-export const ztgBalanceRootKey = "ztg-blance";
+export const zulBalanceRootKey = "zul-blance";
 
-export const useZtgBalance = (address: string, blockNumber?: number) => {
+export const useZulBalance = (address: string, blockNumber?: number) => {
   const [sdk, id] = useSdkv2();
 
   const query = useQuery(
-    [id, ztgBalanceRootKey, address, blockNumber],
+    [id, zulBalanceRootKey, address, blockNumber],
     async () => {
       if (address && isRpcSdk(sdk)) {
         const api = await getApiAtBlock(sdk.api, blockNumber);

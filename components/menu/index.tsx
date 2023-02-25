@@ -58,7 +58,7 @@ const Menu: FC = observer(() => {
                 textLabel={item.label}
                 hideLabel={hideLabels}
                 active={navigationStore.checkPage(itemKey as any)}
-                className="mb-ztg-12"
+                className="mb-zul-12"
                 onClick={() => navigate(itemKey as any)}
                 key={`meuItem-${idx}`}
               />
@@ -70,15 +70,15 @@ const Menu: FC = observer(() => {
           options={localizationOptions}
           selectedLanguage={selectedLanguage}
           className={`${
-            store.leftDrawerClosed === true ? "ml-ztg-33 " : "ml-ztg-39"
-          }  mb-ztg-20`}
+            store.leftDrawerClosed === true ? "ml-zul-33 " : "ml-zul-39"
+          }  mb-zul-20`}
           hideLabel={hideLabels}
           onLanguageChange={(option: LocalizationOption) =>
             setSelectedLanguage(option)
           }
         /> */}
-        {/* <ThemeSwitch className="ml-ztg-33 mb-ztg-24" /> */}
-        <div className="ml-ztg-42 mb-ztg-22 text-ztg-12-150">v.1.0.0</div>
+        {/* <ThemeSwitch className="ml-zul-33 mb-zul-24" /> */}
+        <div className="ml-zul-42 mb-zul-22 text-zul-12-150">v.1.0.0</div>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import React, { ChangeEvent, FC, MouseEvent } from "react";
 import { useStore } from "lib/stores/Store";
 import { MultipleOutcomeEntry } from "lib/types/create-market";
 import Table, { TableColumn, TableData } from "components/ui/Table";
-import { ZTG, ZTG_BLUE_COLOR } from "lib/constants";
+import { ZUL, ZUL_BLUE_COLOR } from "lib/constants";
 import { motion } from "framer-motion";
 import PoolFeesSelect from "./PoolFeesSelect";
 import Decimal from "decimal.js";
@@ -50,7 +50,7 @@ export const poolRowDataFromOutcomes = (
       };
     }),
     {
-      assetColor: ZTG_BLUE_COLOR,
+      assetColor: ZUL_BLUE_COLOR,
       asset: tokenSymbol,
       weight: baseWeight.toString(),
       amount: "100",
@@ -92,7 +92,7 @@ const PriceSetter = ({
   return (
     <div className="flex items-center">
       <input
-        className="h-ztg-40 w-[100px] rounded-ztg-5 bg-sky-200 text-right p-ztg-8 focus:outline-none"
+        className="h-zul-40 w-[100px] rounded-zul-5 bg-sky-200 text-right p-zul-8 focus:outline-none"
         value={price}
         type="number"
         disabled={disabled}
@@ -149,12 +149,12 @@ const PoolSettings: FC<{
 
     const prices = calcPrices(priceLocks);
 
-    const ztgWeight = new Decimal(64);
+    const zulWeight = new Decimal(64);
     const tokenAmount = new Decimal(data[0].amount);
     const weights = prices.map((price) =>
       calcWeightGivenSpotPrice(
         tokenAmount,
-        ztgWeight,
+        zulWeight,
         tokenAmount,
         price.price,
       ),
@@ -225,15 +225,15 @@ const PoolSettings: FC<{
   ];
 
   const handleFeeChange = (fee: Decimal) => {
-    onFeeChange(fee.div(100).mul(ZTG));
+    onFeeChange(fee.div(100).mul(ZUL));
   };
 
   return (
     <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
       <Table data={tableData} columns={columns} />
       <div className="mt-[20px] mb-[40px]">
-        <div className="text-ztg-16-150 font-bold ">Pool Fees*</div>
-        <p className="text-ztg-14-150 mb-[30px] mt-[10px] text-sky-600 ">
+        <div className="text-zul-16-150 font-bold ">Pool Fees*</div>
+        <p className="text-zul-14-150 mb-[30px] mt-[10px] text-sky-600 ">
           High fees will allow liquidity providers to collect more value from a
           given trade. However, high fees may also reduce market participants.
         </p>

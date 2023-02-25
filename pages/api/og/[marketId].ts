@@ -1,7 +1,7 @@
-import { create } from "@zeitgeistpm/indexer";
-import type { FullMarketFragment } from "@zeitgeistpm/indexer";
+import { create } from "@zulustation/indexer";
+import type { FullMarketFragment } from "@zulustation/indexer";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { getCurrentPrediction } from "lib/util/assets";
 import moment from "moment";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -54,7 +54,7 @@ export default async function (
     prediction = getCurrentPrediction(assets as any, market as any);
   }
 
-  const volume = new Decimal(market.pool?.volume).div(ZTG).toFixed(2);
+  const volume = new Decimal(market.pool?.volume).div(ZUL).toFixed(2);
 
   const ends = moment(Number(market.period.end)).format("MMM Do, YYYY");
 

@@ -10,7 +10,7 @@ import AccountSelectValue from "./AccountSelectValue";
 const Control = observer(({ children, ...rest }) => {
   return (
     <components.Control {...(rest as ControlProps)}>
-      <div className="flex items-center bg-sky-100 dark:bg-black justify-between cursor-pointer rounded-ztg-10">
+      <div className="flex items-center bg-sky-100 dark:bg-black justify-between cursor-pointer rounded-zul-10">
         {children}
       </div>
     </components.Control>
@@ -92,7 +92,7 @@ const AccountSelect: FC = observer(() => {
   };
 
   return (
-    <div className="flex h-ztg-50 items-center bg-sky-100 dark:bg-black rounded-ztg-10 w-full">
+    <div className="flex h-zul-50 items-center bg-sky-100 dark:bg-black rounded-zul-10 w-full">
       <Select
         isSearchable={false}
         options={options}
@@ -110,7 +110,7 @@ const AccountSelect: FC = observer(() => {
 
       <CopyIcon
         copyText={wallets.activeAccount?.address}
-        className="flex-grow pr-ztg-8"
+        className="flex-grow pr-zul-8"
         size={16}
       />
     </div>

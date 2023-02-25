@@ -23,7 +23,7 @@ const stats: StatCardProps[] = [
 const InfoBoxes: FC = observer(() => {
   return (
     <></>
-    // <div className="flex h-ztg-104 mb-ztg-30">
+    // <div className="flex h-zul-104 mb-zul-30">
     //   {stats.map((stat, index) => (
     //     <StatCard
     //       key={index}

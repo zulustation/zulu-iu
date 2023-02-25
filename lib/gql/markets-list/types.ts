@@ -1,4 +1,4 @@
-import { MarketCreation, ScalarRangeType } from "@zeitgeistpm/sdk/dist/types";
+import { MarketCreation, ScalarRangeType } from "@zulustation/sdk/dist/types";
 import { MarketStatus } from "lib/types/markets";
 
 export type MarketCardData = {

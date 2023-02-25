@@ -4,7 +4,7 @@ import {
   IndexerContext,
   isRpcSdk,
   Market,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import ScalarDisputeBox from "components/outcomes/ScalarDisputeBox";
 import { useMarketDisputes } from "lib/hooks/queries/useMarketDisputes";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
@@ -80,7 +80,7 @@ const DisputeButton = observer(
       <button
         onClick={handleClick}
         disabled={disputeDisabled}
-        className="text-mariner font-semibold text-ztg-14-120"
+        className="text-mariner font-semibold text-zul-14-120"
       >
         Dispute Outcome
       </button>

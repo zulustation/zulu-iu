@@ -1,7 +1,7 @@
-import { ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { ExtSigner } from "@zulustation/sdk/dist/types";
 import Decimal from "decimal.js";
 import { useAtom } from "jotai";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { useTradeslipItems } from "lib/state/tradeslip/items";
 import { slippagePercentageAtom } from "lib/state/tradeslip/slippage";
 import {
@@ -97,7 +97,7 @@ const TradeSlip = observer(() => {
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <div className="py-ztg-20 px-ztg-28 overflow-y-auto w-full">
+      <div className="py-zul-20 px-zul-28 overflow-y-auto w-full">
         {tradeslipItems.items.map((item) => {
           return (
             <TradeSlipItem
@@ -108,10 +108,10 @@ const TradeSlip = observer(() => {
         })}
       </div>
 
-      <div className="p-ztg-28 mt-auto">
-        <div className="p-ztg-15 rounded-ztg-10 bg-white dark:bg-sky-1000">
+      <div className="p-zul-28 mt-auto">
+        <div className="p-zul-15 rounded-zul-10 bg-white dark:bg-sky-1000">
           <TransactionButton
-            className="shadow-ztg-2 mb-ztg-16"
+            className="shadow-zul-2 mb-zul-16"
             onClick={processTransactions}
             disabled={
               isTransacting ||
@@ -121,23 +121,23 @@ const TradeSlip = observer(() => {
           >
             Sign Transactions
           </TransactionButton>
-          <div className="flex items-center h-ztg-25 text-sky-600  text-ztg-12-150 justify-between">
+          <div className="flex items-center h-zul-25 text-sky-600  text-zul-12-150 justify-between">
             <div className="font-bold">Slippage Tolerance:</div>
             <SlippageSettingInput
               value={slippage.toString()}
               onChange={(val) => setSlippage(Number(val))}
             />
           </div>
-          <div className="flex items-center h-ztg-25 text-sky-600  text-ztg-12-150 justify-between">
+          <div className="flex items-center h-zul-25 text-sky-600  text-zul-12-150 justify-between">
             <div className="font-bold">Network fee:</div>
             <div className="font-normal">
-              {transactionFees?.div(ZTG).toFixed(4) ?? "--"}
+              {transactionFees?.div(ZUL).toFixed(4) ?? "--"}
             </div>
           </div>
-          <div className="flex items-center h-ztg-25 text-sky-600  text-ztg-12-150 justify-between">
+          <div className="flex items-center h-zul-25 text-sky-600  text-zul-12-150 justify-between">
             <div className="font-bold">Total cost / gain:</div>
             <div className="font-normal">
-              {sum.isNaN() ? "-- " : sum.div(ZTG).toFixed(2).toString()}{" "}
+              {sum.isNaN() ? "-- " : sum.div(ZUL).toFixed(2).toString()}{" "}
               {store.config?.tokenSymbol}
             </div>
           </div>

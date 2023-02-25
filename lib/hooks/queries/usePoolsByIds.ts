@@ -6,7 +6,7 @@ import {
   isMarketIdQuery,
   isPoolIdQuery,
   PoolGetQuery,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import { useSdkv2 } from "../useSdkv2";
 import { poolsRootKey } from "./usePool";
 

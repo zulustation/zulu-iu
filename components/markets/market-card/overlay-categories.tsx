@@ -1,4 +1,4 @@
-import { parseAssetId } from "@zeitgeistpm/sdk-next";
+import { parseAssetId } from "@zulustation/sdk-next";
 import BuySellButtons from "components/trade-slip/BuySellButtons";
 import { MarketOutcome, MarketOutcomes } from "lib/types/markets";
 import { useMarketCardContext } from "./context";
@@ -24,13 +24,13 @@ const MarketCardOverlayOutcome = ({
         style={{ backgroundColor: `${outcome.color}` }}
       ></div>
       <div className="flex flex-col w-[95px] flex-shrink-0 ml-[7px]">
-        <div className=" font-bold uppercase text-ztg-14-110 truncate h-[17px] flex-shrink-0">
+        <div className=" font-bold uppercase text-zul-14-110 truncate h-[17px] flex-shrink-0">
           {outcome.name}
         </div>
         <div className="h-full flex flex-row items-center">
           {outcome.price && (
             <>
-              <div className="font-mono text-ztg-10-150">
+              <div className="font-mono text-zul-10-150">
                 {outcome.price.toFixed(3)} {context.baseAsset.toUpperCase()}
               </div>
             </>

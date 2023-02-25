@@ -1,26 +1,26 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { fetchZTGInfo, ZTGPriceInfo } from "@zeitgeistpm/utility/dist/ztg";
+import { fetchZULInfo, ZULPriceInfo } from "@zulustation/utility/dist/zul";
 import Decimal from "decimal.js";
 import { isEmpty } from "lodash";
 
-export const key = () => ["ztg-price-info"];
+export const key = () => ["zul-price-info"];
 
-export const useZtgInfo = (): UseQueryResult<ZTGPriceInfo> => {
+export const useZulInfo = (): UseQueryResult<ZULPriceInfo> => {
   return useQuery(
     key(),
     async () => {
       try {
-        const ztgInfo = await fetchZTGInfo();
-        window.localStorage.setItem("ztgInfo", JSON.stringify(ztgInfo));
-        return ztgInfo;
+        const zulInfo = await fetchZULInfo();
+        window.localStorage.setItem("zulInfo", JSON.stringify(zulInfo));
+        return zulInfo;
       } catch (err) {
-        const ztgInfo = JSON.parse(
-          window.localStorage.getItem("ztgInfo") || "{}",
+        const zulInfo = JSON.parse(
+          window.localStorage.getItem("zulInfo") || "{}",
         );
-        if (isEmpty(ztgInfo)) {
+        if (isEmpty(zulInfo)) {
           return { price: new Decimal(0), change: new Decimal(0) };
         } else {
-          return ztgInfo;
+          return zulInfo;
         }
       }
     },

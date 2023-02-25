@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import React, { Suspense, useEffect, useState } from "react";
 import { hotjar } from "react-hotjar";
 
-import { AvatarContext } from "@zeitgeistpm/avatara-react";
+import { AvatarContext } from "@zulustation/avatara-react";
 import { ModalStoreContext } from "components/context/ModalStoreContext";
 import { StoreProvider } from "components/context/StoreContext";
 import MobileMenu from "components/menu/MobileMenu";

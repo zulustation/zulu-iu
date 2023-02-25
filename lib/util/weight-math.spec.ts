@@ -4,7 +4,7 @@ import { calcPrices, calcWeightGivenSpotPrice, PriceLock } from "./weight-math";
 describe("weight math", () => {
   describe("integration", () => {
     test("should calculate weights correctly given a new set of prices", () => {
-      const ztgWeight = new Decimal(100);
+      const zulWeight = new Decimal(100);
       const tokenAmounts = new Decimal(100);
       const prices: PriceLock[] = [
         { price: new Decimal(0.3333), locked: true },
@@ -16,7 +16,7 @@ describe("weight math", () => {
       const weights = newPrices.map((price) =>
         calcWeightGivenSpotPrice(
           tokenAmounts,
-          ztgWeight,
+          zulWeight,
           tokenAmounts,
           price.price,
         ),
@@ -26,7 +26,7 @@ describe("weight math", () => {
         (acc, cur) => acc.plus(cur),
         new Decimal(0),
       );
-      expect(totalWeight).toEqual(ztgWeight);
+      expect(totalWeight).toEqual(zulWeight);
       expect(weights[0].toNumber()).toEqual(33.33);
       expect(weights[1].toNumber()).toEqual(33.335);
       expect(weights[2].toNumber()).toEqual(33.335);
@@ -34,7 +34,7 @@ describe("weight math", () => {
   });
 
   describe("calcWeightGivenSpotPrice", () => {
-    const ztgWeight = new Decimal(100);
+    const zulWeight = new Decimal(100);
     const tokenAmounts = new Decimal(100);
 
     test("should work", () => {
@@ -42,7 +42,7 @@ describe("weight math", () => {
 
       const weight = calcWeightGivenSpotPrice(
         tokenAmounts,
-        ztgWeight,
+        zulWeight,
         tokenAmounts,
         spotPrice,
       );
@@ -50,7 +50,7 @@ describe("weight math", () => {
       expect(weight.toNumber()).toEqual(30);
     });
 
-    test("should calculate weights to match ztg weight", () => {
+    test("should calculate weights to match zul weight", () => {
       const prices: PriceLock[] = [
         { price: new Decimal(0.7), locked: true },
         { price: new Decimal(0.15), locked: false },
@@ -60,7 +60,7 @@ describe("weight math", () => {
       const weights = prices.map((price) =>
         calcWeightGivenSpotPrice(
           tokenAmounts,
-          ztgWeight,
+          zulWeight,
           tokenAmounts,
           price.price,
         ),
@@ -70,7 +70,7 @@ describe("weight math", () => {
         (acc, cur) => acc.plus(cur),
         new Decimal(0),
       );
-      expect(totalWeight).toEqual(ztgWeight);
+      expect(totalWeight).toEqual(zulWeight);
     });
   });
 

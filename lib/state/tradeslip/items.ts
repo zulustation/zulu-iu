@@ -1,7 +1,7 @@
 import { atom, useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { isEqual } from "lodash-es";
-import { CategoricalAssetId, ScalarAssetId } from "@zeitgeistpm/sdk-next";
+import { CategoricalAssetId, ScalarAssetId } from "@zulustation/sdk-next";
 
 /**
  * An item in the tradeslip list.

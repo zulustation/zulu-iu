@@ -40,7 +40,7 @@ const Court: NextPage = observer(() => {
             }).format(new Date(courtCase.endTimestamp)),
       detail: (
         <Link href={`/court/${courtCase.marketId}`}>
-          <span className="bg-ztg-blue text-white rounded-ztg-5 px-ztg-30 py-ztg-8 focus:outline-none text-ztg-14-120">
+          <span className="bg-zul-blue text-white rounded-zul-5 px-zul-30 py-zul-8 focus:outline-none text-zul-14-120">
             Detail
           </span>
         </Link>

@@ -42,10 +42,10 @@ const ProgressBar = observer(
     };
 
     return (
-      <div className={`relative ${className ?? ""} mr-ztg-10`}>
+      <div className={`relative ${className ?? ""} mr-zul-10`}>
         <div
           ref={ref}
-          className={`h-ztg-6 rounded-full bg-sky-200 dark:bg-black ${
+          className={`h-zul-6 rounded-full bg-sky-200 dark:bg-black ${
             percentage !== 0 ? "opacity-20" : ""
           }`}
           {...(percentage !== 0
@@ -53,13 +53,13 @@ const ProgressBar = observer(
             : {})}
         ></div>
         <div
-          className="h-full flex justify-center absolute items-center rounded-full top-ztg-0"
+          className="h-full flex justify-center absolute items-center rounded-full top-zul-0"
           style={{ width: `${progressWidth}px`, backgroundColor: barColor }}
         ></div>
         {events?.map((event, i) => (
           <div
             key={i}
-            className="absolute -top-ztg-6 z-10"
+            className="absolute -top-zul-6 z-10"
             style={{
               left: `${calculateEventPosition(event.percentage, width)}px`,
             }}

@@ -1,21 +1,21 @@
 import { Compact } from "@polkadot/types";
 import { BlockNumber } from "@polkadot/types/interfaces";
-import { Swap } from "@zeitgeistpm/sdk/dist/models";
-import { AssetId } from "@zeitgeistpm/sdk/dist/types";
-import SDK from "@zeitgeistpm/sdk";
+import { Swap } from "@zulustation/sdk/dist/models";
+import { AssetId } from "@zulustation/sdk/dist/types";
+import SDK from "@zulustation/sdk";
 import { useContext } from "react";
-import { Asset } from "@zeitgeistpm/types/dist/interfaces/index";
+import { Asset } from "@zulustation/types/dist/interfaces/index";
 import Decimal from "decimal.js";
 import { makeAutoObservable, runInAction, when } from "mobx";
 import type { Codec } from "@polkadot/types-codec/types";
 import validatorjs from "validatorjs";
 import { GraphQLClient } from "graphql-request";
 import { StoreContext } from "components/context/StoreContext";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { isValidPolkadotAddress } from "lib/util";
 
 import { extractIndexFromErrorHex } from "../../lib/util/error-table";
-import { isAsset, ztgAsset } from "../types";
+import { isAsset, zulAsset } from "../types";
 import UserStore from "./UserStore";
 import MarketsStore from "./MarketsStore";
 import NotificationStore from "./NotificationStore";
@@ -25,7 +25,7 @@ import ExchangeStore from "./ExchangeStore";
 import CourtStore from "./CourtStore";
 import Wallets from "../wallets";
 
-import { Context, Sdk } from "@zeitgeistpm/sdk-next";
+import { Context, Sdk } from "@zulustation/sdk-next";
 
 interface Config {
   tokenSymbol: string;
@@ -58,7 +58,7 @@ interface Config {
   };
 }
 
-export interface ZTGInfo {
+export interface ZULInfo {
   price: Decimal;
   change: Decimal;
 }
@@ -275,15 +275,15 @@ export default class Store {
       markets: {
         maxDisputes: this.codecToNumber(consts.predictionMarkets.maxDisputes),
         disputeBond:
-          this.codecToNumber(consts.predictionMarkets.disputeBond) / ZTG,
+          this.codecToNumber(consts.predictionMarkets.disputeBond) / ZUL,
         disputeFactor:
-          this.codecToNumber(consts.predictionMarkets.disputeFactor) / ZTG,
+          this.codecToNumber(consts.predictionMarkets.disputeFactor) / ZUL,
         oracleBond:
-          this.codecToNumber(consts.predictionMarkets.oracleBond) / ZTG,
+          this.codecToNumber(consts.predictionMarkets.oracleBond) / ZUL,
         advisoryBond:
-          this.codecToNumber(consts.predictionMarkets.advisoryBond) / ZTG,
+          this.codecToNumber(consts.predictionMarkets.advisoryBond) / ZUL,
         validityBond:
-          this.codecToNumber(consts.predictionMarkets.validityBond) / ZTG,
+          this.codecToNumber(consts.predictionMarkets.validityBond) / ZUL,
         maxCategories: this.codecToNumber(
           consts.predictionMarkets.maxCategories,
         ),
@@ -294,19 +294,19 @@ export default class Store {
       court: {
         caseDurationSec:
           this.codecToNumber(consts.court.courtCaseDuration) * blockTimeSec,
-        stakeWeight: this.codecToNumber(consts.court.stakeWeight) / ZTG,
+        stakeWeight: this.codecToNumber(consts.court.stakeWeight) / ZUL,
       },
       swaps: {
-        minLiquidity: this.codecToNumber(consts.swaps.minLiquidity) / ZTG,
-        exitFee: this.codecToNumber(consts.swaps.exitFee) / ZTG,
+        minLiquidity: this.codecToNumber(consts.swaps.minLiquidity) / ZUL,
+        exitFee: this.codecToNumber(consts.swaps.exitFee) / ZUL,
       },
       identity: {
-        basicDeposit: this.codecToNumber(consts.identity.basicDeposit) / ZTG,
-        fieldDeposit: this.codecToNumber(consts.identity.fieldDeposit) / ZTG,
+        basicDeposit: this.codecToNumber(consts.identity.basicDeposit) / ZUL,
+        fieldDeposit: this.codecToNumber(consts.identity.fieldDeposit) / ZUL,
       },
       balances: {
         existentialDeposit:
-          this.codecToNumber(consts.balances.existentialDeposit) / ZTG,
+          this.codecToNumber(consts.balances.existentialDeposit) / ZUL,
       },
     };
 
@@ -354,7 +354,7 @@ export default class Store {
   }
 
   /**
-   * Get either the ZTG balance or the token balance for the active account.
+   * Get either the ZUL balance or the token balance for the active account.
    */
   async getBalance(asset?: Asset | AssetId): Promise<Decimal | null> {
     if (!this.wallets.connected) {
@@ -362,17 +362,17 @@ export default class Store {
     }
     let assetObj: Asset;
     if (asset == null) {
-      assetObj = (this.sdk.api as any).createType("Asset", ztgAsset);
+      assetObj = (this.sdk.api as any).createType("Asset", zulAsset);
     } else {
       assetObj = isAsset(asset)
         ? asset
         : (this.sdk.api as any).createType("Asset", asset);
     }
-    if (assetObj.isZtg) {
+    if (assetObj.isZul) {
       const { data } = await this.sdk.api.query.system.account(
         this.wallets.activeAccount.address,
       );
-      return new Decimal(data.free.toString()).div(ZTG);
+      return new Decimal(data.free.toString()).div(ZUL);
     }
 
     const data = await this.sdk.api.query.tokens.accounts(
@@ -381,7 +381,7 @@ export default class Store {
     );
 
     //@ts-ignore
-    return new Decimal(data.free.toString()).div(ZTG);
+    return new Decimal(data.free.toString()).div(ZUL);
   }
 
   async getPoolBalance(
@@ -399,10 +399,10 @@ export default class Store {
       ? asset
       : (this.sdk.api as any).createType("Asset", asset);
 
-    if (asset == null || assetObj.isZtg) {
+    if (asset == null || assetObj.isZul) {
       const b = await this.sdk.api.query.system.account(account);
       //@ts-ignore
-      return new Decimal(b.data.free.toString()).div(ZTG);
+      return new Decimal(b.data.free.toString()).div(ZUL);
     }
 
     const b = (await this.sdk.api.query.tokens.accounts(
@@ -410,7 +410,7 @@ export default class Store {
       assetObj as any,
     )) as any;
 
-    return new Decimal(b.free.toString()).div(ZTG);
+    return new Decimal(b.free.toString()).div(ZUL);
   }
 }
 

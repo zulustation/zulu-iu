@@ -52,7 +52,7 @@ const AccountButton: FC<{
             <button
               className={
                 connectButtonClassname ||
-                "flex w-ztg-168 h-ztg-40 bg-sky-400 dark:bg-sky-700 text-black dark:text-white rounded-full text-ztg-14-150 font-medium items-center justify-center cursor-pointer disabled:cursor-default disabled:opacity-20"
+                "flex w-zul-168 h-zul-40 bg-sky-400 dark:bg-sky-700 text-black dark:text-white rounded-full text-zul-14-150 font-medium items-center justify-center cursor-pointer disabled:cursor-default disabled:opacity-20"
               }
               onClick={() => connect()}
               disabled={
@@ -65,8 +65,8 @@ const AccountButton: FC<{
             {hovering === true &&
             (locationAllowed !== true || isUsingVPN === true) ? (
               <div
-                className="bg-white dark:bg-sky-1100 absolute rounded-ztg-10 font-bold text-black dark:text-white 
-            px-ztg-10 py-ztg-14  text-ztg-12-150 top-ztg-50 z-20 right-10"
+                className="bg-white dark:bg-sky-1100 absolute rounded-zul-10 font-bold text-black dark:text-white 
+            px-zul-10 py-zul-14  text-zul-12-150 top-zul-50 z-20 right-10"
               >
                 {locationAllowed !== true
                   ? "Your jurisdiction is not authorised to trade"
@@ -77,19 +77,19 @@ const AccountButton: FC<{
             )}
           </div>
         ) : (
-          <div className="flex h-ztg-40">
+          <div className="flex h-zul-40">
             <div
-              className="w-ztg-240 xl:w-ztg-360 flex pl-ztg-25 h-full font-mono text-ztg-14-150 rounded-full cursor-pointer bg-sky-200 dark:bg-sky-700 dark:text-white"
+              className="w-zul-240 xl:w-zul-360 flex pl-zul-25 h-full font-mono text-zul-14-150 rounded-full cursor-pointer bg-sky-200 dark:bg-sky-700 dark:text-white"
               onClick={() => {
                 accountModals.openAccontSelect();
               }}
             >
-              <div className="font-bold mr-ztg-16 center w-ztg-176 ">
+              <div className="font-bold mr-zul-16 center w-zul-176 ">
                 {`${formatNumberLocalized(activeBalance?.toNumber())} ${
                   store.config.tokenSymbol
                 }`}
               </div>
-              <div className="center bg-sky-500 dark:bg-black rounded-full h-full w-ztg-164 flex-grow text-white pl-ztg-6 pr-ztg-10">
+              <div className="center bg-sky-500 dark:bg-black rounded-full h-full w-zul-164 flex-grow text-white pl-zul-6 pr-zul-10">
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -101,13 +101,13 @@ const AccountButton: FC<{
                     deps={avatarDeps}
                   />
                 </div>
-                <div className="mr-auto text-black dark:text-white ml-ztg-10">
+                <div className="mr-auto text-black dark:text-white ml-zul-10">
                   {shortenAddress(activeAccount.address, 6, 4)}
                 </div>
               </div>
             </div>
             {/* TODO */}
-            {/* <div className="ml-ztg-18 center cursor-pointer dark:text-sky-600">
+            {/* <div className="ml-zul-18 center cursor-pointer dark:text-sky-600">
             <Bell size={24} />
           </div> */}
           </div>

@@ -3,11 +3,11 @@ import {
   useAvatarContext,
   ZeitgeistAvatar,
   UseInventoryManagement,
-} from "@zeitgeistpm/avatara-react";
+} from "@zulustation/avatara-react";
 import Link from "next/link";
 import { formatBalance } from "@polkadot/util";
-import { Avatar, Badge, Tarot } from "@zeitgeistpm/avatara-nft-sdk";
-import { cidToUrl, sanitizeIpfsUrl } from "@zeitgeistpm/avatara-util";
+import { Avatar, Badge, Tarot } from "@zulustation/avatara-nft-sdk";
+import { cidToUrl, sanitizeIpfsUrl } from "@zulustation/avatara-util";
 import Checkbox from "components/ui/Checkbox";
 import DiscordIcon from "components/icons/DiscordIcon";
 import TwitterIcon from "components/icons/TwitterIcon";
@@ -28,9 +28,9 @@ import { useNotificationStore } from "lib/stores/NotificationStore";
 import { capitalize } from "lodash";
 import { motion, AnimatePresence } from "framer-motion";
 import { shortenAddress } from "lib/util";
-import { PendingInventoryItem } from "@zeitgeistpm/avatara-nft-sdk/dist/core/inventory";
-import { ZTG } from "lib/constants";
-import { ExtSigner } from "@zeitgeistpm/sdk/dist/types";
+import { PendingInventoryItem } from "@zulustation/avatara-nft-sdk/dist/core/inventory";
+import { ZUL } from "lib/constants";
+import { ExtSigner } from "@zulustation/sdk/dist/types";
 import { extrinsicCallback, signAndSend } from "lib/util/tx";
 import { delay } from "lib/util/delay";
 import { useIdentity } from "lib/hooks/queries/useIdentity";
@@ -143,7 +143,7 @@ const AvatarPage = observer(() => {
   };
 
   return (
-    <div className={"pt-ztg-46 "}>
+    <div className={"pt-zul-46 "}>
       <AnimatePresence>
         {helpnotifications?.avatarKsmFeesInfo && (
           <motion.div
@@ -172,9 +172,9 @@ const AvatarPage = observer(() => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="mb-ztg-40">
+      <div className="mb-zul-40">
         <div className="flex">
-          <div className="relative rounded-full mr-ztg-40">
+          <div className="relative rounded-full mr-zul-40">
             <div
               style={{ overflow: "hidden" }}
               className={`rounded-full overflow-hidden border-2 border-black ${
@@ -190,7 +190,7 @@ const AvatarPage = observer(() => {
                 }}
                 fallback={
                   isOwner ? (
-                    <div className="flex w-full z-ztg-14 h-full items-center justify-center">
+                    <div className="flex w-full z-zul-14 h-full items-center justify-center">
                       <button
                         disabled={loading || mintingAvatar}
                         className={`rounded-3xl text-black py-2 px-4 cursor-pointer ${
@@ -214,7 +214,7 @@ const AvatarPage = observer(() => {
 
             {isOwner && hasInventory && (
               <div
-                className="absolute rounded-full cursor-pointer bottom-3 z-ztg-6 right-3 bg-gray-900/70 flex justify-center items-center w-8 h-8"
+                className="absolute rounded-full cursor-pointer bottom-3 z-zul-6 right-3 bg-gray-900/70 flex justify-center items-center w-8 h-8"
                 onClick={onClickSettingsButton}
               >
                 <BsGearFill className="w-5 h-5" color="white" />
@@ -223,7 +223,7 @@ const AvatarPage = observer(() => {
 
             {isOwner && hasPendingItems && (
               <div
-                className="absolute bg-yellow-500 bottom-12 -right-1 z-ztg-6 rounded-full cursor-pointer"
+                className="absolute bg-yellow-500 bottom-12 -right-1 z-zul-6 rounded-full cursor-pointer"
                 onClick={onClickPendingItemNotification}
               >
                 <div className="absolute top-0 left-0 h-full w-full bg-orange-1 rounded-full animate-ping"></div>
@@ -235,28 +235,28 @@ const AvatarPage = observer(() => {
           </div>
 
           <div>
-            <h3 className="mb-ztg-14  text-ztg-[24px]">
+            <h3 className="mb-zul-14  text-zul-[24px]">
               <span className="mr-4">{name}</span>
             </h3>
 
-            <h4 className="flex mb-ztg-20">
-              <div className="font-mono text-ztg-16-120 font-semibold mr-4">
+            <h4 className="flex mb-zul-20">
+              <div className="font-mono text-zul-16-120 font-semibold mr-4">
                 {address}
               </div>
               <CopyIcon copyText={address} className="flex-grow" />
             </h4>
 
             <div className="flex">
-              <div className="flex flex-row py-ztg-15">
+              <div className="flex flex-row py-zul-15">
                 {identity?.twitter?.length > 0 ? (
                   <a
-                    className="flex items-center mr-ztg-40"
+                    className="flex items-center mr-zul-40"
                     href={`https://twitter.com/${identity.twitter}`}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <TwitterIcon />
-                    <span className="ml-ztg-10 ">{identity.twitter}</span>
+                    <span className="ml-zul-10 ">{identity.twitter}</span>
                   </a>
                 ) : (
                   <></>
@@ -264,7 +264,7 @@ const AvatarPage = observer(() => {
                 {identity?.discord?.length > 0 ? (
                   <div className="flex items-center">
                     <DiscordIcon />
-                    <span className="ml-ztg-10">{identity.discord}</span>
+                    <span className="ml-zul-10">{identity.discord}</span>
                   </div>
                 ) : (
                   <></>
@@ -274,10 +274,10 @@ const AvatarPage = observer(() => {
           </div>
         </div>
       </div>
-      <h3 className="mb-ztg-40  text-ztg-28-120 font-semibold">
+      <h3 className="mb-zul-40  text-zul-28-120 font-semibold">
         <span className="mr-4">Achievements</span>
       </h3>
-      <p className="text-gray-600 mb-ztg-12">
+      <p className="text-gray-600 mb-zul-12">
         All badges earned for this account.{" "}
         <i>
           Includes all badges this user has earned even if the NFT has been
@@ -285,18 +285,18 @@ const AvatarPage = observer(() => {
         </i>
       </p>
       <Link href={"/badges"}>
-        <div className="text-singular underline text-pink-600 cursor-pointer mb-ztg-38">
+        <div className="text-singular underline text-pink-600 cursor-pointer mb-zul-38">
           See all available badges.
         </div>
       </Link>
       {earnedBadges.length === 0 ? (
         <>
-          <p className="text-gray-600 mb-ztg-38 italic">
+          <p className="text-gray-600 mb-zul-38 italic">
             You havent earned any badges yet.
           </p>
         </>
       ) : (
-        <div className="mb-ztg-38 grid gap-4 grid-cols-4 grid-rows-4">
+        <div className="mb-zul-38 grid gap-4 grid-cols-4 grid-rows-4">
           {earnedBadges.map((item) => (
             <BadgeItem item={item} />
           ))}
@@ -343,9 +343,9 @@ const BadgeItem = (props: { item: Badge.IndexedBadge }) => {
             animate={{ opacity: 1, transform: "translateY(-105%)" }}
             exit={{ opacity: 0, transform: "translateY(-115%)" }}
             style={{ left: "2px" }}
-            className="border-2 border-gray-500/10  absolute text-sm z-ztg-10 bg-gray-100 dark:bg-black rounded-ztg-10 text-black dark:text-white px-ztg-12 py-ztg-14  w-ztg-240"
+            className="border-2 border-gray-500/10  absolute text-sm z-zul-10 bg-gray-100 dark:bg-black rounded-zul-10 text-black dark:text-white px-zul-12 py-zul-14  w-zul-240"
           >
-            <div className="flex mb-ztg-2">
+            <div className="flex mb-zul-2">
               <div className="flex-1">
                 <h4 className="font-bold text-lg mb-3">
                   {capitalize(item.metadata_properties?.badge.value.rarity)}{" "}
@@ -402,13 +402,13 @@ const BadgeItem = (props: { item: Badge.IndexedBadge }) => {
         />
         <div className="absolute bottom-2 right-2 rounded-md w-1/3 h-1/3 border-2 border-solid border-gray-900/30">
           <img
-            className="z-ztg-2"
+            className="z-zul-2"
             src={sanitizeIpfsUrl(
               cidToUrl("QmZHdCSRpCEfVDcqwkmo5ELrkuKXPBCtfs4fQ3RXibn1am"),
             )}
           />
           <img
-            className="absolute top-0 left-0 w-full h-full z-ztg-3"
+            className="absolute top-0 left-0 w-full h-full z-zul-3"
             src={sanitizeIpfsUrl(item.metadata_properties?.badge.value.src)}
           />
         </div>
@@ -444,7 +444,7 @@ const ClaimModal = (props: {
   const [hasCrossed, setHasCrossed] = useState(false);
 
   const balance = store.wallets.activeBalance;
-  const hasEnoughBalance = balance.greaterThan((props.burnAmount + fee) / ZTG);
+  const hasEnoughBalance = balance.greaterThan((props.burnAmount + fee) / ZUL);
 
   const tx = useMemo(
     () => store.sdk.api.tx.styx.cross(),
@@ -496,7 +496,7 @@ const ClaimModal = (props: {
           extrinsicCallback({
             notificationStore,
             broadcastCallback: () => {
-              notificationStore.pushNotification("Burning ZTG.", {
+              notificationStore.pushNotification("Burning ZUL.", {
                 type: "Info",
                 autoRemove: true,
               });
@@ -552,14 +552,14 @@ const ClaimModal = (props: {
             {props.isTarotHolder
               ? "Claim your avatar to be able to earn badges on the zeitgeist platform. It will be minted to the address you are logged in with."
               : `To claim your right to mint an avatar you have to pay the ferryman
-              due respect, burning ${props.burnAmount / ZTG} ZTG.`}
+              due respect, burning ${props.burnAmount / ZUL} ZUL.`}
           </p>
           {!hasCrossed ? (
             <div className="flex items-center">
               <div className="text-red-800 text-xs flex-1">
                 The amount will be burned(slashed) and not paid to any address.
-                Make sure you have {props.burnAmount / ZTG} + (fee {fee / ZTG})
-                ZTG in your wallet.
+                Make sure you have {props.burnAmount / ZUL} + (fee {fee / ZUL})
+                ZUL in your wallet.
               </div>
             </div>
           ) : (
@@ -594,7 +594,7 @@ const ClaimModal = (props: {
                     <span className="text-md">
                       {hasCrossed
                         ? "Claim"
-                        : `Burn ${props.burnAmount / ZTG} ZTG`}
+                        : `Burn ${props.burnAmount / ZUL} ZUL`}
                     </span>
                     <div className="ml-2">
                       <AiFillFire />
@@ -605,10 +605,10 @@ const ClaimModal = (props: {
             </div>
             {!props.isTarotHolder && (
               <div className="text-center text-xs">
-                <div className=" h-ztg-18 px-ztg-8 text-ztg-12-150 font-bold text-sky-600">
-                  <div className="flex px-ztg-8 justify-between">
+                <div className=" h-zul-18 px-zul-8 text-zul-12-150 font-bold text-sky-600">
+                  <div className="flex px-zul-8 justify-between">
                     <span>Exchange Fee: </span>
-                    <span className="font-mono">{(fee / ZTG).toFixed(4)}</span>
+                    <span className="font-mono">{(fee / ZUL).toFixed(4)}</span>
                   </div>
                   {!hasEnoughBalance && (
                     <div className="mt-2">
@@ -668,10 +668,10 @@ const InventoryModal = (props: { address: string; onClose?: () => void }) => {
               )}
             />
             <div className="w-full">
-              <h4 className="mb-ztg-8  text-ztg-16-150 font-semibold">
+              <h4 className="mb-zul-8  text-zul-16-150 font-semibold">
                 {item.metadata_properties.badge.value.name}
               </h4>
-              <p className="text-ztg-14-110 mb-4">
+              <p className="text-zul-14-110 mb-4">
                 {item.metadata_properties.badge.value.description}
               </p>
             </div>
@@ -761,7 +761,7 @@ const PendingItemsModal = (props: {
 
   return (
     <div>
-      <div className="mb-ztg-24 max-h-[520px] overflow-scroll">
+      <div className="mb-zul-24 max-h-[520px] overflow-scroll">
         {inventory.loading ? (
           <div className="my-20 flex items-center justify-center">
             <Loader color="rgba(210,210,210, 0.3)" size={12} />
@@ -776,10 +776,10 @@ const PendingItemsModal = (props: {
                 )}
               />
               <div className="w-full">
-                <h4 className="mb-ztg-12  text-ztg-18-150 font-semibold">
+                <h4 className="mb-zul-12  text-zul-18-150 font-semibold">
                   {item.metadata_properties.badge.value.name}
                 </h4>
-                <p className="text-ztg-14-110 mb-4">
+                <p className="text-zul-14-110 mb-4">
                   {item.metadata_properties.badge.value.description}
                 </p>
                 <div className="float-right">

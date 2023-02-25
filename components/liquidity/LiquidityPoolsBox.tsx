@@ -1,6 +1,6 @@
 import { Skeleton } from "@material-ui/lab";
 import Decimal from "decimal.js";
-import { DEFAULT_SLIPPAGE_PERCENTAGE, ZTG } from "lib/constants";
+import { DEFAULT_SLIPPAGE_PERCENTAGE, ZUL } from "lib/constants";
 import { observer } from "mobx-react";
 import { useRouter } from "next/router";
 import React, { ChangeEvent, useEffect, useState } from "react";
@@ -69,9 +69,9 @@ const LiquidityPoolsBox = observer(() => {
     );
 
     setUsersPoolShares(
-      new Decimal((usersPoolShares as any).free.toString()).div(ZTG),
+      new Decimal((usersPoolShares as any).free.toString()).div(ZUL),
     );
-    setTotalPoolShares(new Decimal(Number(totalPoolShares)).div(ZTG));
+    setTotalPoolShares(new Decimal(Number(totalPoolShares)).div(ZUL));
 
     const balancePromises = pool.assets.map(async (asset, idx) => ({
       poolBalance: await store.getPoolBalance(swap, swap.assets[idx]),
@@ -172,11 +172,11 @@ const LiquidityPoolsBox = observer(() => {
       const amountsIn = assets.map((asset) =>
         new Decimal(asset.amount)
           .mul(slippageMul)
-          .mul(ZTG)
+          .mul(ZUL)
           .toFixed(0, Decimal.ROUND_UP),
       );
       const sharesOut = new Decimal(sharesToRecieve)
-        .mul(ZTG)
+        .mul(ZUL)
         .toFixed(0, Decimal.ROUND_DOWN);
 
       await pool.pool.joinPool(
@@ -200,12 +200,12 @@ const LiquidityPoolsBox = observer(() => {
       const amountsOut = assets.map((asset) =>
         new Decimal(asset.amount)
           .mul(slippageMul)
-          .mul(ZTG)
+          .mul(ZUL)
           .toFixed(0, Decimal.ROUND_DOWN),
       );
 
       const sharesIn = new Decimal(poolSharesAmount)
-        .mul(ZTG)
+        .mul(ZUL)
         .toFixed(0, Decimal.ROUND_UP);
 
       await pool.pool.exitPool(
@@ -376,15 +376,15 @@ const LiquidityPoolsBox = observer(() => {
   if (showSkeleton) {
     return (
       <Skeleton
-        className="!py-ztg-10 !rounded-ztg-10 !transform-none"
+        className="!py-zul-10 !rounded-zul-10 !transform-none"
         height={474}
       />
     );
   }
 
   return (
-    <div className="p-ztg-15 rounded-ztg-10 text-sky-600 bg-white dark:bg-sky-1000">
-      <div className=" font-bold text-ztg-14-150 flex">
+    <div className="p-zul-15 rounded-zul-10 text-sky-600 bg-white dark:bg-sky-1000">
+      <div className=" font-bold text-zul-14-150 flex">
         {pool?.pool?.status !== "Stale" ? (
           <span
             onClick={handleJoinPoolClick}
@@ -398,7 +398,7 @@ const LiquidityPoolsBox = observer(() => {
         )}
         <span
           onClick={handleExitPoolClick}
-          className={`${joinPool === false ? "text-sunglow" : ""} ml-ztg-15`}
+          className={`${joinPool === false ? "text-sunglow" : ""} ml-zul-15`}
           role="button"
         >
           Exit
@@ -440,11 +440,11 @@ const LiquidityPoolsBox = observer(() => {
       {joinPool === false ? (
         <>
           <label>
-            <div className=" font-bold text-black dark:text-white px-ztg-8 mb-ztg-10 mt-ztg-20">
+            <div className=" font-bold text-black dark:text-white px-zul-8 mb-zul-10 mt-zul-20">
               Pool Shares to Withdraw
             </div>
             <input
-              className="font-mono text-ztg-14-150 h-ztg-40 w-full rounded-ztg-5 bg-sky-200  text-right mb-ztg-10 !pr-ztg-8 !pl-ztg-38 dark:bg-black text-black dark:text-white"
+              className="font-mono text-zul-14-150 h-zul-40 w-full rounded-zul-5 bg-sky-200  text-right mb-zul-10 !pr-zul-8 !pl-zul-38 dark:bg-black text-black dark:text-white"
               value={poolSharesAmount}
               onChange={handlePoolSharesChange}
               // min="0"
@@ -452,7 +452,7 @@ const LiquidityPoolsBox = observer(() => {
             />
             {/* TODO use this instead, seems to be emitting the onChange event when poolShareAmount is updated which is creating an infite loop */}
             {/* <AmountInput
-            className="font-mono text-ztg-16-150 font-bold w-32"
+            className="font-mono text-zul-16-150 font-bold w-32"
             value={poolSharesAmount}
             onChange={handlePoolSharesChange}
             min="0"
@@ -461,11 +461,11 @@ const LiquidityPoolsBox = observer(() => {
           <div className="flex flex-col items-center mt-3 mb-2 mx-2">
             <Slider onChange={handlePercentageChange} value={percentage} />
           </div>
-          <div className="h-ztg-18 flex px-ztg-8 mb-[6px] justify-between text-ztg-12-150 font-bold">
+          <div className="h-zul-18 flex px-zul-8 mb-[6px] justify-between text-zul-12-150 font-bold">
             <span>Exit Fee:</span>
             <span className="font-mono">{config.swaps.exitFee * 100} %</span>
           </div>
-          <div className="text-ztg-12-150 px-[8px] my-[8px]">
+          <div className="text-zul-12-150 px-[8px] my-[8px]">
             The amount of each withdrawn asset is reduced by this percentage.
           </div>
         </>
@@ -474,7 +474,7 @@ const LiquidityPoolsBox = observer(() => {
       )}
 
       {joinPool === true ? (
-        <div className="h-ztg-18 flex px-ztg-8 justify-between text-ztg-12-150 my-ztg-10 ">
+        <div className="h-zul-18 flex px-zul-8 justify-between text-zul-12-150 my-zul-10 ">
           <span className=" font-bold">Pool Shares to Receive:</span>
           <span className="font-mono font-medium">
             {sharesToRecieve.toFixed(2)}
@@ -484,7 +484,7 @@ const LiquidityPoolsBox = observer(() => {
         <></>
       )}
       <TransactionButton
-        className="mb-ztg-10 shadow-ztg-2"
+        className="mb-zul-10 shadow-zul-2"
         onClick={handleSignTransaction}
         disabled={joinPool === true ? canJoin() === false : canExit() === false}
       >

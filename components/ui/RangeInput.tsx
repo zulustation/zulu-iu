@@ -50,7 +50,7 @@ const RangeInput = React.forwardRef(
         />
         <div className="w-full justify-between">
           <div
-            className="text-ztg-14-150 text-black"
+            className="text-zul-14-150 text-black"
             style={{
               left: `${percentage * (width - 40)}px`,
               width: "100px",
@@ -61,10 +61,10 @@ const RangeInput = React.forwardRef(
             {value} {valueSuffix}
           </div>
           <div className="flex w-full justify-between mt-[8px]">
-            <div className="text-ztg-14-150 text-black">
+            <div className="text-zul-14-150 text-black">
               {minVisible ? minLabel : ""}
             </div>
-            <div className="text-ztg-14-150 text-black">
+            <div className="text-zul-14-150 text-black">
               {maxVisible ? maxLabel : ""}
             </div>
           </div>

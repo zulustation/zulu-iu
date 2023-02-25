@@ -1,11 +1,11 @@
-import { ZTG } from "@zeitgeistpm/sdk-next";
+import { ZUL } from "@zulustation/sdk-next";
 import Table, { TableColumn, TableData } from "components/ui/Table";
 import Decimal from "decimal.js";
 import { useInfinitePoolsList } from "lib/hooks/queries/useInfinitePoolsList";
 import { useMarketStatusCount } from "lib/hooks/queries/useMarketStatusCount";
 import { useSaturatedPoolsIndex } from "lib/hooks/queries/useSaturatedPoolsIndex";
 import { useTotalLiquidity } from "lib/hooks/queries/useTotalLiquidity";
-import { useZtgInfo } from "lib/hooks/queries/useZtgInfo";
+import { useZulInfo } from "lib/hooks/queries/useZulInfo";
 import { formatNumberLocalized } from "lib/util";
 import { observer } from "mobx-react";
 import { NextPage } from "next";
@@ -40,7 +40,7 @@ const columns: TableColumn[] = [
 const LiquidityPools: NextPage = observer(() => {
   const router = useRouter();
 
-  const { data: ztgInfo } = useZtgInfo();
+  const { data: zulInfo } = useZulInfo();
 
   const {
     data: poolPages,
@@ -56,11 +56,11 @@ const LiquidityPools: NextPage = observer(() => {
   const totalLiquidity = useTotalLiquidity({ enabled: isFetched });
 
   const totalLiquidityValue = useMemo(() => {
-    if (ztgInfo) {
-      return totalLiquidity.div(ZTG).mul(ztgInfo.price);
+    if (zulInfo) {
+      return totalLiquidity.div(ZUL).mul(zulInfo.price);
     }
     return new Decimal(0);
-  }, [ztgInfo, totalLiquidity]);
+  }, [zulInfo, totalLiquidity]);
 
   const { data: activeMarketCount } = useMarketStatusCount("Active");
 
@@ -72,9 +72,9 @@ const LiquidityPools: NextPage = observer(() => {
           poolId: pool.poolId,
           marketId: (
             <div className="flex items-center py-3">
-              <div className="w-ztg-70 h-ztg-70 rounded-ztg-10 flex-shrink-0 bg-sky-600 mr-4">
+              <div className="w-zul-70 h-zul-70 rounded-zul-10 flex-shrink-0 bg-sky-600 mr-4">
                 <div
-                  className="w-ztg-70 h-ztg-70 rounded-ztg-10 flex-shrink-0"
+                  className="w-zul-70 h-zul-70 rounded-zul-10 flex-shrink-0"
                   style={{
                     backgroundImage:
                       saturatedData?.market.img == null
@@ -86,7 +86,7 @@ const LiquidityPools: NextPage = observer(() => {
                 />
               </div>
 
-              <div className="text-ztg-12-120 font-bold uppercase text-sky-600">
+              <div className="text-zul-12-120 font-bold uppercase text-sky-600">
                 {saturatedData?.market.slug?.toUpperCase() ||
                   saturatedData?.market.marketId}
               </div>
@@ -104,8 +104,8 @@ const LiquidityPools: NextPage = observer(() => {
           ),
           poolBalance: saturatedData ? (
             {
-              value: saturatedData?.liquidity.div(ZTG).toNumber(),
-              usdValue: ztgInfo?.price.toNumber() ?? 0,
+              value: saturatedData?.liquidity.div(ZUL).toNumber(),
+              usdValue: zulInfo?.price.toNumber() ?? 0,
             }
           ) : (
             <span>...</span>
@@ -121,20 +121,20 @@ const LiquidityPools: NextPage = observer(() => {
 
   return (
     <div data-testid="liquidityPage">
-      <div className="flex mb-ztg-20">
-        <div className="px-4 py-6 bg-sky-100 dark:bg-black rounded-ztg-10 w-1/3 mr-4">
+      <div className="flex mb-zul-20">
+        <div className="px-4 py-6 bg-sky-100 dark:bg-black rounded-zul-10 w-1/3 mr-4">
           <h3 className="bg-gray-200 dark:bg-gray-800 rounded-3xl py-1 px-3 font-bold text-sm inline-block mb-3">
             Total Value
           </h3>
           <div className="font-bold font-mono px-1 text-xl mb-2">
-            {formatNumberLocalized(totalLiquidity.div(ZTG).toNumber())} ZTG
+            {formatNumberLocalized(totalLiquidity.div(ZUL).toNumber())} ZUL
           </div>
           <div className="font-mono px-1 text-sm text-gray-600">
             ≈ {formatNumberLocalized(totalLiquidityValue.toNumber())} USD
           </div>
         </div>
 
-        <div className="px-4 py-6 bg-sky-100 dark:bg-black rounded-ztg-10 w-1/3 mr-4">
+        <div className="px-4 py-6 bg-sky-100 dark:bg-black rounded-zul-10 w-1/3 mr-4">
           <h3 className="bg-gray-200 dark:bg-gray-800 rounded-3xl py-1 px-3 font-bold text-sm inline-block mb-3">
             Active Markets
           </h3>
@@ -149,7 +149,7 @@ const LiquidityPools: NextPage = observer(() => {
         <a
           href={"https://docs.zeitgeist.pm/docs/learn/liquidity"}
           target="_blank"
-          className="relative px-4 py-6 bg-ztg-blue rounded-ztg-10 w-1/3 cursor-pointer hover:scale-105 transition-all"
+          className="relative px-4 py-6 bg-zul-blue rounded-zul-10 w-1/3 cursor-pointer hover:scale-105 transition-all"
         >
           <div className="absolute top-2 right-4 text-gray-50">
             <AiOutlineRead size={22} />
@@ -161,12 +161,12 @@ const LiquidityPools: NextPage = observer(() => {
             Liquidity Pools
           </div>
           <div className="font-mono px-1 text-sm text-gray-200">
-            Learn about earning ZTG by providing liquidity.
+            Learn about earning ZUL by providing liquidity.
           </div>
         </a>
       </div>
 
-      <h2 className="mb-ztg-20  text-[24px] font-semibold">Market Pools</h2>
+      <h2 className="mb-zul-20  text-[24px] font-semibold">Market Pools</h2>
 
       <Table
         data={tableData}

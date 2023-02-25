@@ -1,4 +1,4 @@
-import { FullMarketFragment } from "@zeitgeistpm/indexer";
+import { FullMarketFragment } from "@zulustation/indexer";
 import {
   AssetId,
   CategoricalAssetId,
@@ -10,12 +10,12 @@ import {
   IndexedPool,
   IOMarketOutcomeAssetId,
   IOPoolShareAssetId,
-  IOZtgAssetId,
+  IOZulAssetId,
   isNA,
   PoolShareAssetId,
   ScalarAssetId,
-} from "@zeitgeistpm/sdk-next";
-import { isNotNull } from "@zeitgeistpm/utility/dist/null";
+} from "@zulustation/sdk-next";
+import { isNotNull } from "@zulustation/utility/dist/null";
 import Decimal from "decimal.js";
 import {
   UseAccountAssetBalances,
@@ -27,11 +27,11 @@ import { useMarketsByIds } from "lib/hooks/queries/useMarketsByIds";
 import { usePoolAccountIds } from "lib/hooks/queries/usePoolAccountIds";
 import { usePoolsByIds } from "lib/hooks/queries/usePoolsByIds";
 import {
-  PoolZtgBalanceLookup,
-  usePoolZtgBalance,
-} from "lib/hooks/queries/usePoolZtgBalance";
+  PoolZulBalanceLookup,
+  usePoolZulBalance,
+} from "lib/hooks/queries/usePoolZulBalance";
 import { useTotalIssuanceForPools } from "lib/hooks/queries/useTotalIssuanceForPools";
-import { useZtgInfo } from "lib/hooks/queries/useZtgInfo";
+import { useZulInfo } from "lib/hooks/queries/useZulInfo";
 import { calcSpotPrice } from "lib/math";
 import { calcResolvedMarketPrices } from "lib/util/calc-resolved-market-prices";
 import { useMemo } from "react";
@@ -102,37 +102,37 @@ export type Position<T extends AssetId = AssetId> = {
 
 export type PorfolioBreakdown = {
   /**
-   * The total value of the portfolio in ztg(planck)
+   * The total value of the portfolio in zul(planck)
    */
   total: {
     value: Decimal;
     changePercentage: number;
   };
   /**
-   * The value of the trading positions in ztg(planck)
+   * The value of the trading positions in zul(planck)
    */
   tradingPositions: {
     value: Decimal;
     changePercentage: number;
   };
   /**
-   * The value of the subsidy in ztg(planck)
+   * The value of the subsidy in zul(planck)
    */
   subsidy: {
     value: Decimal;
     changePercentage: number;
   };
   /**
-   * The value of the bonded in ztg(planck)
+   * The value of the bonded in zul(planck)
    */
   bonded: {
     value: Decimal;
     changePercentage: number;
   };
   /**
-   * The price of ztg in usd.
+   * The price of zul in usd.
    */
-  usdZtgPrice: Decimal;
+  usdZulPrice: Decimal;
 };
 
 /**
@@ -146,7 +146,7 @@ export const usePortfolioPositions = (
 ): UsePortfolioPositions => {
   const { data: now } = useChainTimeNow();
 
-  const { data: ztgPrice } = useZtgInfo();
+  const { data: zulPrice } = useZulInfo();
   const block24HoursAgo = Math.floor(now?.block - 7200);
   const { data: marketBonds, isLoading: isBondsLoading } =
     useAccountBonds(address);
@@ -182,13 +182,13 @@ export const usePortfolioPositions = (
 
   const poolAccountIds = usePoolAccountIds(pools.data);
 
-  const poolsZtgBalances = usePoolZtgBalance(pools.data ?? []);
+  const poolsZulBalances = usePoolZulBalance(pools.data ?? []);
 
   const poolsTotalIssuance = useTotalIssuanceForPools(
     pools.data?.map((p) => p.poolId) ?? [],
   );
 
-  const poolsZtgBalances24HoursAgo = usePoolZtgBalance(
+  const poolsZulBalances24HoursAgo = usePoolZulBalance(
     pools.data ?? [],
     block24HoursAgo,
     { enabled: Boolean(now?.block) },
@@ -245,12 +245,12 @@ export const usePortfolioPositions = (
     const calculatePrice = (
       pool: IndexedPool<Context>,
       assetId: AssetId,
-      poolsZtgBalances: PoolZtgBalanceLookup,
+      poolsZulBalances: PoolZulBalanceLookup,
       poolAssetBalances: UseAccountAssetBalances,
     ): null | Decimal => {
-      const poolZtgBalance = poolsZtgBalances[pool.poolId]?.free.toNumber();
+      const poolZulBalance = poolsZulBalances[pool.poolId]?.free.toNumber();
 
-      if (typeof poolZtgBalance === "undefined") {
+      if (typeof poolZulBalance === "undefined") {
         return null;
       }
 
@@ -261,12 +261,12 @@ export const usePortfolioPositions = (
 
       if (!poolAssetBalance || isNA(poolAssetBalance)) return null;
 
-      const ztgWeight = new Decimal(pool.totalWeight).div(2);
+      const zulWeight = new Decimal(pool.totalWeight).div(2);
       const assetWeight = getAssetWeight(pool, assetId).unwrap();
 
       return calcSpotPrice(
-        poolZtgBalance,
-        ztgWeight,
+        poolZulBalance,
+        zulWeight,
         poolAssetBalance.free.toNumber(),
         assetWeight,
         0,
@@ -284,7 +284,7 @@ export const usePortfolioPositions = (
       let marketId: number;
       let market: FullMarketFragment;
 
-      if (IOZtgAssetId.is(assetId)) {
+      if (IOZulAssetId.is(assetId)) {
         continue;
       }
 
@@ -336,14 +336,14 @@ export const usePortfolioPositions = (
           price = calculatePrice(
             pool,
             assetId,
-            poolsZtgBalances,
+            poolsZulBalances,
             poolAssetBalances,
           );
 
           price24HoursAgo = calculatePrice(
             pool,
             assetId,
-            poolsZtgBalances24HoursAgo,
+            poolsZulBalances24HoursAgo,
             poolAssetBalances24HoursAgo,
           );
         }
@@ -366,14 +366,14 @@ export const usePortfolioPositions = (
             const price = calculatePrice(
               pool,
               assetId,
-              poolsZtgBalances,
+              poolsZulBalances,
               poolAssetBalances,
             );
 
             const price24HoursAgo = calculatePrice(
               pool,
               assetId,
-              poolsZtgBalances24HoursAgo,
+              poolsZulBalances24HoursAgo,
               poolAssetBalances24HoursAgo,
             );
 
@@ -458,12 +458,12 @@ export const usePortfolioPositions = (
     rawPositions.data,
     pools.data,
     markets.data,
-    ztgPrice,
+    zulPrice,
     poolsTotalIssuance,
     userAssetBalances,
-    poolsZtgBalances,
+    poolsZulBalances,
     poolAssetBalances,
-    poolsZtgBalances24HoursAgo,
+    poolsZulBalances24HoursAgo,
     poolAssetBalances24HoursAgo,
   ]);
 
@@ -487,7 +487,7 @@ export const usePortfolioPositions = (
   );
 
   const breakdown = useMemo<PorfolioBreakdown>(() => {
-    if (!ztgPrice || !marketPositions || !subsidyPositions || isBondsLoading) {
+    if (!zulPrice || !marketPositions || !subsidyPositions || isBondsLoading) {
       return null;
     }
 
@@ -531,7 +531,7 @@ export const usePortfolioPositions = (
     const totalChange = diffChange(positionsTotal, positionsTotal24HoursAgo);
 
     return {
-      usdZtgPrice: ztgPrice.price,
+      usdZulPrice: zulPrice.price,
       total: {
         value: positionsTotal,
         changePercentage: isNaN(totalChange) ? 0 : totalChange,
@@ -555,7 +555,7 @@ export const usePortfolioPositions = (
       },
     };
   }, [
-    ztgPrice,
+    zulPrice,
     subsidyPositions,
     marketPositions,
     isBondsLoading,

@@ -13,7 +13,7 @@ export const TagButton: FC<TagButtonProps> = ({
   active,
   onActiveToggle,
 }) => {
-  const bgClass = active ? "bg-ztg-blue" : "bg-sky-200 dark:bg-sky-800";
+  const bgClass = active ? "bg-zul-blue" : "bg-sky-200 dark:bg-sky-800";
   const iconBgClass = active ? "bg-black" : "bg-sky-600";
   const iconColorClass = active ? "text-sky-600" : "text-sky-200";
   const textColorClass = active ? "text-white" : "text-sky-600";
@@ -21,8 +21,8 @@ export const TagButton: FC<TagButtonProps> = ({
 
   return (
     <div
-      className={`h-ztg-25 flex items-center min-w-ztg-85 text-ztg-10-150
-        rounded-full cursor-pointer px-ztg-3 mb-ztg-10 mr-ztg-10 ztg-transition
+      className={`h-zul-25 flex items-center min-w-zul-85 text-zul-10-150
+        rounded-full cursor-pointer px-zul-3 mb-zul-10 mr-zul-10 zul-transition
         ${bgClass} ${textColorClass}`}
       onClick={() => {
         const newActive = !active;
@@ -30,11 +30,11 @@ export const TagButton: FC<TagButtonProps> = ({
       }}
       data-test="tagButton"
     >
-      <div className="px-ztg-15 text-center  font-bold" data-test="tag">
+      <div className="px-zul-15 text-center  font-bold" data-test="tag">
         {label}
       </div>
       <div
-        className={`w-ztg-20 h-ztg-20 center rounded-full ml-auto ${iconBgClass}`}
+        className={`w-zul-20 h-zul-20 center rounded-full ml-auto ${iconBgClass}`}
       >
         <Icon size={14} className={`${iconColorClass}`} />
       </div>
@@ -81,11 +81,11 @@ const TagChoices: FC<{ onTagsChange: (tags: string[]) => void }> = ({
           />
         );
       })}
-      {/* <div className="flex w-ztg-85 h-ztg-25 items-center rounded-full border-2 border-sky-600 cursor-pointer px-ztg-3"> */}
-      {/*   <div className="w-ztg-20 h-ztg-20 rounded-full center"> */}
+      {/* <div className="flex w-zul-85 h-zul-25 items-center rounded-full border-2 border-sky-600 cursor-pointer px-zul-3"> */}
+      {/*   <div className="w-zul-20 h-zul-20 rounded-full center"> */}
       {/*     <Plus size={12} className="text-sky-600" /> */}
       {/*   </div> */}
-      {/*   <div className="text-ztg-10-150 flex-grow text-center mr-ztg-5 text-sky-600  font-bold"> */}
+      {/*   <div className="text-zul-10-150 flex-grow text-center mr-zul-5 text-sky-600  font-bold"> */}
       {/*     Add Tag */}
       {/*   </div> */}
       {/* </div> */}

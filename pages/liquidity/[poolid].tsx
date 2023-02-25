@@ -4,17 +4,17 @@ import {
   isIndexedData,
   NA,
   projectEndTimestamp,
-} from "@zeitgeistpm/sdk-next";
+} from "@zulustation/sdk-next";
 import PoolTable from "components/liquidity/PoolTable";
 import FullSetButtons from "components/markets/FullSetButtons";
 import MarketMeta from "components/meta/MarketMeta";
 import InfoBoxes from "components/ui/InfoBoxes";
 import Pill from "components/ui/Pill";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 import { usePool } from "lib/hooks/queries/usePool";
 import { useSaturatedPoolsIndex } from "lib/hooks/queries/useSaturatedPoolsIndex";
-import { useZtgInfo } from "lib/hooks/queries/useZtgInfo";
+import { useZulInfo } from "lib/hooks/queries/useZulInfo";
 import { useSdkv2 } from "lib/hooks/useSdkv2";
 import { useStore } from "lib/stores/Store";
 import { observer } from "mobx-react";
@@ -46,11 +46,11 @@ const PoolDetail = ({
     <>
       <div
         className={
-          "flex flex-col h-ztg-89 w-full rounded-ztg-10 bg-sky-100 dark:bg-black p-ztg-15 " +
+          "flex flex-col h-zul-89 w-full rounded-zul-10 bg-sky-100 dark:bg-black p-zul-15 " +
           className
         }
       >
-        <div className=" text-sky-600 text-ztg-12-150 font-bold">
+        <div className=" text-sky-600 text-zul-12-150 font-bold">
           <div className="flex">
             <span>{header}</span>
             {showInfo === true ? (
@@ -59,17 +59,17 @@ const PoolDetail = ({
                   size={19}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
-                  className="inline cursor-pointer ml-ztg-10"
+                  className="inline cursor-pointer ml-zul-10"
                 />
                 {hoveringInfo === true ? (
-                  <div className="bg-sky-200 dark:bg-border-dark absolute left-ztg-50 bottom-ztg-20 rounded-ztg-5 text-black dark:text-white px-ztg-8 py-ztg-14  text-ztg-12-150 w-ztg-164">
-                    <div className="font-bold border-b-1 border-sky-600 pb-ztg-7">
+                  <div className="bg-sky-200 dark:bg-border-dark absolute left-zul-50 bottom-zul-20 rounded-zul-5 text-black dark:text-white px-zul-8 py-zul-14  text-zul-12-150 w-zul-164">
+                    <div className="font-bold border-b-1 border-sky-600 pb-zul-7">
                       Total APR
                     </div>
-                    <div className="font-normal border-b-1 border-sky-600 py-ztg-7">
+                    <div className="font-normal border-b-1 border-sky-600 py-zul-7">
                       Fees
                     </div>
-                    <div className="font-normal pt-ztg-13">
+                    <div className="font-normal pt-zul-13">
                       Liquidity Mining
                     </div>
                   </div>
@@ -82,8 +82,8 @@ const PoolDetail = ({
             )}
           </div>
         </div>
-        <div className="font-bold font-mono text-ztg-14-150">{middle}</div>
-        <div className="font-mono text-ztg-12-150 text-sky-600">{bottom}</div>
+        <div className="font-bold font-mono text-zul-14-150">{middle}</div>
+        <div className="font-mono text-zul-12-150 text-sky-600">{bottom}</div>
       </div>
     </>
   );
@@ -93,7 +93,7 @@ const PoolDetails: NextPage = observer(() => {
   const router = useRouter();
   const store = useStore();
 
-  const { data: ztgInfo } = useZtgInfo();
+  const { data: zulInfo } = useZulInfo();
 
   const poolId = Number(router.query.poolid);
 
@@ -115,7 +115,7 @@ const PoolDetails: NextPage = observer(() => {
   );
 
   const volume = isIndexedData(pool)
-    ? new Decimal(pool.volume).div(ZTG).toFixed(2)
+    ? new Decimal(pool.volume).div(ZUL).toFixed(2)
     : NA;
 
   const swapFee = Number(pool?.swapFee);
@@ -141,7 +141,7 @@ const PoolDetails: NextPage = observer(() => {
       <MarketMeta market={saturatedPoolData?.market} />
       <div>
         <InfoBoxes />
-        <div className="flex items-center mb-ztg-33">
+        <div className="flex items-center mb-zul-33">
           <h2 className="header">Market Pool</h2>
           <ChevronLeft
             size={20}
@@ -163,28 +163,28 @@ const PoolDetails: NextPage = observer(() => {
           />
           <Pill
             title="Volume"
-            value={`${isAvailable(volume) ? volume : "NA"} ZTG`}
+            value={`${isAvailable(volume) ? volume : "NA"} ZUL`}
           />
           <Pill title="Status" value={saturatedPoolData?.market.status} />
         </div>
-        <div className="flex flex-row mt-ztg-53 mb-ztg-38">
+        <div className="flex flex-row mt-zul-53 mb-zul-38">
           <PoolDetail
             header="Pool Value"
             middle={`${Math.round(
-              saturatedPoolData?.liquidity.div(ZTG).toNumber() || 0,
+              saturatedPoolData?.liquidity.div(ZUL).toNumber() || 0,
             )} ${store?.config?.tokenSymbol ?? "--"}`}
             bottom={`${
-              ztgInfo && saturatedPoolData
-                ? ztgInfo?.price
-                    ?.mul(saturatedPoolData?.liquidity.div(ZTG))
+              zulInfo && saturatedPoolData
+                ? zulInfo?.price
+                    ?.mul(saturatedPoolData?.liquidity.div(ZUL))
                     .toFixed(2)
                 : "--"
             }`}
           />
           <PoolDetail
-            className="mx-ztg-20"
+            className="mx-zul-20"
             header="Fees"
-            middle={`${new Decimal(swapFee).div(ZTG).mul(100)} %`}
+            middle={`${new Decimal(swapFee).div(ZUL).mul(100)} %`}
             bottom=""
           />
 
@@ -193,7 +193,7 @@ const PoolDetails: NextPage = observer(() => {
             middle={
               <div className="flex mt-2">
                 <div
-                  className="rounded-full w-ztg-20 h-ztg-20 mr-ztg-10 border-sky-600 border-2"
+                  className="rounded-full w-zul-20 h-zul-20 mr-zul-10 border-sky-600 border-2"
                   style={{ backgroundColor: prediction?.category.color }}
                 />
                 {prediction?.category.ticker.toUpperCase()}
@@ -204,8 +204,8 @@ const PoolDetails: NextPage = observer(() => {
         </div>
         {/* <PoolChart /> */}
         {/* <PoolSummary /> */}
-        <div className="flex my-ztg-23 items-center">
-          <h3 className=" font-semibold text-ztg-20-150">Assets in Pool</h3>
+        <div className="flex my-zul-23 items-center">
+          <h3 className=" font-semibold text-zul-20-150">Assets in Pool</h3>
           {saturatedPoolData && (
             <FullSetButtons marketId={saturatedPoolData.market.marketId} />
           )}
@@ -213,7 +213,7 @@ const PoolDetails: NextPage = observer(() => {
             <div className="flex flex-1 justify-end">
               <Link
                 href={`/markets/${saturatedPoolData?.market.marketId}`}
-                className="flex text-sky-600 bg-sky-200 dark:bg-black ml-auto uppercase font-bold text-ztg-12-120 rounded-ztg-5 px-ztg-20 py-ztg-5 justify-center items-center"
+                className="flex text-sky-600 bg-sky-200 dark:bg-black ml-auto uppercase font-bold text-zul-12-120 rounded-zul-5 px-zul-20 py-zul-5 justify-center items-center"
               >
                 <BarChart2 size={14} className="mr-2" />
                 <div className="flex content-end">Market</div>

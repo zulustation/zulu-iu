@@ -1,4 +1,4 @@
-import { Context, IndexedMarket, ScalarRangeType } from "@zeitgeistpm/sdk-next";
+import { Context, IndexedMarket, ScalarRangeType } from "@zulustation/sdk-next";
 import React, { useEffect, useState } from "react";
 import Decimal from "decimal.js";
 import { useInView } from "react-intersection-observer";
@@ -18,7 +18,7 @@ import MarketFilterSelection from "./market-filter";
 import MarketCard from "./market-card/index";
 import useMarketsUrlQuery from "lib/hooks/useMarketsUrlQuery";
 import { filterTypes } from "lib/constants/market-filter";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 
 export type MarketsListProps = {
   className?: string;
@@ -149,7 +149,7 @@ const MarketsList = observer(({ className = "" }: MarketsListProps) => {
 
   return (
     <div
-      className={"pt-ztg-46 mb-[38px]" + className}
+      className={"pt-zul-46 mb-[38px]" + className}
       data-testid="marketsList"
     >
       <MarketFilterSelection
@@ -175,7 +175,7 @@ const MarketsList = observer(({ className = "" }: MarketsListProps) => {
               pool={market.pool}
               status={market.status}
               baseAsset={market.pool?.baseAsset}
-              volume={new Decimal(volume).div(ZTG).toNumber()}
+              volume={new Decimal(volume).div(ZUL).toNumber()}
               tags={market.tags}
               key={`market-${market.marketId}`}
             />
@@ -205,11 +205,11 @@ const MarketsSearchInfo = observer(({ searchText }: { searchText: string }) => {
   const router = useRouter();
 
   return (
-    <div className="flex my-ztg-30 h-ztg-34">
-      <h6 className="text-ztg-[24px]" id="marketsHead">
+    <div className="flex my-zul-30 h-zul-34">
+      <h6 className="text-zul-[24px]" id="marketsHead">
         {`Search results for: "${searchText}"`}
       </h6>
-      <div className="w-ztg-24 h-ztg-24 rounded-full bg-sky-400 dark:bg-black center ml-ztg-15">
+      <div className="w-zul-24 h-zul-24 rounded-full bg-sky-400 dark:bg-black center ml-zul-15">
         <X
           size={24}
           className="cursor-pointer text-sky-600"

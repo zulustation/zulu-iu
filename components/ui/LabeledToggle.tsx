@@ -23,13 +23,13 @@ const LabeledToggle: FC<{
     onChange(side === "left" ? "right" : "left");
   };
 
-  const classes = "flex h-ztg-27 items-center text-sky-600 " + className;
+  const classes = "flex h-zul-27 items-center text-sky-600 " + className;
   const activeClass = "text-black dark:text-white";
 
   return (
     <div className={classes}>
       <div
-        className={`text-ztg-14-150 mr-ztg-10  ${
+        className={`text-zul-14-150 mr-zul-10  ${
           !disabled && side === "left" ? activeClass : ""
         } ${disabled ? "text-sky-600" : ""}`}
         data-test={leftLabel}
@@ -38,8 +38,8 @@ const LabeledToggle: FC<{
       </div>
 
       <div
-        className={`h-ztg-17 rounded-full w-ztg-64 items-center mr-ztg-10
-          flex px-ztg-5 bg-white dark:bg-black ${
+        className={`h-zul-17 rounded-full w-zul-64 items-center mr-zul-10
+          flex px-zul-5 bg-white dark:bg-black ${
             disabled ? "cursor-default" : "cursor-pointer"
           }`}
         data-test="switchButton"
@@ -49,14 +49,14 @@ const LabeledToggle: FC<{
       >
         <motion.div
           layout
-          className={`w-ztg-10 h-ztg-10 px-ztg-5 rounded-full
+          className={`w-zul-10 h-zul-10 px-zul-5 rounded-full
             ${side === "left" ? "mr-auto" : "ml-auto"} ${
             disabled ? "bg-sky-600" : "bg-black dark:bg-white"
           }`}
         ></motion.div>
       </div>
       <div
-        className={`text-ztg-14-150  ${
+        className={`text-zul-14-150  ${
           !disabled && side === "right" ? activeClass : ""
         } ${disabled ? "text-sky-600" : ""}`}
         data-test={rightLabel}

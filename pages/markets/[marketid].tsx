@@ -43,7 +43,7 @@ import { hasDatePassed } from "lib/util/hasDatePassed";
 import Link from "next/link";
 import { formatNumberCompact } from "lib/util/format-compact";
 import Decimal from "decimal.js";
-import { ZTG } from "lib/constants";
+import { ZUL } from "lib/constants";
 
 const QuillViewer = dynamic(() => import("../../components/ui/QuillViewer"), {
   ssr: false,
@@ -105,7 +105,7 @@ export async function getStaticProps({ params }) {
       indexedMarket: market ?? null,
       chartSeries: chartSeries ?? null,
       chartData: chartData ?? null,
-      baseAsset: baseAsset?.toUpperCase() ?? "ZTG",
+      baseAsset: baseAsset?.toUpperCase() ?? "ZUL",
     },
     revalidate: 10 * 60, //10mins
   };
@@ -171,7 +171,7 @@ const Market: NextPage<{
     children,
   }) => {
     return (
-      <div className={border ? "sm:border-r sm:border-ztg-blue pr-2" : ""}>
+      <div className={border ? "sm:border-r sm:border-zul-blue pr-2" : ""}>
         <span>{label}: </span>
         <span className="font-medium">{children}</span>
       </div>
@@ -271,7 +271,7 @@ const Market: NextPage<{
     : Number(indexedMarket.period.start);
   const ends = Number(indexedMarket.period.end);
   const volume = indexedMarket?.pool?.volume
-    ? new Decimal(indexedMarket?.pool?.volume).div(ZTG).toNumber()
+    ? new Decimal(indexedMarket?.pool?.volume).div(ZUL).toNumber()
     : 0;
   const subsidy = marketSdkv2?.pool?.poolId == null ? 0 : pool?.liquidity;
 
@@ -298,11 +298,11 @@ const Market: NextPage<{
           subsidy={subsidy}
         />
         {marketSdkv2?.rejectReason && marketSdkv2.rejectReason.length > 0 && (
-          <div className="mt-[10px] text-ztg-14-150">
+          <div className="mt-[10px] text-zul-14-150">
             Market rejected: {marketSdkv2.rejectReason}
           </div>
         )}
-        <div className="flex justify-center py-ztg-50 mb-10 h-32">
+        <div className="flex justify-center py-zul-50 mb-10 h-32">
           {marketStore && marketStage ? (
             <MarketTimer stage={marketStage} />
           ) : (
@@ -310,7 +310,7 @@ const Market: NextPage<{
           )}
         </div>
         {chartData?.length > 0 && chartSeries ? (
-          <div className="-ml-ztg-25">
+          <div className="-ml-zul-25">
             <TimeSeriesChart
               data={chartData}
               series={chartSeries}
@@ -322,12 +322,12 @@ const Market: NextPage<{
           <></>
         )}
         {marketSdkv2?.pool?.poolId == null && marketIsLoading === false && (
-          <div className="flex h-ztg-22 items-center  bg-vermilion-light text-vermilion p-ztg-20 rounded-ztg-5">
-            <div className="w-ztg-20 h-ztg-20">
+          <div className="flex h-zul-22 items-center  bg-vermilion-light text-vermilion p-zul-20 rounded-zul-5">
+            <div className="w-zul-20 h-zul-20">
               <AlertTriangle size={20} />
             </div>
             <div
-              className="text-ztg-12-120 ml-ztg-10 "
+              className="text-zul-12-120 ml-zul-10 "
               data-test="liquidityPoolMessage"
             >
               This market doesn't have a liquidity pool and therefore cannot be
@@ -357,7 +357,7 @@ const Market: NextPage<{
                 <div className="flex flex-col">
                   <Link
                     href={`/liquidity/${marketSdkv2.pool.poolId}`}
-                    className="text-sky-600 bg-sky-200 dark:bg-black ml-auto uppercase font-bold text-ztg-12-120 rounded-ztg-5 px-ztg-20 py-ztg-5 mb-[10px] "
+                    className="text-sky-600 bg-sky-200 dark:bg-black ml-auto uppercase font-bold text-zul-12-120 rounded-zul-5 px-zul-20 py-zul-5 mb-[10px] "
                   >
                     View Pool
                   </Link>
@@ -369,7 +369,7 @@ const Market: NextPage<{
         </Tab.Group>
 
         {marketStore?.type === "scalar" && spotPrices && (
-          <div className="mt-ztg-20 mb-ztg-30">
+          <div className="mt-zul-20 mb-zul-30">
             <ScalarPriceRange
               scalarType={marketStore.scalarType}
               lowerBound={marketStore.bounds[0]}
@@ -381,7 +381,7 @@ const Market: NextPage<{
         )}
         {indexedMarket.description?.length > 0 && (
           <>
-            <div className="sub-header mt-ztg-40 mb-ztg-15">About Market</div>
+            <div className="sub-header mt-zul-40 mb-zul-15">About Market</div>
             <QuillViewer value={indexedMarket.description} />
           </>
         )}
@@ -389,7 +389,7 @@ const Market: NextPage<{
           marketStore={marketStore}
           onPoolDeployed={handlePoolDeployed}
         />
-        <div className="sub-header my-ztg-40 text-center">Market Cast</div>
+        <div className="sub-header my-zul-40 text-center">Market Cast</div>
         <MarketAddresses
           oracleAddress={indexedMarket.oracle}
           creatorAddress={indexedMarket.creator}
